@@ -51,6 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4208659152692416}
   - component: {fileID: 54022182931743166}
+  - component: {fileID: 114963035999945236}
   m_Layer: 0
   m_Name: Paintbrush
   m_TagString: Untagged
@@ -189,6 +190,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114963035999945236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1489674996124584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136816316404703914
 CapsuleCollider:
   m_ObjectHideFlags: 1

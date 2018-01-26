@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 65105863971601176}
   - component: {fileID: 65626924176146330}
   - component: {fileID: 65194737243056046}
+  - component: {fileID: 114684840570838258}
   m_Layer: 0
   m_Name: Mug
   m_TagString: Untagged
@@ -552,3 +553,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 0.61, z: 0.04}
   m_Center: {x: 0, y: 0.97, z: -0.55}
+--- !u!114 &114684840570838258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1173981883151480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

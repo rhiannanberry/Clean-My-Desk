@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4637373160317592}
   - component: {fileID: 54532863972391576}
+  - component: {fileID: 114594551863064522}
   m_Layer: 0
   m_Name: Pin
   m_TagString: Untagged
@@ -188,6 +189,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114594551863064522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1612079206180944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135989296497866366
 SphereCollider:
   m_ObjectHideFlags: 1

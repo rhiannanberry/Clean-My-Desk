@@ -194,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4303907173477640}
   - component: {fileID: 54232100907102658}
+  - component: {fileID: 114417334075868982}
   m_Layer: 0
   m_Name: Bottlecap
   m_TagString: Untagged
@@ -908,3 +909,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114417334075868982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333253912273388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

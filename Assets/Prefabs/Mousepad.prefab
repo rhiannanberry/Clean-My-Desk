@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4506026100414070}
   - component: {fileID: 54502517844620806}
+  - component: {fileID: 114354979558525866}
   m_Layer: 0
   m_Name: Mousepad
   m_TagString: Untagged
@@ -201,3 +202,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300002, guid: 8399f587cf0344e46b3a45656f13d343, type: 3}
+--- !u!114 &114354979558525866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879079037676480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4701655543765370}
   - component: {fileID: 54663766210089492}
+  - component: {fileID: 114346782205395708}
   m_Layer: 0
   m_Name: Monitor1
   m_TagString: Untagged
@@ -531,6 +532,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.4355545, z: 0.29863018}
   m_Center: {x: 0, y: 1.2229998, z: -0.2569693}
+--- !u!114 &114346782205395708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597181926901984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136104532677222996
 CapsuleCollider:
   m_ObjectHideFlags: 1

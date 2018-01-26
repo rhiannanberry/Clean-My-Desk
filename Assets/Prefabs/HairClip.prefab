@@ -68,6 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4027623308279084}
   - component: {fileID: 54364212778723024}
+  - component: {fileID: 114906464947396000}
   m_Layer: 0
   m_Name: HairClip
   m_TagString: Untagged
@@ -202,3 +203,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 5c7a180c2082eec458f5e8a29c26ff15, type: 3}
+--- !u!114 &114906464947396000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692033997061118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
