@@ -456,6 +456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objs:
   - {fileID: 4247654035769860, guid: 971e63e1753702a4ab9970b4b4e381be, type: 2}
+  selected: {fileID: 0}
+  holding: {fileID: 0}
 --- !u!135 &1090447260
 SphereCollider:
   m_ObjectHideFlags: 0
