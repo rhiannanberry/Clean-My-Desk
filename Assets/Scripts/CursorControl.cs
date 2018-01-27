@@ -33,7 +33,7 @@ public class CursorControl : MonoBehaviour {
                 transform.position = new Vector3(ray.GetPoint(dist).x, yPos, zPos);
                 Vector3 spawnPos = new Vector3(transform.position.x, spawnY, zPos);
                 //transform.position = ray.GetPoint(dist);
-                if (Input.GetMouseButton(0)) {
+                if (Input.GetMouseButton(0) && GameObject.Find("ObjMenScrollView").GetComponent<Menuing>().isOpen) {
                     GameController.Instance.SpawnSelected(spawnPos);
                 }
             }
