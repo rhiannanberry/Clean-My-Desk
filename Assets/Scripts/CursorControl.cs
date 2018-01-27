@@ -31,16 +31,20 @@ public class CursorControl : MonoBehaviour {
             if (!EventSystem.current.IsPointerOverGameObject()) {
                 spawnY = ray.GetPoint(dist).y;
                 transform.position = new Vector3(ray.GetPoint(dist).x, yPos, zPos);
+                Vector3 spawnPos = new Vector3(transform.position.x, spawnY, zPos);
                 //transform.position = ray.GetPoint(dist);
-                if (Input.GetMouseButton(0) && selected != null) {
-                    //TODO: tie selected count to how many you can spawn
-                    Instantiate(selected, new Vector3(transform.position.x, spawnY, zPos), Random.rotation);
+                if (Input.GetMouseButton(0)) {
+                    GameController.Instance.SpawnSelected(spawnPos);
                 }
             }
 
         }
         
 	}
+
+    public void UIInteraction() {
+
+    }
 
     public void SetSelected(Transform sel) {
         selected = sel;

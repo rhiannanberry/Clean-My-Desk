@@ -214,3 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIMat: {fileID: 2100000, guid: 29ad0615c023bb04aa66709111f40f9f, type: 2}
+  count: 1

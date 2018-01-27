@@ -5,15 +5,16 @@ using UnityEngine.UI;
 
 public class AddButtons : MonoBehaviour {
     public GameObject buttonPrefab;
-    public List<ButtonSetup> buttons;
-	// Use this for initialization
-	void Start () {
-        foreach (ButtonSetup button in buttons) {
+
+    // Use this for initialization
+    void Start() {
+        int index = 0;
+        foreach (GameController.Interactable i in GameController.Instance.interactables) {
             GameObject b = Instantiate(buttonPrefab);
             b.transform.SetParent(transform, false);
-            b.transform.GetComponent<Image>().material = button.buttonMat;
-            b.transform.GetComponent<SpawnItem>().SetPrefab(button.itemPrefab);
-            b.transform.GetComponent<SpawnItem>().SetCount(button.count);
+            b.transform.GetComponent<SpawnItem>().SetDefaults(i.item, index);
+            GameController.Instance.itemCounts[index] = i.count;
+            index++;
         }
 	}
 	
@@ -21,11 +22,4 @@ public class AddButtons : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    [System.Serializable]
-    public struct ButtonSetup {
-        public Material buttonMat;
-        public GameObject itemPrefab;
-        public int count;
-    }
 }

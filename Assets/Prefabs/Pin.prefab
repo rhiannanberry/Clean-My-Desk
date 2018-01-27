@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIMat: {fileID: 2100000, guid: 79b532dcffee5be49ad3e7dc61e998b8, type: 2}
+  count: 1
 --- !u!135 &135989296497866366
 SphereCollider:
   m_ObjectHideFlags: 1

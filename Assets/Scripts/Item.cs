@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInteractions : MonoBehaviour {
+[System.Serializable]
+public class Item : MonoBehaviour {
+    public int index;
+    public Material UIMat;
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +15,7 @@ public class ItemInteractions : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.y < -3) {
+            GameController.Instance.itemCounts[index]++;
             Destroy(gameObject);
         }
 	}

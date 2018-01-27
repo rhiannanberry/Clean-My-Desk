@@ -543,6 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIMat: {fileID: 2100000, guid: b15d8e178d3a5434a8572bd3755f654d, type: 2}
+  count: 1
 --- !u!136 &136104532677222996
 CapsuleCollider:
   m_ObjectHideFlags: 1
