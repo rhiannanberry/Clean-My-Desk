@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4963486461205168}
   - component: {fileID: 33168177398207766}
   - component: {fileID: 23205610999411308}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: thread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4550271616026826}
   - component: {fileID: 54228936786333480}
   - component: {fileID: 114830699077045770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4589848861612554}
   - component: {fileID: 64701761608255148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpoolColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4858671965436618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootSpool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,5 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: f3b4457646ce6ef4abdde6e98cb003fd, type: 2}
-  count: 1

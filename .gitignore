@@ -32,3 +32,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Hide your API keys for Twitter HERE!!
+SECRETS.cs

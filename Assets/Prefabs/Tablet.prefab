@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4647814398026222}
   - component: {fileID: 136182181989017140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TabletColliders2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4874757547390988}
   - component: {fileID: 65366037020864512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TabletColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4083288744762918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootTablet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4139953471827020}
   - component: {fileID: 54049102402758844}
   - component: {fileID: 114146228237650252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tablet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 4595804782559840}
   - component: {fileID: 33735988448348876}
   - component: {fileID: 23535698166665918}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tablet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 3856778ed1f3dc1479c65b96f2b09655, type: 2}
-  count: 1
 --- !u!136 &136182181989017140
 CapsuleCollider:
   m_ObjectHideFlags: 1

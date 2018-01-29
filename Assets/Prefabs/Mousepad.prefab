@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978525788146390}
   - component: {fileID: 64002823134941284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MousepadColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4299638215304976}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootMousepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4234366797872128}
   - component: {fileID: 33474294490201676}
   - component: {fileID: 23779448515262856}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mousepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4506026100414070}
   - component: {fileID: 54502517844620806}
   - component: {fileID: 114354979558525866}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mousepad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,5 +213,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 55499b20e6878cb4eb355e076e4a62dd, type: 2}
-  count: 1

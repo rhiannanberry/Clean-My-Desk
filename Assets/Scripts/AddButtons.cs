@@ -9,6 +9,7 @@ public class AddButtons : MonoBehaviour {
     // Use this for initialization
     void Start() {
         int index = 0;
+        GameController.Instance.itemCounts = new int[GameController.Instance.interactables.Count];
         foreach (GameController.Interactable i in GameController.Instance.interactables) {
             GameObject b = Instantiate(buttonPrefab);
             b.transform.SetParent(transform, false);

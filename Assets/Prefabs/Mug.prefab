@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772501749322190}
   - component: {fileID: 65941723080695686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 65948932734446326}
   - component: {fileID: 65757198219769838}
   - component: {fileID: 65500457081214738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4766614311017924}
   - component: {fileID: 65589951790588316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4558582292480754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootMug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 65626924176146330}
   - component: {fileID: 65194737243056046}
   - component: {fileID: 114684840570838258}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 4857605723461432}
   - component: {fileID: 33933847561396334}
   - component: {fileID: 23662147519441060}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4900815845304540}
   - component: {fileID: 65051104672985398}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4211718406492748}
   - component: {fileID: 65387840649302076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 65060852119736964}
   - component: {fileID: 65271479068136854}
   - component: {fileID: 65434527786481840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MugColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,5 +564,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 80dc419123c492b4190685879389b67d, type: 2}
-  count: 1

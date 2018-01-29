@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4912532521011726}
   - component: {fileID: 33121689538093348}
   - component: {fileID: 23340866739197592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: breadclip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4108945186156676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootBreadClip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4588270858089084}
   - component: {fileID: 54496286479303970}
   - component: {fileID: 114461303768753630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreadClip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620692697611062}
   - component: {fileID: 65007570578663014}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreadClipColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,5 +211,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 67c6c25cbea3f1e4590557d9163a366d, type: 2}
-  count: 1

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4582027034573110}
   - component: {fileID: 136742838216016076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4429527747423458}
   - component: {fileID: 65200840986822830}
   - component: {fileID: 65207911897077076}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 136369600262285914}
   - component: {fileID: 136185243471003262}
   - component: {fileID: 136260779241415102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4519171050808984}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4084410962314546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootSpeaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4657543398588836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4410149623542170}
   - component: {fileID: 65166113042954726}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4874333475207068}
   - component: {fileID: 136251500882963688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4415758936120020}
   - component: {fileID: 136331529842622586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4918822058905572}
   - component: {fileID: 33962274613663490}
   - component: {fileID: 23005789251243674}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4167725609964112}
   - component: {fileID: 136400051859961884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 4588320451640412}
   - component: {fileID: 54754562825923852}
   - component: {fileID: 114956627268742706}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4877881767433114}
   - component: {fileID: 65028353715748466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4147393278679198}
   - component: {fileID: 136423367180253568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpeakerColliders3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,8 +549,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 1f9f6f9ad8e9ac7439097ccb622e1f13, type: 2}
-  count: 1
 --- !u!136 &136185243471003262
 CapsuleCollider:
   m_ObjectHideFlags: 1

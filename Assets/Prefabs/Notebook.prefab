@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4816065036338778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootNotebook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4523439085260730}
   - component: {fileID: 65213294468990170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NotebookColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4538903550667140}
   - component: {fileID: 33872372123150600}
   - component: {fileID: 23283018426257608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: notebook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4367166674204878}
   - component: {fileID: 54641723428442780}
   - component: {fileID: 114582942236254160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Notebook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,5 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: c892635705ba6094890bc526cd3d8ed8, type: 2}
-  count: 1

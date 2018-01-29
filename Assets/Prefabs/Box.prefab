@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4785159747363106}
   - component: {fileID: 65242625747056634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BoxColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4391105214426960}
   - component: {fileID: 54009176469317580}
   - component: {fileID: 114317532943743858}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4052968795224240}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4479627332610026}
   - component: {fileID: 33351338616292572}
   - component: {fileID: 23733615398601612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,5 +211,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: a04b599aaba95974aa5a0ff2fe88fa89, type: 2}
-  count: 1

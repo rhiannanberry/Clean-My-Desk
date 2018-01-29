@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4930381179820416}
   - component: {fileID: 64166107854901274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CoinColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4082326757951274}
   - component: {fileID: 54761393750586110}
   - component: {fileID: 114796946166996090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4377626465251762}
   - component: {fileID: 33474312402481974}
   - component: {fileID: 23747134258142274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4465334463265062}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,5 +213,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 426314ee35dd6d54e808e847ca4ff3aa, type: 2}
-  count: 1

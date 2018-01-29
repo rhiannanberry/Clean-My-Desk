@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4357575733767514}
   - component: {fileID: 136816316404703914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PaintbrushColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4473044604266782}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootPaintbrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 4208659152692416}
   - component: {fileID: 54022182931743166}
   - component: {fileID: 114963035999945236}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Paintbrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4016811418678330}
   - component: {fileID: 33103810697866802}
   - component: {fileID: 23262236358506962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: paintbrush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: c16e52423c1693b499c4948d04093536, type: 2}
-  count: 1
 --- !u!136 &136816316404703914
 CapsuleCollider:
   m_ObjectHideFlags: 1

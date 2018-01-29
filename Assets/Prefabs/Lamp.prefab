@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4917499813894404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4928470344577002}
   - component: {fileID: 33720565100351364}
   - component: {fileID: 23497985707273982}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4687760349531332}
   - component: {fileID: 64940204602555396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4870442320623028}
   - component: {fileID: 136140388489414272}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4704064220042300}
   - component: {fileID: 64612957905653920}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider20 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4400234954073544}
   - component: {fileID: 65194001374644474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403671965564542}
   - component: {fileID: 65809080857301558}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013280926089922}
   - component: {fileID: 64559462051420752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4165031443004890}
   - component: {fileID: 135193743618994142}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4802002359558026}
   - component: {fileID: 64587373816741856}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4568379286259006}
   - component: {fileID: 65332736511927934}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider22 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4219394444195206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootLamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 4301781715670242}
   - component: {fileID: 54960242294005820}
   - component: {fileID: 114718849501328584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4394816627722642}
   - component: {fileID: 136325072118858836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4195859507034310}
   - component: {fileID: 136128445364792206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4057013797691824}
   - component: {fileID: 65627641663422088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LampCollider22 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -665,8 +665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 94956b1b1b57f0045bea2c23ee3629a2, type: 2}
-  count: 1
 --- !u!135 &135193743618994142
 SphereCollider:
   m_ObjectHideFlags: 1

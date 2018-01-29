@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4849918553459304}
   - component: {fileID: 54935854368906688}
   - component: {fileID: 114202464473048106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Calculator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4744981900768728}
   - component: {fileID: 33450164169136878}
   - component: {fileID: 23180127688369488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: calculator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4886391783629324}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootCalculator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4280648771481006}
   - component: {fileID: 64071556964264138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CalculatorColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,5 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: c3c72a3dd9070464a960452d353893a0, type: 2}
-  count: 1

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4979039498558142}
   - component: {fileID: 135989296497866366}
   - component: {fileID: 136250188779620960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PinColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4269577915667668}
   - component: {fileID: 33707026092910950}
   - component: {fileID: 23271404986546876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4637373160317592}
   - component: {fileID: 54532863972391576}
   - component: {fileID: 114594551863064522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4952547686070550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootPin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 79b532dcffee5be49ad3e7dc61e998b8, type: 2}
-  count: 1
 --- !u!135 &135989296497866366
 SphereCollider:
   m_ObjectHideFlags: 1

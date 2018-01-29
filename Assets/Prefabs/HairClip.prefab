@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670597718077120}
   - component: {fileID: 64011694002182876}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HairClipColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4462121791623862}
   - component: {fileID: 33531657570334226}
   - component: {fileID: 23347729156317754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hairclip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4532181629016534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootHairClip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4027623308279084}
   - component: {fileID: 54364212778723024}
   - component: {fileID: 114906464947396000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HairClip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,5 +214,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 29ad0615c023bb04aa66709111f40f9f, type: 2}
-  count: 1

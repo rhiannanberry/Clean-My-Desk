@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4241324106770904}
   - component: {fileID: 65242939693840100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ForkColliders4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827995369592738}
   - component: {fileID: 65122342535650344}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ForkColliders2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4219285190846516}
   - component: {fileID: 136040285312479776}
   - component: {fileID: 65449842783783428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ForkColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4247654035769860}
   - component: {fileID: 54366070297018222}
   - component: {fileID: 114235358026076584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Fork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4973561635925204}
   - component: {fileID: 33261618887540250}
   - component: {fileID: 23773590968702880}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4022292488042208}
   - component: {fileID: 65516619772721752}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ForkColliders3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4463716218813588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootFork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,8 +339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: 0d6b74667eee8a9479bea84f39bf0ba1, type: 2}
-  count: 1
 --- !u!136 &136040285312479776
 CapsuleCollider:
   m_ObjectHideFlags: 1

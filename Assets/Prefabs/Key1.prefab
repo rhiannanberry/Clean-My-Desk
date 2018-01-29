@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4293745131500822}
   - component: {fileID: 65196492644069616}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4943327336673682}
   - component: {fileID: 33564248955933818}
   - component: {fileID: 23227611091118778}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: key1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4919111449729668}
   - component: {fileID: 54692086196351678}
   - component: {fileID: 114841065992678364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Key1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4708308282237354}
   - component: {fileID: 65321968368005594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4612528453228214}
   - component: {fileID: 65208155806625402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4990046445055224}
   - component: {fileID: 65685974057050072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4640603334595414}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootKey1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4273964909362126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KeyColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346754246556962}
   - component: {fileID: 65905661812448776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4689916344248828}
   - component: {fileID: 65699546484737300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,5 +450,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: f08977b1ef6a2ea479bb63ee22dfd119, type: 2}
-  count: 1

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4528261720326192}
   - component: {fileID: 136762211641201132}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4642603749940316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4238974126276638}
   - component: {fileID: 65446614378457410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor1Colliders11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4286918661604204}
   - component: {fileID: 33681689890808798}
   - component: {fileID: 23139648993747292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: monitor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4097347677133342}
   - component: {fileID: 136595622617415696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4701655543765370}
   - component: {fileID: 54663766210089492}
   - component: {fileID: 114346782205395708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4087794235275210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4048663317845738}
   - component: {fileID: 65929488239678702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4980418660500556}
   - component: {fileID: 65336955980797010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor1Colliders11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 65262393104860598}
   - component: {fileID: 65861214506916552}
   - component: {fileID: 65699331492578530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Monitor1Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4209841510540880}
   - component: {fileID: 136104532677222996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4001178889052514}
   - component: {fileID: 136606935490936748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4357308541124810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RootMonitor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,8 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
   UIMat: {fileID: 2100000, guid: b15d8e178d3a5434a8572bd3755f654d, type: 2}
-  count: 1
 --- !u!136 &136104532677222996
 CapsuleCollider:
   m_ObjectHideFlags: 1
