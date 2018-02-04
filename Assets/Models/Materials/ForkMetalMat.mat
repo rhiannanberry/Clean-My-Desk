@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: ForkMetalMat
   m_Shader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
-  m_ShaderKeywords: _COLOR_ON _TEX_ON
+  m_ShaderKeywords: _TEX_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: aad474688246f754a837aad0e2dd3327, type: 3}
+        m_Texture: {fileID: 2800000, guid: c58ff3c0641adc442ba5fb9e0a48ae0d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -76,7 +76,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TintColor: 1
+    - _TintColor: 0
     - _UVSec: 0
     - _VertexColor: 0
     - _ZWrite: 1

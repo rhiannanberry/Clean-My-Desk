@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: ThreadPlasticMat
   m_Shader: {fileID: 4800000, guid: 76374158b4c4e5744b394e9290aae693, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _TEX_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -63,7 +63,7 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DetailTex: 0
+    - _DetailTex: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.714
