@@ -31,6 +31,7 @@ namespace Twity
             string authHeader = "OAuth realm=\"Twitter API\",";
             string requestSignature = String.Format("oauth_signature=\"{0}\"", Helper.UrlEncode(signature));
             authHeader += requestParamsString.ToString() + requestSignature;
+            Debug.Log(authHeader);
             return authHeader;
         }
 

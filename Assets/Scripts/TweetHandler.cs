@@ -6,8 +6,10 @@ using Twity.DataModels.Core;
 public class TweetHandler : MonoBehaviour {
     private bool post = false;
     private string message = "";
-	// Use this for initialization
-	void Start () {
+    private byte[] imgBinary;
+    private string imgEncoded;
+    // Use this for initialization
+    void Start () {
         Twity.Oauth.consumerKey = SECRETS.consumerKey;
         Twity.Oauth.consumerSecret = SECRETS.consumerSecretKey;
         Twity.Oauth.accessToken = SECRETS.accessToken;
@@ -22,7 +24,7 @@ public class TweetHandler : MonoBehaviour {
     void LateUpdate() {
         if (post) {
             //Debug.Log(TakeScreenshot().Length);
-            Post(TakeScreenshot());
+            Post();
             post = false;
         }
     }
@@ -57,9 +59,11 @@ public class TweetHandler : MonoBehaviour {
         Dictionary<string, string> parameters = new Dictionary<string, string>();
         parameters["status"] = message;
         if (imgBinary != null) {
-            Debug.Log(imgBinary.Length);
-            parameters["media_data"] = System.Convert.ToBase64String(imgBinary);
-            StartCoroutine(Twity.Client.Post("statuses/update", parameters, MediaCallback));
+            this.imgBinary = imgBinary;
+            imgEncoded = System.Convert.ToBase64String(imgBinary);
+            PostMedia();
+            
+            
             return;
         }
         StartCoroutine(Twity.Client.Post("statuses/update", parameters, Callback));
@@ -97,5 +101,23 @@ public class TweetHandler : MonoBehaviour {
             width = matchWidth ? maxDimension : (int)(width / modifier);
         }
         return new Vector2(width, height);
+    }
+
+    private void PostMedia() {
+        InitPostMedia();
+    }
+
+    private void InitPostMedia() {
+        Dictionary<string, string> parameters = new Dictionary<string, string>();
+        parameters["command"] = "INIT";
+        parameters["total_bytes"] = (imgBinary.Length).ToString();
+        parameters["media_type"] = "image/jpeg";
+        parameters["media_category"] = "tweet_image";
+
+        StartCoroutine(Twity.Client.Post("media/upload", parameters, InitCallback));
+    }
+
+    private void InitCallback(bool success, string response) {
+        Debug.Log(response);
     }
 }

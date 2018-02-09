@@ -18,8 +18,8 @@ public class GameController : Singleton<GameController> {
 	}
 
     public Transform SpawnSelected(Vector3 spawnPosition) {
-        if (selected != -1 && interactables != null && itemCounts[selected] > 0) {
-            itemCounts[selected]--;
+        if (selected != -1 && interactables != null ) {//&& itemCounts[selected] > 0) {
+            //itemCounts[selected]--;
             Item i = Instantiate(interactables[selected].item, spawnPosition, Random.rotation);
             i.index = selected;
             return i.transform;

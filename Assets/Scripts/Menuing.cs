@@ -17,6 +17,9 @@ public class Menuing : MonoBehaviour {
 
     public void ToggleMenu() {
         isOpen = !isOpen;
+        if (!isOpen) {
+            GameController.Instance.selected = -1;
+        }
         GetComponent<Animator>().SetBool("isOpen", isOpen);
     }
 }

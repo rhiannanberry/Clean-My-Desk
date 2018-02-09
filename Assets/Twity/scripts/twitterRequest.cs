@@ -55,7 +55,7 @@ namespace Twity
 
                 foreach (KeyValuePair<string, string> parameter in APIParams)
                 {
-                    if (parameter.Key.Contains("media"))
+                    if (parameter.Key == "media" || parameter.Key == "media_data")
                     {
                         form.AddBinaryData("media", Convert.FromBase64String(parameter.Value), "", "");
                     }

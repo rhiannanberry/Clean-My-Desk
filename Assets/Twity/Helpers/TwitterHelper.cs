@@ -72,18 +72,7 @@ namespace Twity.Helpers
             {
                 return string.Empty;
             }
-            Debug.Log(value);
-            int limit = 2000;
-            StringBuilder sb = new StringBuilder();
-            int loops = value.Length / limit;
-            for (int i = 0; i <= loops; i++) {
-                if (i < loops) {
-                    sb.Append(Uri.EscapeDataString(value.Substring(limit * i, limit)));
-                } else {
-                    sb.Append(Uri.EscapeDataString(value.Substring(limit * i)));
-                }
-            }
-            value = sb.ToString();//Uri.EscapeDataString(value);
+            Uri.EscapeDataString(value);
             value = Regex.Replace(value, "(%[0-9a-f][0-9a-f])", c => c.Value.ToUpper());
             value = value
                 .Replace("(", "%28")

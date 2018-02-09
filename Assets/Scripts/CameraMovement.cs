@@ -9,17 +9,17 @@ public class CameraMovement : MonoBehaviour {
 
     public float verticalRange = 3;
     public float horizontalRange = 10;
-
+    GameObject mouse;
     private float horizontalRatio, verticalRatio;
 	// Use this for initialization
 	void Start () {
-        Debug.Log(Screen.width);
         startRotation = transform.eulerAngles; //only change in x and y
+        mouse = GameObject.Find("Mouse");
     }
 	
 	// Update is called once per frame
 	void Update () {
-        mousePos = Input.mousePosition;
+        mousePos = mouse.GetComponent<RectTransform>().anchoredPosition3D;
 
         float deltaHorizontal = (mousePos.x * horizontalRange) / Screen.width - horizontalRange / 2;
         float deltaVertical = (-1 * mousePos.y * verticalRange) / Screen.height + verticalRange / 2;
