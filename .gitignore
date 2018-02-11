@@ -35,3 +35,7 @@ sysinfo.txt
 
 # Hide your API keys for Twitter HERE!!
 SECRETS.cs
+
+# Hide your blends HERE
+*.blend1
+*.blend1.meta
