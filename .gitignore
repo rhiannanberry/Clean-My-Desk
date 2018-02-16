@@ -34,7 +34,7 @@ sysinfo.txt
 *.unitypackage
 
 # Hide your API keys for Twitter HERE!!
-SECRETS.cs
+SECRETS.cs*
 
 # Hide your blends HERE
 *.blend1
