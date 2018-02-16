@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 public class UIMouse : MonoBehaviour {
 	public float mouseSpeed = 20.0f;
+    public float previousDepth = 0.0f;
 
 	private Transform holding = null;
 	private RectTransform screenPos;
@@ -34,7 +35,7 @@ public class UIMouse : MonoBehaviour {
 			RaycastHit hit;
 			if (GameController.Instance.selected != -1 && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
 				Debug.Log("Dab");
-				holding = GameController.Instance.SpawnSelected(ray.GetPoint(2));
+				holding = GameController.Instance.SpawnSelected(ray.GetPoint(2) + new Vector3(0, 0, previousDepth));
 				Color clr = transform.GetComponent<Image>().color;
 				clr.a = 0;
 				transform.GetComponent<Image>().color = clr;
@@ -63,6 +64,7 @@ public class UIMouse : MonoBehaviour {
 			} else {
 				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 			}
+            previousDepth += zScrollDelta;
 			holding.transform.position += new Vector3(0, 0, zScrollDelta);
 			float zDiff = Mathf.Abs(Camera.main.transform.position.z - holding.transform.position.z);
 			Vector3 uiMouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.anchoredPosition.x, screenPos.anchoredPosition.y, zDiff) );
