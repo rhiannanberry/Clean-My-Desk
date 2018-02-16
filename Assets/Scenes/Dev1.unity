@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ Prefab:
     - target: {fileID: 224532537484472106, guid: 8ff0cfb4bad74ea4ebc9186587899257,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -602
+      value: -376
       objectReference: {fileID: 0}
     - target: {fileID: 224736033543960502, guid: 8ff0cfb4bad74ea4ebc9186587899257,
         type: 2}
@@ -1323,7 +1323,7 @@ Prefab:
     - target: {fileID: 224532537484472106, guid: 8ff0cfb4bad74ea4ebc9186587899257,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000076293945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224185598241972020, guid: 8ff0cfb4bad74ea4ebc9186587899257,
         type: 2}
@@ -1486,15 +1486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: e3de3dd56f4b1cf46b40c300df8184f2, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
-  m_PreviousLayer: 0
-  m_PreviousPriority: 0
-  m_TempColliders: []
-  m_InternalProfile: {fileID: 0}
 --- !u!1 &2136273260
 GameObject:
   m_ObjectHideFlags: 0

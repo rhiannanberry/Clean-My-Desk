@@ -16,7 +16,7 @@ public class UIMouse : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 //		Cursor.lockState = CursorLockMode.Locked;
 		Vector3 deltaMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * mouseSpeed;
 		screenPos.anchoredPosition3D += deltaMovement;
@@ -67,7 +67,7 @@ public class UIMouse : MonoBehaviour {
 			float zDiff = Mathf.Abs(Camera.main.transform.position.z - holding.transform.position.z);
 			Vector3 uiMouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.anchoredPosition.x, screenPos.anchoredPosition.y, zDiff) );
 			Debug.Log(uiMouseWorld);
-			holding.transform.position = new Vector3(uiMouseWorld.x, uiMouseWorld.y, holding.transform.position.z); 
+			holding.GetComponent<Rigidbody>().MovePosition(new Vector3(uiMouseWorld.x, uiMouseWorld.y, holding.transform.position.z)); 
  			holding.GetComponent<Rigidbody>().freezeRotation = true;
     		holding.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * -100, Space.World);
     		holding.Rotate(Vector3.right * Input.GetAxis("Vertical") * Time.deltaTime * -100, Space.World);
