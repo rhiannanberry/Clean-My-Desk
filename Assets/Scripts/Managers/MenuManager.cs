@@ -8,11 +8,16 @@ public class MenuManager : MonoBehaviour {
 	public bool startMenu = true;
 	private Canvas monitor1 = null;
 	private Canvas monitor2 = null;
+	private GameObject pauseMenu = null;
+	private GameObject optionsMenu = null;
+	public bool paused = false;
 	// Use this for initialization
 	void Start () {
 		if (startMenu) {
-			startMenuSetUp();
-		}	
+			StartMenuSetUp();
+		} else {
+			PauseMenuSetUp();
+		}
 	}
 	
 	// Update is called once per frame
@@ -24,10 +29,20 @@ public class MenuManager : MonoBehaviour {
 		SceneManager.LoadScene(i);
 	}
 
+	public void OpenPauseMenu() {
+		if (!startMenu) {
+			ExitOptions(); //same desired effect
+			paused = true;
+		}
+	}
+
 	public void OpenOptions() {
 		if (startMenu) {
 			monitor1.enabled = false;
 			monitor2.enabled = true;
+		} else {
+			optionsMenu.SetActive(true);
+			pauseMenu.SetActive(false);
 		}
 	}
 
@@ -35,6 +50,9 @@ public class MenuManager : MonoBehaviour {
 		if (startMenu) {
 			monitor1.enabled = true;
 			monitor2.enabled = false;
+		} else {
+			optionsMenu.SetActive(false);
+			pauseMenu.SetActive(true);
 		}
 	}
 
@@ -47,6 +65,15 @@ public class MenuManager : MonoBehaviour {
 
 	}
 
+	public void Continue() {
+		if (!startMenu) {
+			//Close both menus
+			pauseMenu.SetActive(false);
+			optionsMenu.SetActive(false);
+			paused = false;
+		}
+	}
+
 	public void Exit() {
 		if (startMenu) {
 			//should add exit animation probably
@@ -55,12 +82,23 @@ public class MenuManager : MonoBehaviour {
 			#else
 				Application.Quit();
 			#endif
+		} else {
+			//TODO: Confirmation sub menu
+			paused = false;
+			GotoSceneIndex(1);
 		}
 	}
 
-	private void startMenuSetUp() {
+	private void StartMenuSetUp() {
 		monitor1 = GameObject.Find("Monitor1/Canvas").GetComponent<Canvas>();
 		monitor2 = GameObject.Find("Monitor2/Canvas").GetComponent<Canvas>();
 		monitor2.enabled = false;
+	}
+
+	private void PauseMenuSetUp() {
+		pauseMenu = GameObject.Find("PrimaryMenu");
+		optionsMenu = GameObject.Find("OptionsMenu");
+		pauseMenu.SetActive(false);
+		optionsMenu.SetActive(false);
 	}
 }
