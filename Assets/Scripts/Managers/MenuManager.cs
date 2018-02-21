@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour {
 	private GameObject optionsMenu = null;
 	public bool paused = false;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		if (startMenu) {
 			StartMenuSetUp();
 		} else {
@@ -96,6 +96,10 @@ public class MenuManager : MonoBehaviour {
 	}
 
 	private void PauseMenuSetUp() {
+		gameObject.SetActive(true);
+		foreach (Transform child in gameObject.GetComponentInChildren<Transform>()) {
+			child.gameObject.SetActive(true);
+		}
 		pauseMenu = GameObject.Find("PrimaryMenu");
 		optionsMenu = GameObject.Find("OptionsMenu");
 		pauseMenu.SetActive(false);
