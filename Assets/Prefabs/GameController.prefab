@@ -53,45 +53,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selected: -1
   interactables:
-  - item: {fileID: 114417334075868982, guid: 6bdf79576cff6f94d8693fc2ea328949, type: 2}
+  - item: {fileID: 0}
     count: 10
-  - item: {fileID: 114317532943743858, guid: d6782dabad97d1e4cb236f9d76b41882, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114461303768753630, guid: a9af732a871e41f40b64792267a517ed, type: 2}
+  - item: {fileID: 0}
     count: 12
-  - item: {fileID: 114202464473048106, guid: c787cd0e40b6ef54f9c056949bfef695, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114796946166996090, guid: 06cdf6884df79b74496ea4cda734e2d6, type: 2}
+  - item: {fileID: 0}
     count: 12
-  - item: {fileID: 114235358026076584, guid: 971e63e1753702a4ab9970b4b4e381be, type: 2}
+  - item: {fileID: 0}
     count: 2
-  - item: {fileID: 114906464947396000, guid: 26f359586fda4044690416239c41d8d4, type: 2}
+  - item: {fileID: 0}
     count: 3
-  - item: {fileID: 114841065992678364, guid: 02a245b1355bc0f4fa45d150dd7b24ab, type: 2}
+  - item: {fileID: 0}
     count: 4
-  - item: {fileID: 114718849501328584, guid: 0b450c061de26004cb51e44e79d0abf8, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114346782205395708, guid: 21ae167ef6564f840b4d28bee74f98de, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114907458579854112, guid: b493b1a42cd9952418bd7079b8d7fc0b, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114354979558525866, guid: bcdfbf5a54263364ca5bda629f68b591, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114684840570838258, guid: 1ade1045ff381654d8e1b4361fa0a862, type: 2}
+  - item: {fileID: 0}
     count: 3
-  - item: {fileID: 114582942236254160, guid: faeb031ec7ad25a4583811c92a395128, type: 2}
+  - item: {fileID: 0}
     count: 2
-  - item: {fileID: 114963035999945236, guid: 229ee140208328043a5a97bd5036e07d, type: 2}
+  - item: {fileID: 0}
     count: 4
-  - item: {fileID: 114594551863064522, guid: d93c8bfdb3a6d0c418873e1e0d649d9d, type: 2}
+  - item: {fileID: 0}
     count: 12
-  - item: {fileID: 114458976634816590, guid: 908ae04fc3ea09540aabda56294b369d, type: 2}
+  - item: {fileID: 0}
     count: 2
-  - item: {fileID: 114956627268742706, guid: a768f243061553649ac6567eaec5300d, type: 2}
+  - item: {fileID: 0}
     count: 2
-  - item: {fileID: 114830699077045770, guid: 85dad5397e9a6184db7adbea556c834d, type: 2}
+  - item: {fileID: 0}
     count: 4
-  - item: {fileID: 114146228237650252, guid: 02ff1a08b494fed499e79543087b10ca, type: 2}
+  - item: {fileID: 0}
     count: 1
-  - item: {fileID: 114778312486954968, guid: c5e89b6ed254d8a4ba9abfaff0b09aae, type: 2}
+  - item: {fileID: 0}
     count: 1
+  itemCounts: 
