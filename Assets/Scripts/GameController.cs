@@ -7,14 +7,23 @@ public class GameController : Singleton<GameController> {
     public int selected = -1;
     public List<Interactable> interactables = new List<Interactable>();
     public int[] itemCounts;
+    private MenuManager pauseMenu = null;
+
 	// Use this for initialization
 	void Start () {
         itemCounts = new int[interactables.Count];
+        pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (!pauseMenu.paused) {
+                pauseMenu.OpenPauseMenu();
+            } else if (pauseMenu.paused) {
+                pauseMenu.Continue();
+            }
+        }
 	}
 
     public Transform SpawnSelected(Vector3 spawnPosition) {
@@ -25,6 +34,10 @@ public class GameController : Singleton<GameController> {
             return i.transform;
         }
         return null;
+    }
+
+    private void CheckMenu() {
+
     } 
 
     [System.Serializable]
