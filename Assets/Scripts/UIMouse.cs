@@ -114,5 +114,17 @@ public class UIMouse : MonoBehaviour {
 		return null;
 	}
 
+	public void HitScreen() {
+		Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+		Debug.DrawRay(ray.origin, ray.direction*50);
+		RaycastHit hit;
+		if (Physics.Raycast(ray, out hit)) {
+			GameObject col = GameObject.Find("MenuHitCollider");
+			col.transform.position = ray.GetPoint(3);
+			col.transform.rotation = Quaternion.LookRotation(ray.direction);
+			col.GetComponent<Rigidbody>().velocity = ray.direction * 15;
+		}
+	}
+
 	//two types of object selecting: 
 }

@@ -16,6 +16,7 @@ public class GameController : Singleton<GameController> {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape)) {
+            pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
             if (!pauseMenu.paused) {
                 pauseMenu.OpenPauseMenu();
             } else if (pauseMenu.paused) {
