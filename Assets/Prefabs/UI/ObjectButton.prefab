@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222995961451812496}
   - component: {fileID: 114214740174068624}
   - component: {fileID: 114693119125173548}
-  - component: {fileID: 114603909624878148}
+  - component: {fileID: 114858492420187662}
   m_Layer: 5
   m_Name: ObjectButton
   m_TagString: Untagged
@@ -57,17 +57,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114603909624878148
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1764843395688548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4963f5f651812134b9f8e72539e6ba47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114693119125173548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +96,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114603909624878148}
+      - m_Target: {fileID: 114858492420187662}
         m_MethodName: SetSelected
         m_Mode: 1
         m_Arguments:
@@ -120,6 +109,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114858492420187662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764843395688548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3884bacd062c4a040b88f7053ffb5076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222995961451812496
 CanvasRenderer:
   m_ObjectHideFlags: 1

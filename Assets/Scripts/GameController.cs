@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class GameController : Singleton<GameController> {
 
-    public int selected = -1;
-    public List<Interactable> interactables = new List<Interactable>();
-    public int[] itemCounts;
+    //reference to the object button
+    public GameObject selected = null;
     private MenuManager pauseMenu = null;
 
 	// Use this for initialization
 	void Start () {
-        itemCounts = new int[interactables.Count];
         pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
 	}
 	
@@ -27,11 +25,8 @@ public class GameController : Singleton<GameController> {
 	}
 
     public Transform SpawnSelected(Vector3 spawnPosition) {
-        if (selected != -1 && interactables != null ) {//&& itemCounts[selected] > 0) {
-            //itemCounts[selected]--;
-            Item i = Instantiate(interactables[selected].item, spawnPosition, Random.rotation);
-            i.index = selected;
-            return i.transform;
+        if (selected != null) {//&& itemCounts[selected] > 0) {
+            return selected.GetComponent<ObjectButton>().SpawnObject(spawnPosition);
         }
         return null;
     }
@@ -39,15 +34,4 @@ public class GameController : Singleton<GameController> {
     private void CheckMenu() {
 
     } 
-
-    [System.Serializable]
-    public struct Interactable {
-        public Item item;
-        public int count;
-
-        public Interactable(Item ii, int ccount) {
-            item = ii;
-            count = ccount;
-        }
-    }
 }
