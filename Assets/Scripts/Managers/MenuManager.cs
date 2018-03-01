@@ -24,9 +24,20 @@ public class MenuManager : MonoBehaviour {
 	void Update () {
 		
 	}
-
 	public void GotoSceneIndex(int i) {
 		SceneManager.LoadScene(i);
+	}
+
+	private IEnumerator GotoSceneIndexCo(int i = 0) {
+		yield return new WaitForSeconds(1f);
+
+		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
+		yield return new WaitForSeconds(0.5f);
+		SceneManager.LoadScene(i);
+	}
+
+	public void InvokeScene(int i) {
+		StartCoroutine(GotoSceneIndexCo(i));
 	}
 
 	public void OpenPauseMenu() {
@@ -92,6 +103,10 @@ public class MenuManager : MonoBehaviour {
 	private void StartMenuSetUp() {
 		monitor1 = GameObject.Find("Monitor1/Canvas").GetComponent<Canvas>();
 		monitor2 = GameObject.Find("Monitor2/Canvas").GetComponent<Canvas>();
+
+		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
+//		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
+		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
 		monitor2.enabled = false;
 	}
 

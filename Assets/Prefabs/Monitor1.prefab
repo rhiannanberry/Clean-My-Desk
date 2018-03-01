@@ -388,8 +388,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: dd0e607f9e7ae9a4fa2df59ec42e8e59, type: 2}
-  - {fileID: 2100000, guid: 9399b915bc5b44a4b8bb6f1153cad7ba, type: 2}
-  - {fileID: 2100000, guid: f0de3a3bc9d76384380694a784e7cf3e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -510,7 +508,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960807616557434}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 1eac72cb0ee72e94cb7a88900a25c2af, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -531,8 +529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  UIMat: {fileID: 0}
+  buttonReference: {fileID: 0}
 --- !u!136 &136122872513785350
 CapsuleCollider:
   m_ObjectHideFlags: 1
