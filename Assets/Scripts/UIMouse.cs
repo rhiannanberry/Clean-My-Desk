@@ -40,7 +40,7 @@ public class UIMouse : MonoBehaviour {
 			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
 			Debug.DrawRay(ray.origin, ray.direction*50);
 			RaycastHit hit;
-			if (GameController.Instance.selected != -1 && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+			if (GameController.Instance.selected != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
 				HoldObject(GameController.Instance.SpawnSelected(ray.GetPoint(2) + new Vector3(0, 0, previousDepth)));
 			} else if (Physics.Raycast(ray, out hit)) {
 				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
@@ -90,11 +90,13 @@ public class UIMouse : MonoBehaviour {
 
 	private void HoldObject(Transform toHold) {
 		holding = toHold;
-		Color clr = transform.GetComponent<Image>().color;
-		clr.a = 0;
-		transform.GetComponent<Image>().color = clr;
-		holding.GetComponent<Rigidbody>().useGravity = false;
-		holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+		if (holding != null) {
+			Color clr = transform.GetComponent<Image>().color;
+			clr.a = 0;
+			transform.GetComponent<Image>().color = clr;
+			holding.GetComponent<Rigidbody>().useGravity = false;
+			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+		}
 	}
 
 	public void IsInMenu() {
@@ -110,6 +112,18 @@ public class UIMouse : MonoBehaviour {
 			child = child.parent.transform;
 		}
 		return null;
+	}
+
+	public void HitScreen() {
+		Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+		Debug.DrawRay(ray.origin, ray.direction*50);
+		RaycastHit hit;
+		if (Physics.Raycast(ray, out hit)) {
+			GameObject col = GameObject.Find("MenuHitCollider");
+			col.transform.position = ray.GetPoint(3);
+			col.transform.rotation = Quaternion.LookRotation(ray.direction);
+			col.GetComponent<Rigidbody>().velocity = ray.direction * 15;
+		}
 	}
 
 	//two types of object selecting: 

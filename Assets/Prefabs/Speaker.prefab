@@ -419,7 +419,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: 296df81a467ddf94ba22c7c179fcbf57, type: 2}
-  - {fileID: 2100000, guid: a1955b641c084f24fbaf8355a086a8d6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -516,7 +515,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1152315780764696}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 53a6fbb3af9b42c48999b86406abff5b, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
