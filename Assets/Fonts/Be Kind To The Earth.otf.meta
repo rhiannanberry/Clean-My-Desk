@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3a49843f135ad9246a1dc169f4c771fc
+timeCreated: 1519974060
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Be Kind To The Earth
+  fontNames:
+  - Be Kind To The Earth
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
