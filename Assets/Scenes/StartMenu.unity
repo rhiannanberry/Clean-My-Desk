@@ -199,7 +199,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 114583224635322434, guid: d7269d856da1671469bb55d5e55ce9cf,
+    - target: {fileID: 114555164023088636, guid: d7269d856da1671469bb55d5e55ce9cf,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -209,7 +209,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 236344671}
-    - target: {fileID: 114555164023088636, guid: d7269d856da1671469bb55d5e55ce9cf,
+    - target: {fileID: 114583224635322434, guid: d7269d856da1671469bb55d5e55ce9cf,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
