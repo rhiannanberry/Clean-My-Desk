@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 	public bool startMenu = true;
+	public bool subMenu = false;
 	private Canvas monitor1 = null;
 	private Canvas monitor2 = null;
 	private GameObject pauseMenu = null;
@@ -15,7 +16,7 @@ public class MenuManager : MonoBehaviour {
 	void Awake () {
 		if (startMenu) {
 			StartMenuSetUp();
-		} else {
+		} else if (!subMenu) {
 			PauseMenuSetUp();
 		}
 	}

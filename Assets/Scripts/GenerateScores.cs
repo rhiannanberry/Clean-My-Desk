@@ -21,13 +21,20 @@ public class GenerateScores : MonoBehaviour {
 	}
 
 	public void SpawnScoreItems() {
+		int tot = 0;
 		for (int i = 0; i < length; i ++) {
 			GameObject scr = Instantiate(scoreItemPrefab);
 			scr.transform.SetParent(transform);
 			scr.transform.localScale = new Vector3(1,1,1);
 			string str = scoreDesc[Random.Range(0,scoreDesc.Count)];
-			scr.GetComponentInChildren<Text>().text = str + ": " + Random.Range(1,99999).ToString();
+			int scoreNum = Random.Range(1,9999);
+			scr.GetComponentInChildren<Text>().text = str + ": " + scoreNum.ToString();
 			scoreDesc.Remove(str);
+			tot += scoreNum;	
 		}
+			GameObject totscr = Instantiate(scoreItemPrefab);
+			totscr.transform.SetParent(transform);
+			totscr.transform.localScale = new Vector3(1,1,1);
+			totscr.GetComponentInChildren<Text>().text = "Total:   " + tot.ToString();
 	}
 }

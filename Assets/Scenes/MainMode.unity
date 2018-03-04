@@ -1087,7 +1087,7 @@ Prefab:
     - target: {fileID: 224436157744311212, guid: 05a1ea6a5ec285a4fb9989708ad2cc68,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 224436157744311212, guid: 05a1ea6a5ec285a4fb9989708ad2cc68,
         type: 2}
@@ -1097,7 +1097,7 @@ Prefab:
     - target: {fileID: 224436157744311212, guid: 05a1ea6a5ec285a4fb9989708ad2cc68,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 70
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 224436157744311212, guid: 05a1ea6a5ec285a4fb9989708ad2cc68,
         type: 2}
@@ -3664,6 +3664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: 0
+  subMenu: 0
   paused: 0
 --- !u!1001 &1658607511
 Prefab:
@@ -3761,6 +3762,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114947585884506962, guid: 0e9100cea10307645829c2c81c494a07,
+        type: 2}
+      propertyPath: subMenu
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0e9100cea10307645829c2c81c494a07, type: 2}
@@ -4712,7 +4718,7 @@ Prefab:
     - target: {fileID: 224152455969721012, guid: 4221d20b4f65eb940881c6e0c70638c6,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -372
+      value: -376
       objectReference: {fileID: 0}
     - target: {fileID: 224152455969721012, guid: 4221d20b4f65eb940881c6e0c70638c6,
         type: 2}

@@ -315,7 +315,7 @@ MonoBehaviour:
   - ggez
   - $5 Margaritas at Applebee's
   - Nice feet
-  length: 10
+  length: 9
 --- !u!114 &114649209609946414
 MonoBehaviour:
   m_ObjectHideFlags: 1
