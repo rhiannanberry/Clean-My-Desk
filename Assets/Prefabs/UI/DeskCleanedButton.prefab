@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 222068543841966880}
   - component: {fileID: 114831855281037092}
   - component: {fileID: 114754505315364702}
+  - component: {fileID: 95787229816843400}
+  - component: {fileID: 114165624629453940}
   m_Layer: 5
   m_Name: DeskCleanedButton
   m_TagString: Untagged
@@ -46,6 +48,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95787229816843400
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495590634998662}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49df229ea2d84e540a104b981fed6192, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114165624629453940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495590634998662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9a3ebef4ab4e7479b6a898dfc19aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOpen: 0
+  isHidden: 0
 --- !u!114 &114749138240530444
 MonoBehaviour:
   m_ObjectHideFlags: 1

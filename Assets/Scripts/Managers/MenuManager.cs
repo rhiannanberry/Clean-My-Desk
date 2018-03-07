@@ -38,11 +38,8 @@ public class MenuManager : MonoBehaviour {
 		SceneManager.LoadScene(buildNum);
 	}
 
-	public void RestartCurrentScene(bool withFadeOut) {
-		if (withFadeOut) {
-			InvokeScene(SceneManager.GetActiveScene().buildIndex);
-		}
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	public void RestartCurrentScene() {
+		InvokeScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	private IEnumerator FadeOutScene(int i) {
