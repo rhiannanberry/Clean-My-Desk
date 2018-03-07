@@ -8,9 +8,12 @@ public class Obj: MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (SceneManager.GetActiveScene().buildIndex != 1 && (buttonReference != null)){
-			if (transform.position.y < -3) {
+		if (SceneManager.GetActiveScene().buildIndex != 0){
+			if (buttonReference != null && transform.position.y < -3) {
 				buttonReference.GetComponent<ObjectButton>().DespawnObject(gameObject);
+			}
+			if (buttonReference == null && transform.localPosition.x <= -10) {
+				Destroy(gameObject);
 			}
 		}
 	}
