@@ -6,38 +6,62 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 	public bool startMenu = true;
+	public bool subMenu = false;
 	private Canvas monitor1 = null;
 	private Canvas monitor2 = null;
 	private GameObject pauseMenu = null;
 	private GameObject optionsMenu = null;
 	public bool paused = false;
+
+	private bool exitingScene = false;
 	// Use this for initialization
 	void Awake () {
+		FadeInScene();
 		if (startMenu) {
 			StartMenuSetUp();
-		} else {
+		} else if (!subMenu) {
 			PauseMenuSetUp();
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (exitingScene) {
+			Debug.Log("Alpha: " + GameObject.Find("Canvas/Black").GetComponent<Image>().color.a.ToString());
+		}
 	}
-	public void GotoSceneIndex(int i) {
-		SceneManager.LoadScene(i);
+	public void GotoSceneIndex(string sceneName) {
+		SceneManager.LoadScene(sceneName);
 	}
 
-	private IEnumerator GotoSceneIndexCo(int i = 0) {
-		yield return new WaitForSeconds(1f);
+	public void GotoSceneIndex(int buildNum) {
+		SceneManager.LoadScene(buildNum);
+	}
 
+	public void RestartCurrentScene() {
+		InvokeScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	private IEnumerator FadeOutScene(int i) {
+		if (SceneManager.GetActiveScene().name == "StartMenu") {
+			yield return new WaitForSeconds(1f);
+		}
+		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
+		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
 		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(.5f);
 		SceneManager.LoadScene(i);
+	}
+
+	private void FadeInScene() {
+		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
+		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
+		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(0.0f, 0.5f, false);
+	
 	}
 
 	public void InvokeScene(int i) {
-		StartCoroutine(GotoSceneIndexCo(i));
+		StartCoroutine(FadeOutScene(i));
 	}
 
 	public void OpenPauseMenu() {
@@ -96,17 +120,13 @@ public class MenuManager : MonoBehaviour {
 		} else {
 			//TODO: Confirmation sub menu
 			paused = false;
-			GotoSceneIndex(1);
+			GotoSceneIndex("StartMenu");
 		}
 	}
 
 	private void StartMenuSetUp() {
 		monitor1 = GameObject.Find("Monitor1/Canvas").GetComponent<Canvas>();
 		monitor2 = GameObject.Find("Monitor2/Canvas").GetComponent<Canvas>();
-
-		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
-//		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(0f, 1f, false);
-		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
 		monitor2.enabled = false;
 	}
 

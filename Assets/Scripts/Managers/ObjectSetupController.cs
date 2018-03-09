@@ -10,6 +10,8 @@ public class ObjectSetupController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		foreach(Transform obj in transform.GetComponentInChildren<Transform>()) {
+			//views default set to inactive so they dont show up in the game preview
+			obj.gameObject.SetActive(true);
 			SetupObjectButton(obj);
 		}
 	}

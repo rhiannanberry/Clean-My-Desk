@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ObjectButton : MonoBehaviour {
 	private GameObject prefab;
 	private Text counterText;
 
 	private int itemCount;
+	private bool itemLimit = true;
 
 	void Start() {
+		if (SceneManager.GetActiveScene().name == "GodMode") {
+			itemLimit = false;
+			transform.GetChild(0).gameObject.SetActive(false);
+		}
 	}
 	
 	public void SetSelected() {
@@ -27,8 +33,10 @@ public class ObjectButton : MonoBehaviour {
 
 	public Transform SpawnObject(Vector3 pos) {
 		if (itemCount >= 1) {
-			itemCount--;
-			UpdateCounter();
+			if (itemLimit) {
+				itemCount--;
+				UpdateCounter();
+			}
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
 		}
@@ -37,8 +45,10 @@ public class ObjectButton : MonoBehaviour {
 
 	public void DespawnObject(GameObject obj) {
 		Destroy(obj); //continue move away from Spawn item and related stuff
-		itemCount++;
-		UpdateCounter();
+		if (itemLimit) {
+			itemCount++;
+			UpdateCounter();
+		}
 	}
 
 	private void UpdateCounter() {
