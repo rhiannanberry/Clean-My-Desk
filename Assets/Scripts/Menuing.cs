@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Menuing : MonoBehaviour {
     // Use this for initialization
     public bool isOpen = false;
+    public bool isHidden = false;
 	void Start () {
 		
 	}
@@ -21,5 +22,13 @@ public class Menuing : MonoBehaviour {
             GameController.Instance.selected = null;
         }
         GetComponent<Animator>().SetBool("isOpen", isOpen);
+    }
+
+    public void ToggleHide() {
+        isHidden = !isHidden;
+        if (isHidden) {
+            GetComponent<Animator>().SetTrigger("isHidden");
+        }
+        //GetComponent<Animator>().SetBool("isHidden", isHidden);
     }
 }

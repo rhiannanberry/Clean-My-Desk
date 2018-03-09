@@ -85,7 +85,7 @@ Transform:
   m_GameObject: {fileID: 1732591007221050}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188841668389836}
   m_RootOrder: 0
@@ -172,7 +172,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300002, guid: 8399f587cf0344e46b3a45656f13d343, type: 3}
+  m_Mesh: {fileID: 4300000, guid: a9be134ad2884d349a9b48977eba1a2e, type: 3}
 --- !u!95 &95171298383669246
 Animator:
   serializedVersion: 3
@@ -201,5 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
-  UIMat: {fileID: 0}
+  buttonReference: {fileID: 0}
