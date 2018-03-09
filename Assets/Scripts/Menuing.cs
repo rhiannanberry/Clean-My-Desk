@@ -26,6 +26,9 @@ public class Menuing : MonoBehaviour {
 
     public void ToggleHide() {
         isHidden = !isHidden;
-        GetComponent<Animator>().SetBool("isHidden", isHidden);
+        if (isHidden) {
+            GetComponent<Animator>().SetTrigger("isHidden");
+        }
+        //GetComponent<Animator>().SetBool("isHidden", isHidden);
     }
 }
