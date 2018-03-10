@@ -75,8 +75,8 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Outline: 15
-    - _OutlineDamp: 0.07
+    - _Outline: 5.3
+    - _OutlineDamp: 0.01
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
