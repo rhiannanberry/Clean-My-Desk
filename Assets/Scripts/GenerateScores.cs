@@ -6,8 +6,15 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GenerateScores : MonoBehaviour {
-	public GameObject scoreItemPrefab;
+	public enum ScoreType {spawn, despawn, diff, percentSpawnTotal};
 
+	[System.Serializable]
+	public struct ScoreTypeDesc {
+		public ScoreType type;
+		public List<string> descs;
+	}
+	public GameObject scoreItemPrefab;
+	public List<ScoreTypeDesc> scoreMappings;
 	public List<string> scoreDesc;
 	public int length = 3;
 
@@ -47,5 +54,50 @@ public class GenerateScores : MonoBehaviour {
 			totscr.transform.localScale = new Vector3(1,1,1);
 			totscr.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Total";
 			totscr.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = tot.ToString();
+	}
+
+	public void SpawnScoreItemsSeeded() {
+		int tot = 0;
+		GameObject.Find("TimeModeUI").SetActive(false);
+		SaveData.UpdateTotals();
+		int spawnScore = SaveData.SpawnCount;
+		int despawnScore = SaveData.DespawnCount;
+		int diffScore = (despawnScore - spawnScore) * 100;
+		int percentSpawnTotalScore = (spawnScore == 0 || SaveData.SpawnCountTotal == 0) ? 0 : (int) (100.0f * (spawnScore*1.0f / SaveData.SpawnCountTotal));
+
+		int[] scorePatterns = {spawnScore, despawnScore, diffScore, percentSpawnTotalScore};
+
+		foreach (ScoreTypeDesc pair in scoreMappings) {
+			string desc;
+			int scr;
+			switch(pair.type) {
+				case ScoreType.despawn: scr = spawnScore;
+				break;
+				case ScoreType.diff: scr = diffScore;
+				break;
+				case ScoreType.percentSpawnTotal: scr = percentSpawnTotalScore;
+				break;
+				case ScoreType.spawn: scr = spawnScore;
+				break;
+				default: scr = 0;
+					pair.descs.Add("You broke it!!");
+				break;
+			}
+				desc = pair.descs[Random.Range(0, pair.descs.Count)];
+
+				GameObject scrObj = Instantiate(scoreItemPrefab);
+				scrObj.transform.SetParent(transform);
+				scrObj.transform.localScale = new Vector3(1,1,1);
+				scrObj.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = desc;
+				scrObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = scr.ToString();
+				tot += scr;
+		}
+			SaveData.ResetRunCounts();
+			GameObject totscr = Instantiate(scoreItemPrefab);
+			totscr.transform.SetParent(transform);
+			totscr.transform.localScale = new Vector3(1,1,1);
+			totscr.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Total";
+			totscr.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = tot.ToString();
+
 	}
 }

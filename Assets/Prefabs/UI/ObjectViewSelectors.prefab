@@ -885,8 +885,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4313551385882814}
-  - component: {fileID: 54380028353208890}
-  - component: {fileID: 114551465270257190}
   m_Layer: 8
   m_Name: MedicineBottle
   m_TagString: Item
@@ -2847,7 +2845,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1737318392347204}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.25, y: 30.330078, z: 49.214844}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5322,21 +5320,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106223975334014}
   m_Mesh: {fileID: 4300000, guid: d113ab35a2592df4996097e37c7e697c, type: 3}
---- !u!54 &54380028353208890
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504533346761362}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!95 &95129367529806900
 Animator:
   serializedVersion: 3
@@ -5378,7 +5361,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1075774816616606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 507694454ee4b574a95a253417e01e7b, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -5395,7 +5378,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171276416652654}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 3fef871667f97e14ebee068a35691e8a, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
@@ -5669,18 +5652,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1336190385444258, guid: c787cd0e40b6ef54f9c056949bfef695, type: 2}
   itemCount: 10
---- !u!114 &114551465270257190
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1504533346761362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e248035f6632042a67f6bbd38f0bbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonReference: {fileID: 0}
 --- !u!114 &114575076212265718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5720,6 +5691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: 1764843395688548, guid: 401e9570e3ce0084795619b673ce56d4,
     type: 2}
+  defaultSetup: {fileID: 0}
   buttonContainer: {fileID: 0}
 --- !u!114 &114610475174190614
 MonoBehaviour:

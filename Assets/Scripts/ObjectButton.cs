@@ -38,6 +38,7 @@ public class ObjectButton : MonoBehaviour {
 				itemCount--;
 				UpdateCounter();
 			}
+			SaveData.SpawnCount++;
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
 		}
@@ -46,6 +47,7 @@ public class ObjectButton : MonoBehaviour {
 
 	public void DespawnObject(GameObject obj) {
 		Destroy(obj); //continue move away from Spawn item and related stuff
+		SaveData.DespawnCount++;
 		if (itemLimit) {
 			itemCount++;
 			UpdateCounter();

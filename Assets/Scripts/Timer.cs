@@ -16,6 +16,7 @@ public class Timer : MonoBehaviour {
 		endMenu.transform.Find("MainModeUI").gameObject.SetActive(false);
 		endMenu.transform.localScale = new Vector3(0.0f,1,1);
 		text = transform.GetComponent<TextMeshProUGUI>();
+		SetTime();
 		//text.text = time.ToString();
 		StartCoroutine(InitCountdown());
 	}
@@ -39,13 +40,14 @@ public class Timer : MonoBehaviour {
 		if (continueCount && start) {
 			if (itemsContainer.transform.childCount == 0) {
 				continueCount = false;
-				endMenu.transform.Find("TimeModeUI/TimeModeFail").gameObject.SetActive(false);
+				endMenu.transform.Find("TimeModeUI/Fail").gameObject.SetActive(false);
+				SaveData.TimeModeLevel++;
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
 			} else if (time < 0) {
 				time = 0;
 				continueCount = false;
-				endMenu.transform.Find("TimeModeUI/TimeModeSuccess").gameObject.SetActive(false);
+				endMenu.transform.Find("TimeModeUI/Success").gameObject.SetActive(false);
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
 			}
@@ -56,5 +58,9 @@ public class Timer : MonoBehaviour {
 			}
 			time -= Time.deltaTime;
 		}
+	}
+
+	private void SetTime() {
+		time -= (SaveData.TimeModeLevel * SaveData.TimeModeLevel);
 	}
 }

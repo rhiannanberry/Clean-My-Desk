@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  util: 0
 --- !u!136 &136059152995556872
 CapsuleCollider:
   m_ObjectHideFlags: 1

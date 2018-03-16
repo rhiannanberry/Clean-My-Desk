@@ -329,7 +329,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538006515486508}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.395, y: -1.933836, z: -8.109001}
+  m_LocalPosition: {x: -5.948711, y: -21.863836, z: -54.760036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4972605395479074}
@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  util: 0
 --- !u!136 &136264327646486180
 CapsuleCollider:
   m_ObjectHideFlags: 1

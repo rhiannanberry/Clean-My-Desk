@@ -427,8 +427,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441561299396042}
-  m_LocalRotation: {x: 0.30140266, y: -0.16500115, z: 0.053040832, w: 0.93761283}
-  m_LocalPosition: {x: 0.74, y: -19.68, z: -56.59}
+  m_LocalRotation: {x: 0.19936788, y: -0, z: -0, w: 0.97992474}
+  m_LocalPosition: {x: -1.983711, y: -18.48, z: -56.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4570213907016320}
@@ -651,6 +651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  util: 0
 --- !u!135 &135589265500301492
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ObjectSetupController : MonoBehaviour {
 	public GameObject buttonPrefab;
-
+	public GameObject defaultSetup;
     public GameObject buttonContainer;
 	// Use this for initialization
 	void Start () {
@@ -30,6 +30,12 @@ public class ObjectSetupController : MonoBehaviour {
 		b.GetComponent<ObjectButton>().SetValues(ov.prefab, ov.itemCount);
 		b.GetComponent<Image>().material = mt;
 		b.transform.SetParent(buttonContainer.transform, false);
+
+		foreach(Transform untagged in defaultSetup.GetComponentInChildren<Transform>()) {
+			if (untagged.name.Contains(ov.prefab.name)) {
+				untagged.GetComponent<Obj>().buttonReference = b;
+			}
+		}
 
 	}
 }
