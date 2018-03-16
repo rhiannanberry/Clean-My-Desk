@@ -13,8 +13,12 @@ public class UIMouse : MonoBehaviour {
 	public Transform worldSpaceCursor;
 	private Transform holding = null;
 	private RectTransform screenPos;
-	// Use this for initialization
-	void Start () {
+
+    private Vector3 lastCursorPosition;
+    private Vector3 cursorMovement;
+    private const float RELEASE_FORCE = 100f;
+    // Use this for initialization
+    void Start () {
 		Cursor.visible = false;
 		screenPos = transform.GetComponent<RectTransform>();
 		screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
@@ -53,8 +57,8 @@ public class UIMouse : MonoBehaviour {
 
 	void Holding() {
 		if (holding != null && Input.GetMouseButton(0)) {
-			//z stays the same here
-			//should z be moved by world pos cursor (or at least movepost?)
+            //z stays the same here
+            //should z be moved by world pos cursor (or at least movepost?)
 			float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
 			if (zScrollDelta != 0) {
 				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
@@ -69,20 +73,34 @@ public class UIMouse : MonoBehaviour {
 			worldSpaceCursor.position = heldObjectPosition;	
 			depthOrb.position = Vector3.Scale(heldObjectPosition, new Vector3(1,0,1));
 			Rigidbody heldrb = holding.GetComponent<Rigidbody>();
-			//heldrb.MovePosition(heldObjectPosition); 
-			worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = heldrb;
- 			heldrb.freezeRotation = true;
+			heldrb.MovePosition(heldObjectPosition);
+            //worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = heldrb;
+            heldrb.freezeRotation = true;
+
 			Quaternion deltaRotation = Quaternion.AngleAxis(Input.GetAxis("Horizontal")*5, Vector3.up) * Quaternion.AngleAxis(5*Input.GetAxis("Vertical"), Vector3.right);
 			heldrb.MoveRotation(deltaRotation * heldrb.rotation);
+
+            if(lastCursorPosition != null)
+            {
+                cursorMovement = worldSpaceCursor.transform.position - lastCursorPosition;
+                lastCursorPosition = worldSpaceCursor.transform.position;
+            }
     		//holding.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * -100, Space.World);
     		//holding.Rotate(Vector3.right * Input.GetAxis("Vertical") * Time.deltaTime * -100, Space.World);
 
 		} else if (holding != null && Input.GetMouseButtonUp(0)) {
-			Color clr = transform.GetComponent<Image>().color;
+            Debug.Log("RELEASED!");
+            Debug.Log("Cursor Movement:" + cursorMovement);
+            holding.GetComponent<Rigidbody>().AddForce(((worldSpaceCursor.transform.position + cursorMovement) - worldSpaceCursor.transform.position).normalized * RELEASE_FORCE);
+
+
+            Color clr = transform.GetComponent<Image>().color;
 			clr.a = 1;
-			worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = null;
+			//worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = null;
 			transform.GetComponent<Image>().color = clr;
-			holding.GetComponent<Rigidbody>().useGravity = true;
+            //holding.GetComponent<Rigidbody>().velocity = worldSpaceCursor.GetComponent<Rigidbody>().velocity;
+
+            holding.GetComponent<Rigidbody>().useGravity = true;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 			holding = null;				
 		}
