@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class UIMouse : MonoBehaviour {
 	public bool inMenu = true;
@@ -11,7 +12,7 @@ public class UIMouse : MonoBehaviour {
     public float previousDepth = 0.0f;
 	public Transform depthOrb;
 	public Transform worldSpaceCursor;
-	private Transform holding = null;
+	public Transform holding = null;
 	private RectTransform screenPos;
 
     private Vector3 lastCursorPosition;
@@ -88,10 +89,9 @@ public class UIMouse : MonoBehaviour {
     		//holding.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * -100, Space.World);
     		//holding.Rotate(Vector3.right * Input.GetAxis("Vertical") * Time.deltaTime * -100, Space.World);
 
-		} else if (holding != null && Input.GetMouseButtonUp(0)) {
+		} else if (Input.GetMouseButtonUp(0) || !MouseScreenCheck()) {
             Debug.Log("RELEASED!");
             Debug.Log("Cursor Movement:" + cursorMovement);
-            holding.GetComponent<Rigidbody>().AddForce(((worldSpaceCursor.transform.position + cursorMovement) - worldSpaceCursor.transform.position).normalized * RELEASE_FORCE);
 
 
             Color clr = transform.GetComponent<Image>().color;
@@ -99,10 +99,12 @@ public class UIMouse : MonoBehaviour {
 			//worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = null;
 			transform.GetComponent<Image>().color = clr;
             //holding.GetComponent<Rigidbody>().velocity = worldSpaceCursor.GetComponent<Rigidbody>().velocity;
-
-            holding.GetComponent<Rigidbody>().useGravity = true;
-			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-			holding = null;				
+			if (holding != null) {
+  	        	holding.GetComponent<Rigidbody>().AddForce(((worldSpaceCursor.transform.position + cursorMovement) - worldSpaceCursor.transform.position).normalized * RELEASE_FORCE);
+  	        	holding.GetComponent<Rigidbody>().useGravity = true;
+				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+				holding = null;				
+			}
 		}
 	}
 
@@ -144,5 +146,20 @@ public class UIMouse : MonoBehaviour {
 		}
 	}
 
-	//two types of object selecting: 
+	//two types of object selecting:
+
+ public bool MouseScreenCheck(){
+        #if UNITY_EDITOR
+        if (Input.mousePosition.x == 0 || Input.mousePosition.y == 0 || Input.mousePosition.x >= Handles.GetMainGameViewSize().x - 1 || Input.mousePosition.y >= Handles.GetMainGameViewSize().y - 1){
+        return false;
+        }
+        #else
+        if (Input.mousePosition.x == 0 || Input.mousePosition.y == 0 || Input.mousePosition.x >= Screen.width - 1 || Input.mousePosition.y >= Screen.height - 1) {
+        return false;
+        }
+        #endif
+        else {
+            return true;
+        }
+ }
 }
