@@ -1,26 +1,16 @@
 fileFormatVersion: 2
-guid: 80b6ed289c984b342bfa01e9697315fd
-timeCreated: 1520472589
+guid: 563df2d0d62a6e44f90f42ad5accd724
+timeCreated: 1521428428
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Icosphere_022
-    100004: Plane_002
     400000: //RootNode
-    400002: Icosphere_022
-    400004: Plane_002
-    2100000: Material_002
-    2100002: Material_003
-    2300000: Icosphere_022
-    2300002: Plane_002
-    2300004: //RootNode
-    3300000: Icosphere_022
-    3300002: Plane_002
-    3300004: //RootNode
-    4300000: Icosphere_022
-    4300002: Plane_002
+    2100000: Material
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: wallhook
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
