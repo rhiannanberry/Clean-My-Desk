@@ -6,6 +6,12 @@ public class SplineDecorator : MonoBehaviour {
 
 	public BezierSpline spline;
 
+
+	private float radius;
+	private int loopCount, cVertCount;
+	private Transform decoration, hook;
+
+
 	public GameObject debugTextPrefab;
 
 	public int frequency;
@@ -56,6 +62,48 @@ public class SplineDecorator : MonoBehaviour {
 			mesh.triangles = GenerateTris(verts);
 			mesh.RecalculateBounds();
 			gameObject.GetComponent<MeshFilter>().mesh = mesh;
+
+		}
+	}
+
+	void Update() {
+
+	}
+
+	public void GenerateMesh(BezierSpline spline, float radius, int cVertCount, int loopCount, Transform decoration, Transform hook) {
+		this.spline = spline;
+		this.radius = radius;
+		this.cVertCount = cVertCount;
+		this.loopCount = loopCount;
+		this.decoration = decoration;
+		this.hook = hook;
+		GenerateVertices();
+	}
+
+	private void GenerateVertices() {
+		List<int> freePoints = GetFreeControlPoints();
+		int cpLen = spline.ControlPointCount;
+		bool startHanging, endHanging;
+		startHanging = freePoints[0] != 0;
+		endHanging = freePoints[freePoints.Count-1] != spline.ControlPointCount-1;
+		if (startHanging) freePoints.Insert(0, 0);
+		if (endHanging) freePoints.Add(spline.ControlPointCount-1);
+
+		for (int i = 0; i < freePoints.Count-1; i++) {
+			float startT, endT, tRange, tDelta;
+			startT = 1.0f*(freePoints[i])/(cpLen-1);
+			endT = 1.0f*(freePoints[i+1])/(cpLen-1);
+			tRange = endT - startT;
+			tDelta = tRange / (loopCount-1);
+
+			for(int j = 0; j < loopCount; j++) {
+				List<Vector3> loop = GenerateLoop(spline.GetPoint(t) - transform.position, spline.GetDirection(t));
+
+
+				if (i != freePoints.Count-2 && j == loopCount - 2) {
+					j++;
+				}
+			}
 
 		}
 	}
@@ -153,5 +201,20 @@ public class SplineDecorator : MonoBehaviour {
 				i++; //skips right hand free ctrl pt
 			}
 		}
+	}
+
+	private List<int> GetFreeControlPoints() {
+		List<int> freePoints = new List<int>();
+		int ctrlPtCnt = spline.ControlPointCount;
+		for(int i = 0; i < ctrlPtCnt; i++) {
+			if (spline.GetControlPointMode(i) == BezierControlPointMode.Free) {
+				if (i != 0) {
+					i++;
+				}
+				freePoints.Add(i);
+				i++;
+			}
+		}
+		return freePoints;
 	}
 }
