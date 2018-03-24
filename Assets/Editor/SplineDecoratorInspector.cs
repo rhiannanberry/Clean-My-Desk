@@ -33,6 +33,7 @@ public class SplineDecoratorInspector : Editor {
             if (GUILayout.Button("Regenerate Mesh")) {
                 //update vertices and decoration placements
                 //update everything if any of the details have been changed
+                splineDecorator.GenerateMesh(spline, radius, circVertexCount, loopCount, decoration, hook);
             }
         } else {
             if (GUILayout.Button("GenerateMesh")) {
