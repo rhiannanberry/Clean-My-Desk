@@ -47,6 +47,7 @@ public class BezierSplineInspector : Editor {
 			Undo.RecordObject(spline, "Move Point");
 			EditorUtility.SetDirty(spline);
 			spline.SetControlPoint(selectedIndex, point);
+			
 		}
 		EditorGUI.BeginChangeCheck();
 		BezierControlPointMode mode = (BezierControlPointMode)EditorGUILayout.EnumPopup("Mode", spline.GetControlPointMode(selectedIndex));
@@ -108,6 +109,9 @@ public class BezierSplineInspector : Editor {
 				Undo.RecordObject(spline, "Move Point");
 				EditorUtility.SetDirty(spline);
 				spline.SetControlPoint(index, handleTransform.InverseTransformPoint(point));
+				if (spline.GetComponent<SplineDecorator>() != null) {
+					spline.GetComponent<SplineDecorator>().GenerateMesh();
+				}
 			}
 		}
 		return point;

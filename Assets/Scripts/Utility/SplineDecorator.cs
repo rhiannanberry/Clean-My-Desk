@@ -5,22 +5,14 @@ using System.Collections.Generic;
 public class SplineDecorator : MonoBehaviour {
 
 	public BezierSpline spline;
-
-
-	private float radius;
-	private int loopCount, cVertCount;
-	private Transform decoration, hook;
-
+	public float radius;
+	public int loopCount, cVertCount, decorationFrequency;
+	public Transform decoration, hook;
+	public int frequency;
 
 	public GameObject debugTextPrefab;
 
-	public int frequency;
-
-	public float wireRadius = .1f;
-
-	public int radiusPointNum = 4;
-
-	public bool lookForward;
+	public bool lookForward = false;
 
 	public Transform endPoint;
 
@@ -30,8 +22,11 @@ public class SplineDecorator : MonoBehaviour {
 	private List<Vector3> vertList;
 	private List<int> triList;
 	private List<Vector2> uvList;
+	private List<Transform> hookList;
+	private List<Transform> decorationList;
 
 	private void Awake () {
+		/*
 		vertList = new List<Vector3>();
 		//size is radiusPointNum * frequency
 		freePointTs = new Queue<float>();
@@ -67,24 +62,21 @@ public class SplineDecorator : MonoBehaviour {
 			mesh.RecalculateBounds();
 			gameObject.GetComponent<MeshFilter>().mesh = mesh;
 
-		}
+		}*/
 	}
 
 	void Update() {
 
 	}
 
-	public void GenerateMesh(BezierSpline spline, float radius, int cVertCount, int loopCount, Transform decoration, Transform hook) {
-		this.spline = spline;
-		this.radius = radius;
-		this.cVertCount = cVertCount;
-		this.loopCount = loopCount;
-		this.decoration = decoration;
-		this.hook = hook;
+	public void GenerateMesh(){
+	
+
 		triList = null;
 		vertList = null;
 		GenerateVertices();
 		GenerateTris();
+		DiscreteDecoration();
 
 		Mesh mesh = new Mesh();
 		mesh.vertices = vertList.ToArray();
@@ -97,27 +89,28 @@ public class SplineDecorator : MonoBehaviour {
 	private void GenerateVertices() {
 		vertList = new List<Vector3>();
 		List<int> freePoints = GetFreeControlPoints();
-		int cpLen = spline.ControlPointCount;
+		int cpLen = freePoints.Count;
+		int totalControlPtCount = spline.ControlPointCount;
 		bool startHanging, endHanging;
 		startHanging = freePoints[0] != 0;
 		endHanging = freePoints[freePoints.Count-1] != spline.ControlPointCount-1;
 		int totCnt = cpLen + (startHanging ? 1 : 0) + (endHanging ? 1 : 0);
 		if (startHanging) {
-			GenerateSection(0f, 1.0f*freePoints[0]/(totCnt - 1));
+			GenerateSection(0f, 1.0f*freePoints[0]/(totalControlPtCount - 1));
 		}
  
 
 		for (int i = 0; i < freePoints.Count; i++) {//number of sections
 			float startT, endT, tRange, tDelta;
-			startT = 1.0f*(freePoints[i])/(totCnt-1);
+			startT = 1.0f*(freePoints[i])/(totalControlPtCount-1);
 			if (i <= freePoints.Count-2) {
-				endT = 1.0f*(freePoints[i+1])/(totCnt-1);
+				endT = 1.0f*(freePoints[i+1])/(totalControlPtCount-1);
 			} else {
 				endT = 1.0f;
 			}
 			tRange = endT - startT;
 			tDelta = tRange / (loopCount-1);
-			bool isLastSection = ((i == freePoints.Count -1 && endHanging) || (i == freePoints.Count - 2 && !endHanging));
+			bool isLastSection = ((i == cpLen -1 && endHanging) || (i == cpLen - 2 && !endHanging));
 			GenerateSection(startT, endT, isLastSection);
 		}
 	}
@@ -126,7 +119,7 @@ public class SplineDecorator : MonoBehaviour {
 		float tRange = tEnd - tStart;
 		float tDelta = tRange / (loopCount - 1);
 
-		for (int i = 0; i < (end ? loopCount : loopCount - 1); i++) {
+		for (int i = 0; i < loopCount-1; i++) {//(end ? loopCount : loopCount - 1); i++) {
 			List<Vector3> loop = GenerateLoop(spline.GetPoint(tStart + (tDelta * i)) - transform.position, spline.GetDirection(tStart + (tDelta * i)));
 			foreach(Vector3 vert in loop) {
 				vertList.Add(vert);
@@ -169,61 +162,66 @@ public class SplineDecorator : MonoBehaviour {
 		List<Vector3> loop = new List<Vector3>();
 		Quaternion rotation  = Quaternion.LookRotation(direction);
 		float theta = 0f;
-		float thetaScale = 1.0f / radiusPointNum;
-		for (int i = 0; i < radiusPointNum; i++) {
+		float thetaScale = 1.0f / cVertCount;
+		for (int i = 0; i < cVertCount; i++) {
 			theta += (2.0f * Mathf.PI * thetaScale);
-			Vector3 radiusPoint = new Vector3(Mathf.Cos(theta), Mathf.Sin(theta), 0) * wireRadius;
+			Vector3 radiusPoint = new Vector3(Mathf.Cos(theta), Mathf.Sin(theta), 0) * radius;
 			loop.Add(position + rotation * radiusPoint);
 		}
 		return loop;
 	}
 
-	private float FudgeT(float t) {
-		if (freePointTs.Peek() <= t) {
-			t = freePointTs.Dequeue();
-		}
-		return t;
-
-	}
-
 	private void DiscreteDecoration() {
-		
-		/*/
-		int stepSize = 
-
-		if (spline.Loop || stepSize == 1) {
-			stepSize = 1f / stepSize;
+			if (transform.childCount == 0) {
+			decorationList = new List<Transform>();
+			hookList = new List<Transform>();
+		} else if (decorationList == null || decorationList.Count != decorationFrequency || hookList.Count + decorationList.Count != transform.childCount) {
+			while (transform.childCount != 0) {
+				DestroyImmediate(transform.GetChild(0).gameObject);
+				Debug.Log("Destrps");
+			}
+				decorationList = new List<Transform>();
+				hookList = new List<Transform>();
 		}
-		else {
-			stepSize = 1f / (stepSize - 1);
-		}
-		for (int p = 0, f = 0; f < frequency; f++) {
-			for (int i = 0; i < items.Length; i++, p++) {
-				Transform item;
-					item = Instantiate(items[i]) as Transform;
-
-				Vector3 position = spline.GetPoint(p * stepSize);
-				item.transform.localPosition = position;
-				if (lookForward) {
-					item.transform.LookAt(position + spline.GetDirection(p * stepSize));
+		float stepSize = 1.0f/(decorationFrequency+3);
+		bool hasDecorations = decorationList != null && decorationList.Count > 0;
+		int d = 0;
+		for (int f = 0; f < decorationFrequency+2; f++) {
+			if (f != 0 && f != decorationFrequency+1) {
+				float t = f * stepSize;
+				Vector3 position = spline.GetPoint(t);
+				if (hasDecorations) {
+					decorationList[d].position = position;
+					d++;
+				} else {
+					Transform item = Instantiate(decoration) as Transform;
+					item.transform.localPosition = position;
+					item.transform.parent = transform;
+					decorationList.Add(item);
 				}
-				item.transform.parent = transform;
+
 			}
 		}
 
-		*/
+		
 		int ctrlPtCnt = spline.ControlPointCount;//
+		bool hasHooks = hookList != null && hookList.Count > 0;
+		int j = 0; //index for existing hooks
 		for (int i = 0; i < ctrlPtCnt; i++) {
 			if (spline.GetControlPointMode(i) == BezierControlPointMode.Free) {
 				if (i != 0) {
 					i++; //gets to middle free ctrl pt
 				}
-				Transform item = Instantiate(endPoint) as Transform;
-				freePointTs.Enqueue(i/((ctrlPtCnt-1)*1.0f));
-		Debug.Log(ctrlPtCnt);
 				Vector3 position = spline.GetPoint(i/((ctrlPtCnt-1) * 1.0f));
-				item.transform.localPosition = position;
-				item.transform.parent = transform;
+				if (hasHooks) {
+					hookList[j].position = position;
+					j++;
+				} else {
+					Transform item = Instantiate(hook) as Transform;
+					hookList.Add(item);
+					item.transform.localPosition = position;
+					item.transform.parent = transform;
+				}
 				i++; //skips right hand free ctrl pt
 			}
 		}
