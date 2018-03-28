@@ -23,12 +23,15 @@ public class ObjectSetupController : MonoBehaviour {
 		rt.Create();
 
 		objView.Find("Camera").GetComponent<Camera>().targetTexture = rt;
-		Material mt = new Material(Shader.Find("Unlit/Texture"));
+		Material mt = new Material(Shader.Find("Unlit/UnlitMask"));
 		mt.mainTexture = rt;
 
 		GameObject b = Instantiate(buttonPrefab);
 		b.GetComponent<ObjectButton>().SetValues(ov.prefab, ov.itemCount);
-		b.GetComponent<Image>().material = mt;
+
+		mt.SetTexture("_AlphaTex", b.transform.GetChild(0).GetComponent<Image>().material.GetTexture("_AlphaTex"));
+
+		b.transform.GetChild(0).GetComponent<Image>().material = mt;
 		b.transform.SetParent(buttonContainer.transform, false);
 
 		foreach(Transform untagged in defaultSetup.GetComponentInChildren<Transform>()) {

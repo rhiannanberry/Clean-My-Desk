@@ -14,8 +14,8 @@ public class ObjectButton : MonoBehaviour {
 	void Start() {
 		if (SceneManager.GetActiveScene().name == "GodMode") {
 			itemLimit = false;
-			transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-			transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+			transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+			transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
 		}
 	}
 	
