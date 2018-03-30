@@ -58,7 +58,7 @@ public class GenerateScores : MonoBehaviour {
 
 	public void SpawnScoreItemsSeeded() {
 		int tot = 0;
-		GameObject.Find("TimeModeUI").SetActive(false);
+		GameObject.Find("EndMenu").transform.Find("MainModeUI").gameObject.SetActive(true);
 		SaveData.UpdateTotals();
 		int spawnScore = SaveData.SpawnCount;
 		int despawnScore = SaveData.DespawnCount;

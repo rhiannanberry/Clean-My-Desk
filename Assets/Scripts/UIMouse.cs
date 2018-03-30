@@ -111,9 +111,9 @@ public class UIMouse : MonoBehaviour {
 	private void HoldObject(Transform toHold) {
 		holding = toHold;
 		if (holding != null) {
-			Color clr = transform.GetComponent<Image>().color;
-			clr.a = 0;
-			transform.GetComponent<Image>().color = clr;
+			//Color clr = transform.GetComponent<Image>().color;
+			//clr.a = 0;
+			//transform.GetComponent<Image>().color = clr;
 			holding.GetComponent<Rigidbody>().useGravity = false;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 		}
