@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4817636556280504}
   - component: {fileID: 65716441878388714}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525076204196190}
   - component: {fileID: 65866877377447220}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4593123115955464}
   - component: {fileID: 54537182592919818}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WallHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 33275901063853174}
   - component: {fileID: 23302314045095304}
   - component: {fileID: 95909829809218346}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WallHook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
