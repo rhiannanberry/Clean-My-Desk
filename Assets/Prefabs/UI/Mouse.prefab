@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222676911956022472}
   - component: {fileID: 114921384285655902}
   - component: {fileID: 114370497202511734}
+  - component: {fileID: 95496787892800986}
   m_Layer: 5
   m_Name: Mouse
   m_TagString: Untagged
@@ -29,6 +30,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95496787892800986
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232216125150886}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0c8b19366f277f4cbb350ab384b021c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114370497202511734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,7 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0136c8277a48fd4698342c2a84a4cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inMenu: 1
   mouseSpeed: 20
+  previousDepth: 0
+  depthOrb: {fileID: 0}
+  worldSpaceCursor: {fileID: 0}
+  holding: {fileID: 0}
 --- !u!114 &114921384285655902
 MonoBehaviour:
   m_ObjectHideFlags: 1

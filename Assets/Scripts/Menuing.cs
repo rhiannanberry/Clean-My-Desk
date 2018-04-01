@@ -8,7 +8,10 @@ public class Menuing : MonoBehaviour {
     public bool isOpen = false;
     public bool isHidden = false;
 	void Start () {
-		
+        if (isOpen) {
+            
+        GetComponent<Animator>().SetBool("isOpen", isOpen);
+        }
 	}
 	
 	// Update is called once per frame
