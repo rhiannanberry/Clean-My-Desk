@@ -370,11 +370,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 199883589199714138, guid: 6751b849f7f944341b29bb59213d3a34,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a5c729ded6d5a7f44946d837572ecad0, type: 2}
     - target: {fileID: 199114582526561064, guid: 6751b849f7f944341b29bb59213d3a34,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
@@ -1285,7 +1280,7 @@ Prefab:
     - target: {fileID: 224966593623140206, guid: bee52684655abe74480c11921ac87082,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -423
+      value: -537
       objectReference: {fileID: 0}
     - target: {fileID: 224182743524302276, guid: bee52684655abe74480c11921ac87082,
         type: 2}
