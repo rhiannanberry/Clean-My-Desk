@@ -15,6 +15,9 @@ public class MenuManager : MonoBehaviour {
 	private GameObject optionsMenu = null;
 	public bool paused = false;
 
+	public bool animDisable = false;
+	public bool animDisabled = false;
+
 	private bool unpausing = false;
 	private bool pausing = false;
 
@@ -41,6 +44,9 @@ public class MenuManager : MonoBehaviour {
 					pausing = false;
 				}
 			}
+		} else if (animDisable && !animDisabled) {
+			animDisabled = true;
+			GetComponent<Animator>().enabled = false;
 		}
 	}
 	public void GotoSceneIndex(string sceneName) {
@@ -160,4 +166,5 @@ public class MenuManager : MonoBehaviour {
 		pauseMenu.SetActive(false);
 		optionsMenu.SetActive(false);
 	}
+
 }

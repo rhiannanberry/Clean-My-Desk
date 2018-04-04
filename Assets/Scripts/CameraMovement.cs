@@ -26,4 +26,12 @@ public class CameraMovement : MonoBehaviour {
         transform.eulerAngles = new Vector3(deltaVertical + startRotation.x, deltaHorizontal + startRotation.y, startRotation.z);
 
 	}
+
+    public void TriggerMainMenuFocus() {
+        GetComponent<Animator>().SetTrigger("mainMenu");
+    }
+
+    public void TriggerOptionsFocus() {
+        GetComponent<Animator>().SetTrigger("optionsMenu");
+    }
 }
