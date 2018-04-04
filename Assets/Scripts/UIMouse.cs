@@ -15,6 +15,7 @@ public class UIMouse : MonoBehaviour {
 	public Transform holding = null;
 	private RectTransform screenPos;
 
+	private bool timeMode = false;
     private Vector3 lastCursorPosition;
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 300f;
@@ -23,6 +24,10 @@ public class UIMouse : MonoBehaviour {
 		Cursor.visible = false;
 		screenPos = transform.GetComponent<RectTransform>();
 		screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
+		if (SceneManager.GetActiveScene().name == "TimeMode") {
+			timeMode = true;
+			GetComponent<Image>().enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,8 +38,14 @@ public class UIMouse : MonoBehaviour {
 		screenPos.anchoredPosition = Input.mousePosition;
 		screenPos.anchoredPosition = new Vector2(Mathf.Clamp(screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(screenPos.anchoredPosition.y, 0, Screen.height)); 
 		IsInMenu();
+		if (timeMode) {
+			if (GameController.Instance.paused) {
+				GetComponent<Image>().enabled = true;
+			} else {
 
-		if (!inMenu) {
+				GetComponent<Image>().enabled = false;
+			}
+		} else if (!inMenu) {
 			Selecting(); // selecting on the actual desk, not the menu
 			Holding();
 		}
@@ -121,7 +132,7 @@ public class UIMouse : MonoBehaviour {
 
 	public void IsInMenu() {
 		//probably gonna have to change this later but idc	
-		inMenu = (EventSystem.current.IsPointerOverGameObject() && holding == null) || (SceneManager.GetActiveScene().name.Contains("Menu")); 
+		inMenu = (EventSystem.current.IsPointerOverGameObject() && (holding == null || timeMode)) || (SceneManager.GetActiveScene().name.Contains("Menu")); 
 	}
 
 	public Transform FindParentWithTag(Transform child, string tag) {

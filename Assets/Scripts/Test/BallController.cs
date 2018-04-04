@@ -6,6 +6,8 @@ public class BallController : MonoBehaviour {
 	public Transform parentCamera;
 	private Rigidbody rb;
 
+	private float weightMax = 0.1f;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody>();		
@@ -17,17 +19,24 @@ public class BallController : MonoBehaviour {
 		float horiz = Input.GetAxis("Horizontal") * 1.0f;
 		Debug.DrawRay(transform.position, transform.forward, Color.red);
 		Debug.DrawRay(parentCamera.position, parentCamera.forward, Color.red);
-		rb.AddTorque(parentCamera.right * fwd);
-		rb.AddTorque(parentCamera.forward * -horiz);
+		rb.AddTorque(2f * parentCamera.right * fwd);
+		rb.AddTorque(2f * parentCamera.forward * -horiz);
 
 	}
 
-	void OnTriggerEnter(Collider other) {
+	void OnCollisionEnter(Collision otherCol) {
+		Collider other = otherCol.collider;
 		if (other.gameObject.tag == "Item") {
-			Debug.Log("HEUGHGHH");
 			Transform item = GetItemRootParent(other.transform);
-			Destroy(item.GetComponent<Rigidbody>());
-			item.SetParent(transform);
+			if (item.GetComponent<Rigidbody>().mass <= weightMax) {
+				if (Vector3.Distance(transform.position, item.position) < 0.7) { //grow this number as it gets bigger
+					weightMax += 0.4f * (item.GetComponent<Rigidbody>().mass);
+					Debug.Log(weightMax);
+					Destroy(item.GetComponent<Rigidbody>());
+					item.SetParent(transform);
+					//TODO: if center distance is too far from acceptable, offset to be closer
+				}
+			}
 		}
 	}
 
