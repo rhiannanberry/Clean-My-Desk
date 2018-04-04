@@ -9,20 +9,25 @@ using UnityEditor;
 public class UIMouse : MonoBehaviour {
 	public bool inMenu = true;
 	public float mouseSpeed = 20.0f;
-    public float previousDepth = 0.0f;
+    public float previousDepth = -2.0f;
 	public Transform depthOrb;
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
 	private RectTransform screenPos;
 
+	private bool timeMode = false;
     private Vector3 lastCursorPosition;
     private Vector3 cursorMovement;
-    private const float RELEASE_FORCE = 100f;
+    private const float RELEASE_FORCE = 300f;
     // Use this for initialization
     void Start () {
 		Cursor.visible = false;
 		screenPos = transform.GetComponent<RectTransform>();
 		screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
+		if (SceneManager.GetActiveScene().name == "TimeMode") {
+			timeMode = true;
+			GetComponent<Image>().enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -33,8 +38,14 @@ public class UIMouse : MonoBehaviour {
 		screenPos.anchoredPosition = Input.mousePosition;
 		screenPos.anchoredPosition = new Vector2(Mathf.Clamp(screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(screenPos.anchoredPosition.y, 0, Screen.height)); 
 		IsInMenu();
+		if (timeMode) {
+			if (GameController.Instance.paused) {
+				GetComponent<Image>().enabled = true;
+			} else {
 
-		if (!inMenu) {
+				GetComponent<Image>().enabled = false;
+			}
+		} else if (!inMenu) {
 			Selecting(); // selecting on the actual desk, not the menu
 			Holding();
 		}
@@ -89,7 +100,7 @@ public class UIMouse : MonoBehaviour {
     		//holding.Rotate(Vector3.up * Input.GetAxis("Horizontal") * Time.deltaTime * -100, Space.World);
     		//holding.Rotate(Vector3.right * Input.GetAxis("Vertical") * Time.deltaTime * -100, Space.World);
 
-		} else if (Input.GetMouseButtonUp(0) || !MouseScreenCheck()) {
+		} else if (Input.GetMouseButtonUp(0) || !MouseScreenCheck() || !Input.GetMouseButton(0)) {
             Debug.Log("RELEASED!");
             Debug.Log("Cursor Movement:" + cursorMovement);
 
@@ -111,9 +122,9 @@ public class UIMouse : MonoBehaviour {
 	private void HoldObject(Transform toHold) {
 		holding = toHold;
 		if (holding != null) {
-			//Color clr = transform.GetComponent<Image>().color;
-			//clr.a = 0;
-			//transform.GetComponent<Image>().color = clr;
+			Color clr = transform.GetComponent<Image>().color;
+			clr.a = 0;
+			transform.GetComponent<Image>().color = clr;
 			holding.GetComponent<Rigidbody>().useGravity = false;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 		}
@@ -121,7 +132,7 @@ public class UIMouse : MonoBehaviour {
 
 	public void IsInMenu() {
 		//probably gonna have to change this later but idc	
-		inMenu = (EventSystem.current.IsPointerOverGameObject() && holding == null) || (SceneManager.GetActiveScene().name.Contains("Menu")); 
+		inMenu = (EventSystem.current.IsPointerOverGameObject() && (holding == null || timeMode)) || (SceneManager.GetActiveScene().name.Contains("Menu")); 
 	}
 
 	public Transform FindParentWithTag(Transform child, string tag) {
@@ -140,7 +151,7 @@ public class UIMouse : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {
 			GameObject col = GameObject.Find("MenuHitCollider");
-			col.transform.position = ray.GetPoint(3);
+			col.transform.position = ray.GetPoint(0);
 			col.transform.rotation = Quaternion.LookRotation(ray.direction);
 			col.GetComponent<Rigidbody>().velocity = ray.direction * 15;
 		}

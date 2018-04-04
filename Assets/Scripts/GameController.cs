@@ -8,9 +8,12 @@ public class GameController : Singleton<GameController> {
     public GameObject selected = null;
     private MenuManager pauseMenu = null;
 
+    public bool paused;
+
 	// Use this for initialization
 	void Start () {
         pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
+        paused = pauseMenu.paused;
 	}
 	
 	// Update is called once per frame
@@ -23,6 +26,7 @@ public class GameController : Singleton<GameController> {
                 pauseMenu.Continue();
             }
         }
+        paused = pauseMenu.paused;
 	}
 
     public Transform SpawnSelected(Vector3 spawnPosition) {
