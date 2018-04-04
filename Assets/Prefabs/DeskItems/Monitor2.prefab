@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 64849722608412990}
   m_Layer: 8
   m_Name: GameObject (4)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 64594680885208066}
   m_Layer: 8
   m_Name: GameObject (10)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 64539218101541294}
   m_Layer: 8
   m_Name: GameObject (9)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 65620374013256984}
   m_Layer: 8
   m_Name: GameObject (5)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 64987161901200194}
   m_Layer: 8
   m_Name: GameObject (8)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 136823771269402488}
   m_Layer: 8
   m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 65599719452185172}
   m_Layer: 8
   m_Name: GameObject (3)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 4743689391185760}
   m_Layer: 8
   m_Name: Monitor2Colliders
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 65453906339917804}
   m_Layer: 8
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 136264327646486180}
   m_Layer: 8
   m_Name: GameObject (6)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 95432352864621074}
   m_Layer: 0
   m_Name: Monitor2
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 136355614105547764}
   m_Layer: 8
   m_Name: GameObject (1)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 65006235384306790}
   m_Layer: 8
   m_Name: GameObject (7)
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -453,7 +453,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2af649240da62c249a03193f9f66c3ab, type: 2}
+  - {fileID: 2100000, guid: a5c729ded6d5a7f44946d837572ecad0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -487,7 +487,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538006515486508}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2.2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

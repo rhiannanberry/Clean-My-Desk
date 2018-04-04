@@ -15,8 +15,10 @@ ModelImporter:
     2100002: Material_003
     2300000: Icosphere_022
     2300002: Plane_002
+    2300004: //RootNode
     3300000: Icosphere_022
     3300002: Plane_002
+    3300004: //RootNode
     4300000: Icosphere_022
     4300002: Plane_002
     7400000: Default Take

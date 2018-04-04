@@ -10,8 +10,16 @@ public class MenuManager : MonoBehaviour {
 	private Canvas monitor1 = null;
 	private Canvas monitor2 = null;
 	private GameObject pauseMenu = null;
+
+	private Image pauseImage = null;
 	private GameObject optionsMenu = null;
 	public bool paused = false;
+
+	public bool animDisable = false;
+	public bool animDisabled = false;
+
+	private bool unpausing = false;
+	private bool pausing = false;
 
 	private bool exitingScene = false;
 	// Use this for initialization
@@ -28,6 +36,17 @@ public class MenuManager : MonoBehaviour {
 	void Update () {
 		if (exitingScene) {
 			Debug.Log("Alpha: " + GameObject.Find("Canvas/Black").GetComponent<Image>().color.a.ToString());
+		}
+		if (!startMenu) {
+			if (pausing) {
+				Debug.Log(pauseImage.canvasRenderer.GetAlpha());
+				if (pauseImage.canvasRenderer.GetAlpha() >= 1.0f) {
+					pausing = false;
+				}
+			}
+		} else if (animDisable && !animDisabled) {
+			animDisabled = true;
+			GetComponent<Animator>().enabled = false;
 		}
 	}
 	public void GotoSceneIndex(string sceneName) {
@@ -66,7 +85,13 @@ public class MenuManager : MonoBehaviour {
 
 	public void OpenPauseMenu() {
 		if (!startMenu) {
-			ExitOptions(); //same desired effect
+			optionsMenu.SetActive(false);
+			pauseMenu.SetActive(true);
+
+			//pauseImage.canvasRenderer.SetAlpha(0.0f);
+			//pauseImage.CrossFadeAlpha(1.0f, 5f, false);
+
+			//pausing = true;
 			paused = true;
 		}
 	}
@@ -136,8 +161,10 @@ public class MenuManager : MonoBehaviour {
 			child.gameObject.SetActive(true);
 		}
 		pauseMenu = GameObject.Find("PrimaryMenu");
+		pauseImage = pauseMenu.GetComponent<Image>();
 		optionsMenu = GameObject.Find("OptionsMenu");
 		pauseMenu.SetActive(false);
 		optionsMenu.SetActive(false);
 	}
+
 }

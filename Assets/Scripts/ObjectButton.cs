@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ObjectButton : MonoBehaviour {
 	private GameObject prefab;
-	private Text counterText;
+	private TextMeshProUGUI counterText;
 
 	private int itemCount;
 	private bool itemLimit = true;
@@ -14,8 +15,8 @@ public class ObjectButton : MonoBehaviour {
 	void Start() {
 		if (SceneManager.GetActiveScene().name == "GodMode") {
 			itemLimit = false;
-			transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-			transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+			transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+			transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
 		}
 	}
 	
@@ -26,7 +27,7 @@ public class ObjectButton : MonoBehaviour {
 	public void SetValues(GameObject prefab, int itemCount) {
 		this.prefab = prefab;
 		this.itemCount = itemCount;
-		counterText = transform.Find("Counter/CountText").GetComponent<Text>();
+		counterText = transform.Find("Counter/CountText").GetComponent<TextMeshProUGUI>();
 		UpdateCounter();
 	}
 
