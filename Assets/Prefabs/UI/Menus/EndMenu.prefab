@@ -1528,10 +1528,12 @@ MonoBehaviour:
     descs:
     - Living your best life
     - YOLO
+    - From nothing
   - type: 1
     descs:
     - Clean freak
     - Pickiness
+    - Destruction
   - type: 2
     descs:
     - Balance
@@ -1541,6 +1543,31 @@ MonoBehaviour:
     - HYPE
     - Coolness factor
     - Binge factor
+  - type: 4
+    descs:
+    - Nyoom
+    - Energy
+    - Passionate!
+  - type: 5
+    descs:
+    - Sleepyness
+    - Night owl
+    - Midnight oil
+  - type: 8
+    descs:
+    - You look nice today!
+    - Spicing it up
+    - Vengeful spirits summoned
+  - type: 6
+    descs:
+    - Staying healthy
+    - Avoiding pestillance
+    - Taking care of yourself
+  - type: 7
+    descs:
+    - Distractability
+    - Paying attention
+    - Focusing
   scoreDesc:
   - ahhhhhhhhhhhhh
   - yeha
@@ -2548,6 +2575,8 @@ MonoBehaviour:
   startMenu: 0
   subMenu: 1
   paused: 0
+  animDisable: 0
+  animDisabled: 0
 --- !u!114 &114999635194525822
 MonoBehaviour:
   m_ObjectHideFlags: 1

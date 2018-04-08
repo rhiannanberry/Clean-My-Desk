@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GenerateScores : MonoBehaviour {
-	public enum ScoreType {spawn, despawn, diff, percentSpawnTotal};
+	public enum ScoreType {spawn, despawn, diff, percentSpawnTotal, maxVelocity, timeOfDay, rememberYourMeds, timesGotDistracted, pureRandom};
 
 	[System.Serializable]
 	public struct ScoreTypeDesc {
@@ -56,22 +56,29 @@ public class GenerateScores : MonoBehaviour {
 			totscr.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = tot.ToString();
 	}
 
+    //Edit this one only!!
 	public void SpawnScoreItemsSeeded() {
 		int tot = 0;
 		GameObject.Find("EndMenu").transform.Find("MainModeUI").gameObject.SetActive(true);
 		SaveData.UpdateTotals();
 		int spawnScore = SaveData.SpawnCount;
 		int despawnScore = SaveData.DespawnCount;
-		int diffScore = (despawnScore - spawnScore) * 100;
+		int diffScore = (int) (Mathf.Log(despawnScore - spawnScore, 2) * 10);
 		int percentSpawnTotalScore = (spawnScore == 0 || SaveData.SpawnCountTotal == 0) ? 0 : (int) (100.0f * (spawnScore*1.0f / SaveData.SpawnCountTotal));
+        int maxVelocityScore = SaveData.MaxVelocity;
+        int timeOfDay = System.DateTime.Now.Hour;
+        int timeOfDayScore = (timeOfDay < 12) ? (23 - timeOfDay) * 2 : timeOfDay * 2;//The later you're up playing, the more you're rewarded :p
+        int rememberYourMedsScore = SaveData.MedsTaken * 2;
+        int timesGotDistracted = -SaveData.TimesGotDistracted;
+        int pureRandomScore = (int) (Random.value * 100);
 
-		int[] scorePatterns = {spawnScore, despawnScore, diffScore, percentSpawnTotalScore};
+		int[] scorePatterns = {spawnScore, despawnScore, diffScore, percentSpawnTotalScore, maxVelocityScore, timeOfDayScore, pureRandomScore};
 
 		foreach (ScoreTypeDesc pair in scoreMappings) {
 			string desc;
 			int scr;
 			switch(pair.type) {
-				case ScoreType.despawn: scr = spawnScore;
+				case ScoreType.despawn: scr = despawnScore;
 				break;
 				case ScoreType.diff: scr = diffScore;
 				break;
@@ -79,6 +86,16 @@ public class GenerateScores : MonoBehaviour {
 				break;
 				case ScoreType.spawn: scr = spawnScore;
 				break;
+                case ScoreType.maxVelocity: scr = maxVelocityScore;
+                break;
+                case ScoreType.timeOfDay: scr = timeOfDayScore;
+                break;
+                case ScoreType.rememberYourMeds: scr = rememberYourMedsScore;
+                break;
+                case ScoreType.timesGotDistracted: scr = timesGotDistracted;
+                break;
+                case ScoreType.pureRandom: scr = pureRandomScore;
+                break;
 				default: scr = 0;
 					pair.descs.Add("You broke it!!");
 				break;
@@ -100,4 +117,9 @@ public class GenerateScores : MonoBehaviour {
 			totscr.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = tot.ToString();
 
 	}
+    private void OnApplicationFocus(bool focus) {
+        if (!focus) {
+            SaveData.TimesGotDistracted++;
+        }
+    }
 }
