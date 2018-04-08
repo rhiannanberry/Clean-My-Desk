@@ -170,6 +170,8 @@ public class UIMouse : MonoBehaviour {
 			transform.GetComponent<Image>().color = clr;
 			holding.GetComponent<Rigidbody>().useGravity = false;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+            if (holding.gameObject.name.Equals("MedicineBottle"))
+                SaveData.MedsTaken++;//This is super fragile I know, i'm just not sure what a better approach would be? check against its model?
 		}
 	}
 

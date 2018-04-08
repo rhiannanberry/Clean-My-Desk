@@ -24,6 +24,11 @@ public class Obj: MonoBehaviour {
 			if (util && transform.localPosition.x <= -10) {
 				Destroy(gameObject);
 			}
+            //Uh. I hope this doesn't introduce too much overhead.
+            //As a backup plan I could only track the last item the mouse interacted with? But that would miss out on all the lovely glitchy collisions
+            int velocityMagnitude = (int) (Vector3.Magnitude(GetComponent<Rigidbody>().velocity));
+            if (velocityMagnitude >= SaveData.MaxVelocity)
+                SaveData.MaxVelocity = velocityMagnitude;
 		}
 	}
 
