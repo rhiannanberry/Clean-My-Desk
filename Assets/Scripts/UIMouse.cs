@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
 using UnityEditor;
-
+#endif
 public class UIMouse : MonoBehaviour {
 	public bool inMenu = true;
 	public float mouseSpeed = 20.0f;
