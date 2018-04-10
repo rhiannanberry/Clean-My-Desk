@@ -14,8 +14,6 @@ public class UIMouse : MonoBehaviour {
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
 	private RectTransform screenPos;
-    private float timeInAScroll = 0.5f;
-    private float timeInScroll = 0;
 
 	private bool timeMode = false;
     private Vector3 lastCursorPosition;
@@ -74,31 +72,15 @@ public class UIMouse : MonoBehaviour {
 		if (holding != null && Input.GetMouseButton(0)) {
             //z stays the same here
             //should z be moved by world pos cursor (or at least movepost?)
-            /*
-            float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
+			float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
 			if (zScrollDelta != 0) {
 				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 			} else {
 				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 			}
-			holding.transform.position += new Vector3(0, 0, zScrollDelta);
-            */
-            float zScrollDelta = 30 * Input.GetAxis("Mouse ScrollWheel");
-            if (zScrollDelta != 0) {
-                holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                timeInScroll = timeInAScroll;
-                holding.GetComponent<Rigidbody>().velocity += new Vector3(0, 0, zScrollDelta);
-            } else {
-                holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-                timeInScroll -= Time.deltaTime;
-            }
-
-            if (timeInScroll <= 0) {
-                holding.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            }
-
             previousDepth += zScrollDelta;
-            float zDiff = Mathf.Abs(Camera.main.transform.position.z - holding.transform.position.z);
+			holding.transform.position += new Vector3(0, 0, zScrollDelta);
+			float zDiff = Mathf.Abs(Camera.main.transform.position.z - holding.transform.position.z);
 			Vector3 uiMouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.anchoredPosition.x, screenPos.anchoredPosition.y, zDiff) );
 			Vector3 heldObjectPosition = new Vector3(uiMouseWorld.x,uiMouseWorld.y,holding.transform.position.z);
 			worldSpaceCursor.position = heldObjectPosition;	

@@ -10,10 +10,10 @@ public class TweetHandler : MonoBehaviour {
     private string imgEncoded;
     // Use this for initialization
     void Start () {
-        //Twity.Oauth.consumerKey = SECRETS.consumerKey;
-        //Twity.Oauth.consumerSecret = SECRETS.consumerSecretKey;
-        //Twity.Oauth.accessToken = SECRETS.accessToken;
-        //Twity.Oauth.accessTokenSecret = SECRETS.accessTokenSecret;
+        Twity.Oauth.consumerKey = SECRETS.consumerKey;
+        Twity.Oauth.consumerSecret = SECRETS.consumerSecretKey;
+        Twity.Oauth.accessToken = SECRETS.accessToken;
+        Twity.Oauth.accessTokenSecret = SECRETS.accessTokenSecret;
 	}
 	
 	// Update is called once per frame

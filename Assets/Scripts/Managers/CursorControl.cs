@@ -102,7 +102,6 @@ public class CursorControl : MonoBehaviour {
     public void SetSelected(Transform sel) {
         selected = sel;
     }
-
 }
 
 
