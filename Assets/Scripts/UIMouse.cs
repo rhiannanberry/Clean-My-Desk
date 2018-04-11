@@ -10,12 +10,13 @@ using UnityEditor;
 public class UIMouse : MonoBehaviour {
 	public bool inMenu = true;
 	public float mouseSpeed = 20.0f;
+
     public float previousDepth = -2.0f;
 	public Transform depthOrb;
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
 	private RectTransform screenPos;
-
+	private GameObject holder, holdingLocalPositionProxy;
 	private bool timeMode = false;
     private Vector3 lastCursorPosition;
     private Vector3 cursorMovement;
@@ -23,6 +24,9 @@ public class UIMouse : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		holder = new GameObject();
+		holdingLocalPositionProxy = new GameObject();
+		holdingLocalPositionProxy.transform.SetParent(holder.transform);
 		Cursor.visible = false;
 		screenPos = transform.GetComponent<RectTransform>();
 		screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
@@ -59,11 +63,13 @@ public class UIMouse : MonoBehaviour {
 			Debug.DrawRay(ray.origin, ray.direction*50);
 			RaycastHit hit;
 			if (GameController.Instance.selected != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-				HoldObject(GameController.Instance.SpawnSelected(ray.GetPoint(2) + new Vector3(0, 0, previousDepth)));
+				Transform newItem = GameController.Instance.SpawnSelected(ray.GetPoint(2) + new Vector3(0, 0, previousDepth));
+				HoldObject(newItem);
 			} else if (Physics.Raycast(ray, out hit)) {
 				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
 				if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-					HoldObject(hit.transform);
+					Debug.Log("HitPoint: " + hit.point + " Hit name: " + hit.transform.name + " hit transform pos: " + hit.transform.position);
+					HoldObject(hit.transform, hit.point);
 				}
 			}
 		}
@@ -71,27 +77,32 @@ public class UIMouse : MonoBehaviour {
 
 	void Holding() {
 		if (holding != null && Input.GetMouseButton(0)) {
-            //z stays the same here
-            //should z be moved by world pos cursor (or at least movepost?)
-			float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
-			if (zScrollDelta != 0) {
-				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-			} else {
-				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+			float zDelta = getZDelta();
+
+			Vector3 newPosition = Vector3.zero;
+
+			//SETTING UP PLANE AT CORRECT/expected Z
+			float itemExpectedZ = holder.transform.position.z + zDelta;
+			Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, itemExpectedZ));
+			
+			//SETTING UP MOUSE RAY
+			Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+			float hitDistance = 0;
+			if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
+				newPosition += mouseRay.GetPoint(hitDistance);
+				depthOrb.position = mouseRay.GetPoint(hitDistance);
 			}
-            previousDepth += zScrollDelta;
-			holding.transform.position += new Vector3(0, 0, zScrollDelta);
-			float zDiff = Mathf.Abs(Camera.main.transform.position.z - holding.transform.position.z);
-			Vector3 uiMouseWorld = Camera.main.ScreenToWorldPoint(new Vector3(screenPos.anchoredPosition.x, screenPos.anchoredPosition.y, zDiff) );
-			Vector3 heldObjectPosition = new Vector3(uiMouseWorld.x,uiMouseWorld.y,holding.transform.position.z);
-			worldSpaceCursor.position = heldObjectPosition;	
-			depthOrb.position = Vector3.Scale(heldObjectPosition, new Vector3(1,0,1));
+
+
+			worldSpaceCursor.position = newPosition;	
+
 			Rigidbody heldrb = holding.GetComponent<Rigidbody>();
             heldrb.useGravity = false;
-			heldrb.MovePosition(heldObjectPosition);
-            //worldSpaceCursor.GetComponent<SpringJoint>().connectedBody = heldrb;
+			holder.transform.position = newPosition;
             heldrb.freezeRotation = true;
-
+			//holding.localPosition = itemPositionOffset;
+			heldrb.velocity = Vector3.zero;
+			heldrb.MovePosition(holdingLocalPositionProxy.transform.position);
 			Quaternion deltaRotation = Quaternion.AngleAxis(Input.GetAxis("Horizontal")*5, Vector3.up) * Quaternion.AngleAxis(5*Input.GetAxis("Vertical"), Vector3.right);
 			heldrb.MoveRotation(deltaRotation * heldrb.rotation);
 
@@ -100,12 +111,13 @@ public class UIMouse : MonoBehaviour {
                 cursorMovement = worldSpaceCursor.transform.position - lastCursorPosition;
                 lastCursorPosition = worldSpaceCursor.transform.position;
             }
-		} else if (Input.GetMouseButtonUp(0) || !MouseScreenCheck()) {
+		} else if (!Input.GetMouseButton(0) || !MouseScreenCheck()) {//change to !getmouse(0) && holding != null
 
             Color clr = transform.GetComponent<Image>().color;
 			clr.a = 1;
 			transform.GetComponent<Image>().color = clr;
 			if (holding != null) {
+				holding.SetParent(GameObject.Find("DefaultSetup").transform);
                 Vector3 throwVector = (holding.position + cursorMovement) - holding.position;
                 float speed = (throwVector.magnitude * RELEASE_FORCE) / Time.deltaTime;
                 Vector3 throwVelocity = speed * throwVector.normalized;
@@ -118,6 +130,13 @@ public class UIMouse : MonoBehaviour {
 	}
 
 	private void HoldObject(Transform toHold) {
+		HoldObject(toHold, toHold.transform.position);
+	}
+
+	private void HoldObject(Transform toHold, Vector3 grabPosition) {
+		holder.transform.position = grabPosition;
+		toHold.SetParent(holder.transform);
+		holdingLocalPositionProxy.transform.localPosition = toHold.localPosition;
 		holding = toHold;
 		if (holding != null) {
 			Color clr = transform.GetComponent<Image>().color;
@@ -126,6 +145,17 @@ public class UIMouse : MonoBehaviour {
 			holding.GetComponent<Rigidbody>().useGravity = false;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 		}
+	}
+
+	private float getZDelta() {
+		float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
+		if (zScrollDelta != 0) {
+			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+		} else {
+			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+		}
+		previousDepth += zScrollDelta;
+		return zScrollDelta;
 	}
 
 	public void IsInMenu() {
