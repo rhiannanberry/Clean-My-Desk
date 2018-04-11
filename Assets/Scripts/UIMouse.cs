@@ -21,6 +21,7 @@ public class UIMouse : MonoBehaviour {
     private Vector3 lastCursorPosition;
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 0.2f;
+	private Transform prevHitItem;
 
     // Use this for initialization
     void Start () {
@@ -59,16 +60,39 @@ public class UIMouse : MonoBehaviour {
 
 	void Selecting() {
 		if (holding == null) {
+			if (prevHitItem != null) {
+				prevHitItem.GetComponent<Obj>().ObjectHover(false);
+			}
 			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
 			Debug.DrawRay(ray.origin, ray.direction*50);
 			RaycastHit hit;
 			if (GameController.Instance.selected != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-				Transform newItem = GameController.Instance.SpawnSelected(ray.GetPoint(2) + new Vector3(0, 0, previousDepth));
+				//Setting spawn location
+				Vector3 newPosition = Vector3.zero;
+
+				//SETTING UP PLANE AT CORRECT/expected Z
+				Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
+				
+				//SETTING UP MOUSE RAY
+				Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+				float hitDistance = 0;
+				if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
+					newPosition += mouseRay.GetPoint(hitDistance);
+				}
+
+				Transform newItem = GameController.Instance.SpawnSelected(newPosition);
+				newItem.GetComponent<Obj>().ObjectHover(true);
+				prevHitItem = newItem;
 				HoldObject(newItem);
 			} else if (Physics.Raycast(ray, out hit)) {
 				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
+
+				if (hit.transform.GetComponent<Obj>() != null) {
+					hit.transform.GetComponent<Obj>().ObjectHover(true);
+					prevHitItem = hit.transform;
+				}
+
 				if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-					Debug.Log("HitPoint: " + hit.point + " Hit name: " + hit.transform.name + " hit transform pos: " + hit.transform.position);
 					HoldObject(hit.transform, hit.point);
 				}
 			}
@@ -83,6 +107,8 @@ public class UIMouse : MonoBehaviour {
 
 			//SETTING UP PLANE AT CORRECT/expected Z
 			float itemExpectedZ = holder.transform.position.z + zDelta;
+			itemExpectedZ = itemExpectedZ > 5f ? 5f : itemExpectedZ;
+			Debug.Log("Expected Z: " + itemExpectedZ);
 			Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, itemExpectedZ));
 			
 			//SETTING UP MOUSE RAY
@@ -92,7 +118,6 @@ public class UIMouse : MonoBehaviour {
 				newPosition += mouseRay.GetPoint(hitDistance);
 				depthOrb.position = mouseRay.GetPoint(hitDistance);
 			}
-
 
 			worldSpaceCursor.position = newPosition;	
 
@@ -154,7 +179,13 @@ public class UIMouse : MonoBehaviour {
 		} else {
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 		}
-		previousDepth += zScrollDelta;
+		if (previousDepth + zScrollDelta < -4.5) {
+			previousDepth = -4.5f;
+		} else if (previousDepth + zScrollDelta > 5) {
+			previousDepth = 5f;
+		} else {
+			previousDepth += zScrollDelta;
+		}
 		return zScrollDelta;
 	}
 

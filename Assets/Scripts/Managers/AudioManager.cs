@@ -14,7 +14,8 @@ public class AudioManager : MonoBehaviour {
 	[HideInInspector]
 	public Song currentSong;
 
-	void Awake() {
+	public void AudioSetup() {
+		DontDestroyOnLoad(this.gameObject);
 		for (int i = 0; i < songs.Length; i++) {
 			if (i == 0) {
 				songs[i].prev = songs[songs.Length - 1];
@@ -30,17 +31,9 @@ public class AudioManager : MonoBehaviour {
 		if (songs.Length > 0) {
 			currentSong = songs[0];
 			songs[0].source = gameObject.AddComponent<AudioSource>();
+			songs[0].source.playOnAwake = false;
 			UpdateSongAudioSource();
 		}
-	}
-	// Use this for initialization
-	void Start () {
-		Play("Turbo Giant");	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public void Play (string name) {
@@ -73,12 +66,16 @@ public class AudioManager : MonoBehaviour {
 	public void PauseSong() {
 		currentSong.source.Pause();
 	}
+
+	public void UpdateVolume() {
+		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
+		//whatever other sources we end up having get updated here too
+	}
 //multiply song audio but music audio slider when that gets set
 	private void UpdateSongAudioSource() {
 		currentSong.source = gameObject.GetComponent<AudioSource>();
 		currentSong.source.clip = currentSong.clip;
-		currentSong.source.volume = currentSong.volume;
+		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
 		currentSong.source.pitch = currentSong.pitch;
-		currentSong.source.name = currentSong.name;
 	}
 }

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114769258110456296}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,6 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: {fileID: 0}
+  audioManager: {fileID: 0}
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1
   paused: 0
 --- !u!114 &114769258110456296
 MonoBehaviour:
@@ -91,19 +95,19 @@ MonoBehaviour:
     name: Mercy Gene
     artist: Tendon Levey
   - clip: {fileID: 8300000, guid: 3353b963d23b85e45a8f9cace9358d06, type: 3}
-    volume: 0.336
+    volume: 0.23
     pitch: 1
     source: {fileID: 0}
     name: Strum Capture My Heart
     artist: Phish Funk
   - clip: {fileID: 8300000, guid: d85580aee4b826847a6b8356f6f1a203, type: 3}
-    volume: 0.336
+    volume: 0.294
     pitch: 1
     source: {fileID: 0}
     name: Intimacy of The Funk
     artist: sanmi
   - clip: {fileID: 8300000, guid: 0849e856981d3b6448d968f659738f21, type: 3}
-    volume: 0.336
+    volume: 0.291
     pitch: 1
     source: {fileID: 0}
     name: DISMOUNT 7"

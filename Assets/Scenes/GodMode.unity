@@ -1950,7 +1950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4339100659573100, guid: 6751b849f7f944341b29bb59213d3a34, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6751b849f7f944341b29bb59213d3a34, type: 2}
@@ -5671,7 +5671,7 @@ Prefab:
     - target: {fileID: 224966593623140206, guid: bee52684655abe74480c11921ac87082,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -629.2271
+      value: -628.9064
       objectReference: {fileID: 0}
     - target: {fileID: 224182743524302276, guid: bee52684655abe74480c11921ac87082,
         type: 2}
@@ -5726,7 +5726,7 @@ Prefab:
     - target: {fileID: 224531105330654534, guid: bee52684655abe74480c11921ac87082,
         type: 2}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.00000035762787
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bee52684655abe74480c11921ac87082, type: 2}
@@ -6160,7 +6160,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1893901712}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4807320027197748, guid: 7ddb79056f09abb4394c670008b281d8, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6192,7 +6192,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4807320027197748, guid: 7ddb79056f09abb4394c670008b281d8, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114638684389839938, guid: 7ddb79056f09abb4394c670008b281d8,
         type: 2}
@@ -6792,11 +6792,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1657992597}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1684966953 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4807320027197748, guid: 7ddb79056f09abb4394c670008b281d8,
-    type: 2}
-  m_PrefabInternal: {fileID: 1536482721}
 --- !u!1 &1686103862
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,7 +7670,6 @@ Transform:
   - {fileID: 550248983}
   - {fileID: 1704959822}
   - {fileID: 1626570154}
-  - {fileID: 1684966953}
   - {fileID: 124280784}
   m_Father: {fileID: 0}
   m_RootOrder: 4
