@@ -81,6 +81,7 @@ public class UIMouse : MonoBehaviour {
 				}
 
 				Transform newItem = GameController.Instance.SpawnSelected(newPosition);
+				Debug.Log(newItem.name);
 				newItem.GetComponent<Obj>().ObjectHover(true);
 				prevHitItem = newItem;
 				HoldObject(newItem);

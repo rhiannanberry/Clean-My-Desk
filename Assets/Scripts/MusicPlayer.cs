@@ -11,12 +11,13 @@ public class MusicPlayer : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		songDetails = GetComponentInChildren<TextMeshProUGUI>();
-		manager = GameController.Instance.GetComponent<AudioManager>();
+		manager = GameController.Instance.audioManager;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (manager.currentSong.source.isPlaying) {
+			UpdateSongDetails();
 			if (playButton.activeSelf|| !pauseButton.activeSelf) {
 				playButton.SetActive(false);
 				pauseButton.SetActive(true);
