@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4807320027197748}
   - component: {fileID: 114638684389839938}
+  - component: {fileID: 114769258110456296}
   m_Layer: 0
   m_Name: GameController
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +34,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081813681893266}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -51,48 +52,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5170c8076bb5849bf3a2af091ca8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: -1
-  interactables:
-  - item: {fileID: 0}
-    count: 10
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 12
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 12
-  - item: {fileID: 0}
-    count: 2
-  - item: {fileID: 0}
-    count: 3
-  - item: {fileID: 0}
-    count: 4
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 3
-  - item: {fileID: 0}
-    count: 2
-  - item: {fileID: 0}
-    count: 4
-  - item: {fileID: 0}
-    count: 12
-  - item: {fileID: 0}
-    count: 2
-  - item: {fileID: 0}
-    count: 2
-  - item: {fileID: 0}
-    count: 4
-  - item: {fileID: 0}
-    count: 1
-  - item: {fileID: 0}
-    count: 1
-  itemCounts: 
+  selected: {fileID: 0}
+  audioManager: {fileID: 0}
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1
+  paused: 0
+--- !u!114 &114769258110456296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1081813681893266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903f11beab8b6304397e94f8ec27020f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songs:
+  - clip: {fileID: 8300000, guid: 9d6d462502d11514e8670e3f15aec82a, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: Turbo Giant
+    artist: Wankers
+  - clip: {fileID: 8300000, guid: 343771d0ce5984a47bd363d6bcf90ce2, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: Echo Blues Effect
+    artist: Anonymous420
+  - clip: {fileID: 8300000, guid: 928d753e0009a6144a4d2f9bc0e6ce7f, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: Jump and Run
+    artist: KieLoBot
+  - clip: {fileID: 8300000, guid: 15bda5c85b1b36946a1f1480a8655edf, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: Mercy Gene
+    artist: Tendon Levey
+  - clip: {fileID: 8300000, guid: 3353b963d23b85e45a8f9cace9358d06, type: 3}
+    volume: 0.23
+    pitch: 1
+    source: {fileID: 0}
+    name: Strum Capture My Heart
+    artist: Phish Funk
+  - clip: {fileID: 8300000, guid: d85580aee4b826847a6b8356f6f1a203, type: 3}
+    volume: 0.294
+    pitch: 1
+    source: {fileID: 0}
+    name: Intimacy of The Funk
+    artist: sanmi
+  - clip: {fileID: 8300000, guid: 0849e856981d3b6448d968f659738f21, type: 3}
+    volume: 0.291
+    pitch: 1
+    source: {fileID: 0}
+    name: DISMOUNT 7"
+    artist: The Willing
+  - clip: {fileID: 8300000, guid: 56f9307902e505c45ac54a5dc87cd943, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: Happy Forbidden District
+    artist: Lobo Loco
+  currentSongIndex: 0
+  currentSong:
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    name: 
+    artist: 

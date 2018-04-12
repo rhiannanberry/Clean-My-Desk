@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController> {
 
@@ -8,25 +9,40 @@ public class GameController : Singleton<GameController> {
     public GameObject selected = null;
     private MenuManager pauseMenu = null;
 
+    public AudioManager audioManager;
+
+    [HideInInspector]
+    public float masterVolume = 1;
+    [HideInInspector]
+    public float musicVolume = 1;
+    [HideInInspector]
+    public float sfxVolume = 1;
+
     public bool paused;
 
-	// Use this for initialization
 	void Start () {
-        pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
-        paused = pauseMenu.paused;
+        audioManager = GetComponent<AudioManager>();
+        audioManager.AudioSetup();
+        audioManager.PlaySong();
+        if (SceneManager.GetActiveScene().buildIndex != 0) {
+            pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
+            paused = pauseMenu.paused;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
-            pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
-            if (!pauseMenu.paused) {
-                pauseMenu.OpenPauseMenu();
-            } else if (pauseMenu.paused) {
-                pauseMenu.Continue();
+        if (SceneManager.GetActiveScene().buildIndex != 0) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
+                if (!pauseMenu.paused) {
+                    pauseMenu.OpenPauseMenu();
+                } else if (pauseMenu.paused) {
+                    pauseMenu.Continue();
+                }
             }
+            paused = pauseMenu.paused;
         }
-        paused = pauseMenu.paused;
 	}
 
     public Transform SpawnSelected(Vector3 spawnPosition) {
@@ -34,6 +50,13 @@ public class GameController : Singleton<GameController> {
             return selected.GetComponent<ObjectButton>().SpawnObject(spawnPosition);
         }
         return null;
+    }
+
+    void OnLevelWasLoaded() {
+        if (SceneManager.GetActiveScene().buildIndex != 0) {
+            pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
+            paused = pauseMenu.paused;
+        }
     }
 
     private void CheckMenu() {
