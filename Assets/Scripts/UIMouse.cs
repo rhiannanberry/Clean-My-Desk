@@ -21,13 +21,17 @@ public class UIMouse : MonoBehaviour {
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 0.2f;
 	private Transform prevHitItem;
+
 	private GameController gC;
 	public Transform ZPosCross, XPosCross;
+    public AudioManager audioManager;
 
     // Use this for initialization
     void Start () {
-		gC = GameController.Instance;
-		holder = new GameObject();
+        audioManager = GetComponent<AudioManager>();
+        audioManager.AudioSetup();
+        gC = GameController.Instance;
+        holder = new GameObject();
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
 		Cursor.visible = false;
@@ -77,7 +81,6 @@ public class UIMouse : MonoBehaviour {
 			UpdatePhantomSelected();
 			UpdatePhantomItem(newPosition);
 			PlaceItem(newPosition);
-
 		}
 		HighlightHoverAndPickupItem();		
 	}
@@ -221,6 +224,9 @@ public class UIMouse : MonoBehaviour {
 			//Destroy phantomItem and hold an object
 			Transform newItem = gC.SpawnSelected(gC.phantomItem.transform.position);
 			if (newItem != null) {
+       string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
+       audioManager.Play(sfx).pitch = (Random.value * 0.2f) + 0.9f;
+       //audioManager.UpdateSongAudioSource();
 				newItem.rotation = gC.phantomItem.transform.rotation;
 				//Destroy(gC.phantomItem);
 				newItem.GetComponent<Obj>().ObjectHover(true);

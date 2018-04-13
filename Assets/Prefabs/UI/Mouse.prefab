@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114921384285655902}
   - component: {fileID: 114370497202511734}
   - component: {fileID: 95496787892800986}
+  - component: {fileID: 114107172071856896}
   m_Layer: 5
   m_Name: Mouse
   m_TagString: Untagged
@@ -47,6 +48,38 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114107172071856896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232216125150886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903f11beab8b6304397e94f8ec27020f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songs:
+  - clip: {fileID: 8300000, guid: 695b634e5d9cee34fa83a78ea6db5e84, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    name: gasp
+    artist: '?'
+  - clip: {fileID: 8300000, guid: e81ca8bb853b2ed4f8a0e0cc6690827b, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    name: scream
+    artist: '?'
+  currentSongIndex: 0
+  currentSong:
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+    name: 
+    artist: 
 --- !u!114 &114370497202511734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,8 +97,10 @@ MonoBehaviour:
   depthOrb: {fileID: 0}
   worldSpaceCursor: {fileID: 0}
   holding: {fileID: 0}
+  audioManager: {fileID: 0}
   ZPosCross: {fileID: 0}
   XPosCross: {fileID: 0}
+
 --- !u!114 &114921384285655902
 MonoBehaviour:
   m_ObjectHideFlags: 1
