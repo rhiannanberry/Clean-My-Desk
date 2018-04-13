@@ -44,10 +44,12 @@ public class ObjectButton : MonoBehaviour {
 			SaveData.SpawnCount++;
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
-		} else {
+		}
+			GameController.Instance.audioManager.PlaySound("error");
+			GetComponent<Animator>().SetTrigger("Disabled");
 			//animate counter
 			//play roblox death sound
-		}
+		
 		return null;
 	}
 
@@ -68,4 +70,5 @@ public class ObjectButton : MonoBehaviour {
 	private void UpdateCounter() {
 		counterText.text = itemCount.ToString();
 	}
+
 }

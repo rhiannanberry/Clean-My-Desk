@@ -53,6 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: {fileID: 0}
+  phantomSelected: {fileID: 0}
+  phantomItem: {fileID: 0}
+  setPhantom: 0
+  itemMenuOpen: 0
   audioManager: {fileID: 0}
   masterVolume: 1
   musicVolume: 1
@@ -118,6 +122,19 @@ MonoBehaviour:
     source: {fileID: 0}
     name: Happy Forbidden District
     artist: Lobo Loco
+  sounds:
+  - clip: {fileID: 8300000, guid: 695b634e5d9cee34fa83a78ea6db5e84, type: 3}
+    volume: 0.199
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e81ca8bb853b2ed4f8a0e0cc6690827b, type: 3}
+    volume: 0.185
+    pitch: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: d5375d7a4626ba247a96ddf28603a9e2, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
   currentSongIndex: 0
   currentSong:
     clip: {fileID: 0}

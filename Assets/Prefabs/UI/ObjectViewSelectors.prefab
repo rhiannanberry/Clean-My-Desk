@@ -5645,7 +5645,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f91b74601512107468027d1ecbbf2010, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6360,7 +6360,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2af649240da62c249a03193f9f66c3ab, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7397,7 +7397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfa0b6557e6a4e45b77354b8569b994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1232216125150886, guid: 5b5ed336ee97b5649a937f6294776f47, type: 2}
+  prefab: {fileID: 1421600532836456, guid: 8a952528a4d9fd740b582f10f3ce7a1e, type: 2}
   itemCount: 1
 --- !u!114 &114676474294942668
 MonoBehaviour:

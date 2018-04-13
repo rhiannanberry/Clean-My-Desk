@@ -73,7 +73,7 @@ public class UIMouse : MonoBehaviour {
 		//if you have the item menu open and you've selected something and you're not holding something
 		if (gC.selected != null && holding == null) {
 
-			Vector3 newPosition = GetMouseWorldPosition(); // based on prevZ and mouse center
+			Vector3 newPosition = GetMouseWorldPosition(getZDelta()); // based on prevZ and mouse center
 
 
 			UpdatePhantomSelected();
@@ -85,6 +85,9 @@ public class UIMouse : MonoBehaviour {
 
 	void Holding() {
 		if (holding != null && Input.GetMouseButton(0)) {
+			if (gC.phantomItem != null) {
+				gC.phantomItem.transform.localScale = new Vector3(0,0,0);
+			}
 			float zDelta = getZDelta();
 
 			Vector3 newPosition = Vector3.zero;
@@ -157,25 +160,21 @@ public class UIMouse : MonoBehaviour {
 
 	private float getZDelta() {
 		float zScrollDelta = 6 * Input.GetAxis("Mouse ScrollWheel");
-		if (zScrollDelta != 0) {
+		if (zScrollDelta != 0 && holding != null) {
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-		} else {
+		} else if (holding != null){
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-		}
-		if (previousDepth + zScrollDelta < -4.5) {
-			previousDepth = -4.5f;
-		} else if (previousDepth + zScrollDelta > 5) {
-			previousDepth = 5f;
-		} else {
-			previousDepth += zScrollDelta;
 		}
 		return zScrollDelta;
 	}
 
-	private Vector3 GetMouseWorldPosition() {
+	private Vector3 GetMouseWorldPosition(float zVal) {
 		//Setting spawn location
 		Vector3 newPosition = Vector3.zero;
-
+		if (gC.phantomItem != null) {
+			previousDepth = zVal + gC.phantomItem.transform.position.z;
+		}
+		Mathf.Clamp(previousDepth, -4.5f, 5f);
 		//SETTING UP PLANE AT CORRECT/expected Z
 		Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
 		
@@ -214,6 +213,9 @@ public class UIMouse : MonoBehaviour {
 		if (gC.phantomItem != null) {
 			UpdateRigidbodyRotation(gC.phantomItem);
 			gC.phantomItem.transform.position = newPosition;
+			if (holding == null) {
+				gC.phantomItem.transform.localScale = Vector3.one;
+			}
 		}
 	}
 
@@ -221,17 +223,14 @@ public class UIMouse : MonoBehaviour {
 		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
 			//Destroy phantomItem and hold an object
 			Transform newItem = gC.SpawnSelected(gC.phantomItem.transform.position);
+			Debug.Log(newItem);
 			if (newItem != null) {
 				string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
-				gC.audioManager.PlaySound(sfx).pitch = (Random.value * 0.2f) + 0.9f;
-       //audioManager.UpdateSongAudioSource();
+				gC.audioManager.PlaySound(sfx);
 				newItem.rotation = gC.phantomItem.transform.rotation;
-				//Destroy(gC.phantomItem);
 				newItem.GetComponent<Obj>().ObjectHover(true);
 				prevHitItem = newItem;
 				HoldObject(newItem);
-			} else {
-				gC.audioManager.PlaySound("error");
 			}
 		}
 	}
@@ -256,6 +255,7 @@ public class UIMouse : MonoBehaviour {
 
 	private void UpdateRigidbodyRotation(GameObject obj) {
 		Rigidbody rb = obj.GetComponent<Rigidbody>();
+		rb.freezeRotation = false;
 		Quaternion deltaRotation = Quaternion.AngleAxis(Input.GetAxis("Horizontal")*5, Vector3.up) * Quaternion.AngleAxis(5*Input.GetAxis("Vertical"), Vector3.right);
 		rb.MoveRotation(deltaRotation * rb.rotation);
 	}

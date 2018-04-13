@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour {
 
 	private AudioSource songSource;
 	private AudioSource[] soundsSources;
+	private AudioSource test;
 
 	public void AudioSetup() {
 		DontDestroyOnLoad(this.gameObject);
@@ -43,16 +44,23 @@ public class AudioManager : MonoBehaviour {
 		soundsSources = new AudioSource[sounds.Length];
 		for (int i = 0; i < sounds.Length; i++) {
 			soundsSources[i] = gameObject.AddComponent<AudioSource>();
+			sounds[i].source = soundsSources[i];
 			soundsSources[i].clip = sounds[i].clip;
 			soundsSources[i].volume = sounds[i].volume * GameController.Instance.sfxVolume;
 			soundsSources[i].pitch = sounds[i].pitch;
 		}		
 	}
 
-	public Sound PlaySound(string name) {
-		Sound s = Array.Find(sounds, sound => sound.clip.name == name);
-		s.source.Play();
-		return s;
+	public void PlaySound(string name) {
+		foreach( Sound s in sounds) {
+			if (s.clip.name == name) {
+				if (name == "gasp" || name == "scream") {
+					s.source.pitch =  (UnityEngine.Random.value * 0.2f) + 0.9f;
+				}
+				s.source.Play();
+				break;
+			}
+		}
 	}
 
 	public Song Play (string name) {
@@ -94,6 +102,9 @@ public class AudioManager : MonoBehaviour {
 
 	public void UpdateVolume() {
 		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
+		foreach (Sound s in sounds) {
+			s.source.volume = s.volume * GameController.Instance.masterVolume * GameController.Instance.sfxVolume;
+		}
 		//whatever other sources we end up having get updated here too
 	}
 //multiply song audio but music audio slider when that gets set
