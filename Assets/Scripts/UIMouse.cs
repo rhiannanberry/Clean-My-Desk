@@ -22,10 +22,13 @@ public class UIMouse : MonoBehaviour {
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 0.2f;
 	private Transform prevHitItem;
+    public AudioManager audioManager;
 
     // Use this for initialization
     void Start () {
-		holder = new GameObject();
+        audioManager = GetComponent<AudioManager>();
+        audioManager.AudioSetup();
+        holder = new GameObject();
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
 		Cursor.visible = false;
@@ -59,8 +62,8 @@ public class UIMouse : MonoBehaviour {
 	}
 
 	void Selecting() {
-		if (holding == null) {
-			if (prevHitItem != null) {
+        if (holding == null) {
+            if (prevHitItem != null) {
 				prevHitItem.GetComponent<Obj>().ObjectHover(false);
 			}
 			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
@@ -85,7 +88,7 @@ public class UIMouse : MonoBehaviour {
 				newItem.GetComponent<Obj>().ObjectHover(true);
 				prevHitItem = newItem;
 				HoldObject(newItem);
-			} else if (Physics.Raycast(ray, out hit)) {
+            } else if (Physics.Raycast(ray, out hit)) {
 				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
 
 				if (hit.transform.GetComponent<Obj>() != null) {
@@ -94,7 +97,11 @@ public class UIMouse : MonoBehaviour {
 				}
 
 				if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-					HoldObject(hit.transform, hit.point);
+                    //Does this code suck? yeah! but it's showtime in 19 hours!
+                    string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
+                    audioManager.Play(sfx).pitch = (Random.value * 0.2f) + 0.9f;
+                    //audioManager.UpdateSongAudioSource();
+                    HoldObject(hit.transform, hit.point);
 				}
 			}
 		}

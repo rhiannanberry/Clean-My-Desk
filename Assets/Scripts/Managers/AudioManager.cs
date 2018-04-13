@@ -36,9 +36,15 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
-	public void Play (string name) {
+	public Song Play (string name) {
 		Song s = Array.Find(songs, song => song.name == name);
-		s.source.Play();
+        currentSong.source.Stop();
+        currentSong.source = null;
+        currentSong = s;
+        UpdateSongAudioSource();
+        PlaySong();
+        return currentSong;
+        //s.source.Play();
 	}
 
 	public Song NextSong() {
@@ -72,7 +78,7 @@ public class AudioManager : MonoBehaviour {
 		//whatever other sources we end up having get updated here too
 	}
 //multiply song audio but music audio slider when that gets set
-	private void UpdateSongAudioSource() {
+	public void UpdateSongAudioSource() {
 		currentSong.source = gameObject.GetComponent<AudioSource>();
 		currentSong.source.clip = currentSong.clip;
 		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
