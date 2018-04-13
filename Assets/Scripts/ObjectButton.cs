@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ObjectButton : MonoBehaviour {
-	private GameObject prefab;
+	private GameObject prefab, phantomPrefab;
 	private TextMeshProUGUI counterText;
 
-	private int itemCount;
+	[HideInInspector]
+	public int itemCount;
 	private bool itemLimit = true;
 
 	void Start() {
@@ -26,6 +27,7 @@ public class ObjectButton : MonoBehaviour {
 
 	public void SetValues(GameObject prefab, int itemCount) {
 		this.prefab = prefab;
+		this.prefab.GetComponent<Obj>().buttonReference = gameObject;
 		this.itemCount = itemCount;
 		counterText = transform.Find("Counter/CountText").GetComponent<TextMeshProUGUI>();
 		UpdateCounter();
@@ -42,6 +44,9 @@ public class ObjectButton : MonoBehaviour {
 			SaveData.SpawnCount++;
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
+		} else {
+			//animate counter
+			//play roblox death sound
 		}
 		return null;
 	}
@@ -53,6 +58,11 @@ public class ObjectButton : MonoBehaviour {
 			itemCount++;
 			UpdateCounter();
 		}
+	}
+
+	public GameObject InstantiateObject() {
+		prefab.GetComponent<Obj>().buttonReference = gameObject;
+		return Instantiate(prefab);
 	}
 
 	private void UpdateCounter() {

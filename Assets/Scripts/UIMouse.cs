@@ -12,7 +12,6 @@ public class UIMouse : MonoBehaviour {
 	public float mouseSpeed = 20.0f;
 
     public float previousDepth = -2.0f;
-	public Transform depthOrb;
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
 	private RectTransform screenPos;
@@ -22,12 +21,16 @@ public class UIMouse : MonoBehaviour {
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 0.2f;
 	private Transform prevHitItem;
+
+	private GameController gC;
+	public Transform ZPosCross, XPosCross;
     public AudioManager audioManager;
 
     // Use this for initialization
     void Start () {
         audioManager = GetComponent<AudioManager>();
         audioManager.AudioSetup();
+        gC = GameController.Instance;
         holder = new GameObject();
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
@@ -49,62 +52,37 @@ public class UIMouse : MonoBehaviour {
 		screenPos.anchoredPosition = new Vector2(Mathf.Clamp(screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(screenPos.anchoredPosition.y, 0, Screen.height)); 
 		IsInMenu();
 		if (timeMode) {
-			if (GameController.Instance.paused) {
+			if (gC.paused) {
 				GetComponent<Image>().enabled = true;
 			} else {
 
 				GetComponent<Image>().enabled = false;
 			}
 		} else if (!inMenu) {
-			Selecting(); // selecting on the actual desk, not the menu
+			NotHoldingUpdate(); // selecting on the actual desk, not the menu
 			Holding();
+			UpdateDeskCrosshair();
 		}
 	}
 
-	void Selecting() {
-        if (holding == null) {
-            if (prevHitItem != null) {
-				prevHitItem.GetComponent<Obj>().ObjectHover(false);
-			}
-			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
-			Debug.DrawRay(ray.origin, ray.direction*50);
-			RaycastHit hit;
-			if (GameController.Instance.selected != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-				//Setting spawn location
-				Vector3 newPosition = Vector3.zero;
-
-				//SETTING UP PLANE AT CORRECT/expected Z
-				Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
-				
-				//SETTING UP MOUSE RAY
-				Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
-				float hitDistance = 0;
-				if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
-					newPosition += mouseRay.GetPoint(hitDistance);
-				}
-
-				Transform newItem = GameController.Instance.SpawnSelected(newPosition);
-				Debug.Log(newItem.name);
-				newItem.GetComponent<Obj>().ObjectHover(true);
-				prevHitItem = newItem;
-				HoldObject(newItem);
-            } else if (Physics.Raycast(ray, out hit)) {
-				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
-
-				if (hit.transform.GetComponent<Obj>() != null) {
-					hit.transform.GetComponent<Obj>().ObjectHover(true);
-					prevHitItem = hit.transform;
-				}
-
-				if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-                    //Does this code suck? yeah! but it's showtime in 19 hours!
-                    string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
-                    audioManager.Play(sfx).pitch = (Random.value * 0.2f) + 0.9f;
-                    //audioManager.UpdateSongAudioSource();
-                    HoldObject(hit.transform, hit.point);
-				}
-			}
+	void NotHoldingUpdate() {
+		if (prevHitItem != null) {
+			prevHitItem.GetComponent<Obj>().ObjectHover(false);
 		}
+		//REMINDER TO RHIANNAN OF THE FUTURE:
+		//UPDATE UNITY TO C# V6 SO YOU CAN USE NULL CONDITIONAL OPERATORS
+
+		//if you have the item menu open and you've selected something and you're not holding something
+		if (gC.selected != null && holding == null) {
+
+			Vector3 newPosition = GetMouseWorldPosition(); // based on prevZ and mouse center
+
+
+			UpdatePhantomSelected();
+			UpdatePhantomItem(newPosition);
+			PlaceItem(newPosition);
+		}
+		HighlightHoverAndPickupItem();		
 	}
 
 	void Holding() {
@@ -124,11 +102,9 @@ public class UIMouse : MonoBehaviour {
 			float hitDistance = 0;
 			if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
 				newPosition += mouseRay.GetPoint(hitDistance);
-				depthOrb.position = mouseRay.GetPoint(hitDistance);
 			}
 
 			worldSpaceCursor.position = newPosition;	
-
 			Rigidbody heldrb = holding.GetComponent<Rigidbody>();
             heldrb.useGravity = false;
 			holder.transform.position = newPosition;
@@ -136,8 +112,7 @@ public class UIMouse : MonoBehaviour {
 			//holding.localPosition = itemPositionOffset;
 			heldrb.velocity = Vector3.zero;
 			heldrb.MovePosition(holdingLocalPositionProxy.transform.position);
-			Quaternion deltaRotation = Quaternion.AngleAxis(Input.GetAxis("Horizontal")*5, Vector3.up) * Quaternion.AngleAxis(5*Input.GetAxis("Vertical"), Vector3.right);
-			heldrb.MoveRotation(deltaRotation * heldrb.rotation);
+			UpdateRigidbodyRotation(holding.gameObject);
 
             if(lastCursorPosition != null)
             {
@@ -197,6 +172,106 @@ public class UIMouse : MonoBehaviour {
 			previousDepth += zScrollDelta;
 		}
 		return zScrollDelta;
+	}
+
+	private Vector3 GetMouseWorldPosition() {
+		//Setting spawn location
+		Vector3 newPosition = Vector3.zero;
+
+		//SETTING UP PLANE AT CORRECT/expected Z
+		Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
+		
+		//SETTING UP MOUSE RAY
+		Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+		float hitDistance = 0;
+
+		if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
+			newPosition += mouseRay.GetPoint(hitDistance);
+		}
+
+		return newPosition;
+	}
+
+	private void UpdatePhantomSelected() {
+		if ((gC.selected != gC.phantomSelected) || gC.phantomItem == null) {
+			//Update those values to match
+			gC.phantomSelected = gC.selected;
+			//If not null, destroy previous phantomItem
+			if (gC.phantomItem != null) Destroy(gC.phantomItem);
+
+			//If phantomSelected not null, instantiate new phantomItem
+			if (gC.phantomSelected != null) {
+				gC.setPhantom = true;
+				gC.phantomItem = gC.phantomSelected.GetComponent<ObjectButton>().InstantiateObject();
+				gC.phantomItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+			}
+			//remove colliders and obj script
+			//set position, but maybe do that outside of this if/at the end of this function
+			//will also need to figure in rotation
+		}
+	}
+
+	//Add rotation to this later
+	private void UpdatePhantomItem(Vector3 newPosition) {
+		if (gC.phantomItem != null) {
+			UpdateRigidbodyRotation(gC.phantomItem);
+			gC.phantomItem.transform.position = newPosition;
+		}
+	}
+
+	private void PlaceItem(Vector3 newPosition) {
+		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
+			//Destroy phantomItem and hold an object
+			Transform newItem = gC.SpawnSelected(gC.phantomItem.transform.position);
+			if (newItem != null) {
+       string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
+       audioManager.Play(sfx).pitch = (Random.value * 0.2f) + 0.9f;
+       //audioManager.UpdateSongAudioSource();
+				newItem.rotation = gC.phantomItem.transform.rotation;
+				//Destroy(gC.phantomItem);
+				newItem.GetComponent<Obj>().ObjectHover(true);
+				prevHitItem = newItem;
+				HoldObject(newItem);
+			}
+		}
+	}
+
+	private void HighlightHoverAndPickupItem() {
+		if ((gC.selected == null && !gC.itemMenuOpen) && holding == null) {
+			RaycastHit hit;
+			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+			Debug.DrawRay(ray.origin, ray.direction*50);
+
+			if (Physics.Raycast(ray, out hit)) {//hovering when not in item menu
+				if (hit.transform.GetComponent<Obj>() != null) {
+					hit.transform.GetComponent<Obj>().ObjectHover(true);
+					prevHitItem = hit.transform;
+				}
+				if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
+					HoldObject(hit.transform, hit.point);
+				}
+			}
+		}
+	}
+
+	private void UpdateRigidbodyRotation(GameObject obj) {
+		Rigidbody rb = obj.GetComponent<Rigidbody>();
+		Quaternion deltaRotation = Quaternion.AngleAxis(Input.GetAxis("Horizontal")*5, Vector3.up) * Quaternion.AngleAxis(5*Input.GetAxis("Vertical"), Vector3.right);
+		rb.MoveRotation(deltaRotation * rb.rotation);
+	}
+
+	private void UpdateDeskCrosshair() {
+
+		if (holding != null || (gC.phantomItem != null && gC.itemMenuOpen)) {
+			XPosCross.gameObject.SetActive(true);	
+			ZPosCross.gameObject.SetActive(true);
+			Vector3 pos = (holding != null) ? holding.position : gC.phantomItem.transform.position;
+			XPosCross.position = new Vector3(Mathf.Clamp(pos.x, -7.75f, 7.75f),0,0);
+			ZPosCross.position = new Vector3(0,0, Mathf.Clamp(pos.z, -3.5f, 3.5f));
+		} else {
+			ZPosCross.gameObject.SetActive(false);	
+			XPosCross.gameObject.SetActive(false);	
+		}
 	}
 
 	public void IsInMenu() {

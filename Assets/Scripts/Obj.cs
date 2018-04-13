@@ -16,10 +16,28 @@ public class Obj: MonoBehaviour {
 		baseColor = childMats[0].materials[0].GetColor("_OutlineColor");
 	}
 
+	void Start() {
+		if (GameController.Instance.setPhantom && GameController.Instance.phantomSelected == buttonReference) {
+			Debug.Log(name);
+			GetComponent<Rigidbody>().useGravity = false;
+			foreach( Collider childCol in GetComponentsInChildren<Collider>()) {
+				childCol.enabled = false;
+			}
+			GetComponent<Obj>().enabled = false;
+			GetComponent<Rigidbody>().freezeRotation = true;
+			transform.rotation = Quaternion.identity;
+			GameController.Instance.setPhantom = false;
+		}
+	}
+
 	void Update () {
 		if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().name != "TimeMode"){
 			if (!util && transform.position.y < -40) {
-				buttonReference.GetComponent<ObjectButton>().DespawnObject(gameObject);
+				if (buttonReference != null) {
+					buttonReference.GetComponent<ObjectButton>().DespawnObject(gameObject);
+				} else {
+					Destroy(gameObject);
+				}
 			}
 			if (util && transform.localPosition.x <= -10) {
 				Destroy(gameObject);

@@ -25,6 +25,12 @@ public class Menuing : MonoBehaviour {
             GameController.Instance.selected = null;
         }
         GetComponent<Animator>().SetBool("isOpen", isOpen);
+        if (gameObject.name == "ObjMenScrollView") {
+            GameController.Instance.itemMenuOpen = isOpen;
+            if (!isOpen && GameController.Instance.phantomItem != null) {
+                Destroy(GameController.Instance.phantomItem);
+            }
+        }
     }
 
     public void ToggleHide() {

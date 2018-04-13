@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4473566590263596}
   - component: {fileID: 54993717377625886}
   - component: {fileID: 114692757990737908}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4645853605148986}
   - component: {fileID: 33717963178147606}
   - component: {fileID: 23215008608741088}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Keyboard
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014432218990488}
-  m_LocalRotation: {x: 0.3752538, y: 0, z: 0, w: 0.9269221}
-  m_LocalPosition: {x: 1.21, y: -21.16, z: -52.93}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.19, y: -22.2, z: -51.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4645853605148986}
