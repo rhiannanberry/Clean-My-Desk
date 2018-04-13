@@ -7,6 +7,7 @@ public class GameController : Singleton<GameController> {
 
     //reference to the object button
     public GameObject selected = null;
+    public GameObject phantomSelected = null;
     private MenuManager pauseMenu = null;
 
     public AudioManager audioManager;

@@ -16,6 +16,20 @@ public class Obj: MonoBehaviour {
 		baseColor = childMats[0].materials[0].GetColor("_OutlineColor");
 	}
 
+	void Start() {
+		if ((GameController.Instance.phantomSelected != null) && GameController.Instance.phantomSelected == buttonReference) {
+			//remove obj script
+			//dont use rigid body gravity
+			//remove colliders
+			Debug.Log(name);
+			GetComponent<Rigidbody>().useGravity = false;
+			foreach( Collider childCol in GetComponentsInChildren<Collider>()) {
+				childCol.enabled = false;
+			}
+			GetComponent<Obj>().enabled = false;
+		}
+	}
+
 	void Update () {
 		if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().name != "TimeMode"){
 			if (!util && transform.position.y < -40) {

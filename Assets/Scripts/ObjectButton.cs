@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ObjectButton : MonoBehaviour {
-	private GameObject prefab;
+	private GameObject prefab, phantomPrefab;
 	private TextMeshProUGUI counterText;
 
 	private int itemCount;
@@ -53,6 +53,10 @@ public class ObjectButton : MonoBehaviour {
 			itemCount++;
 			UpdateCounter();
 		}
+	}
+
+	public GameObject InstantiateObject() {
+		return Instantiate(prefab);
 	}
 
 	private void UpdateCounter() {

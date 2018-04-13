@@ -16,7 +16,7 @@ public class UIMouse : MonoBehaviour {
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
 	private RectTransform screenPos;
-	private GameObject holder, holdingLocalPositionProxy;
+	private GameObject holder, holdingLocalPositionProxy, phantomItem;
 	private bool timeMode = false;
     private Vector3 lastCursorPosition;
     private Vector3 cursorMovement;
@@ -53,51 +53,29 @@ public class UIMouse : MonoBehaviour {
 				GetComponent<Image>().enabled = false;
 			}
 		} else if (!inMenu) {
-			Selecting(); // selecting on the actual desk, not the menu
+			NotHoldingUpdate(); // selecting on the actual desk, not the menu
 			Holding();
 		}
 	}
 
-	void Selecting() {
-		if (holding == null) {
-			if (prevHitItem != null) {
-				prevHitItem.GetComponent<Obj>().ObjectHover(false);
-			}
-			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
-			Debug.DrawRay(ray.origin, ray.direction*50);
-			RaycastHit hit;
-			if (GameController.Instance.selected != null && Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-				//Setting spawn location
-				Vector3 newPosition = Vector3.zero;
-
-				//SETTING UP PLANE AT CORRECT/expected Z
-				Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
-				
-				//SETTING UP MOUSE RAY
-				Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
-				float hitDistance = 0;
-				if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
-					newPosition += mouseRay.GetPoint(hitDistance);
-				}
-
-				Transform newItem = GameController.Instance.SpawnSelected(newPosition);
-				Debug.Log(newItem.name);
-				newItem.GetComponent<Obj>().ObjectHover(true);
-				prevHitItem = newItem;
-				HoldObject(newItem);
-			} else if (Physics.Raycast(ray, out hit)) {
-				depthOrb.position = Vector3.Scale(hit.transform.position, new Vector3(1,0,1));
-
-				if (hit.transform.GetComponent<Obj>() != null) {
-					hit.transform.GetComponent<Obj>().ObjectHover(true);
-					prevHitItem = hit.transform;
-				}
-
-				if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-					HoldObject(hit.transform, hit.point);
-				}
-			}
+	void NotHoldingUpdate() {
+		if (prevHitItem != null) {
+			prevHitItem.GetComponent<Obj>().ObjectHover(false);
 		}
+		//REMINDER TO RHIANNAN OF THE FUTURE:
+		//UPDATE UNITY TO C# V6 SO YOU CAN USE NULL CONDITIONAL OPERATORS
+
+		//if you have the item menu open and you've selected something and you're not holding something
+		if (GameController.Instance.selected != null && holding == null) {
+
+			Vector3 newPosition = GetMouseWorldPosition(); // based on prevZ and mouse center
+			
+			UpdatePhantomSelected();
+			UpdatePhantomItem(newPosition);
+			PlaceItem(newPosition);
+
+		}
+		HighlightHoverAndPickupItem();		
 	}
 
 	void Holding() {
@@ -190,6 +168,75 @@ public class UIMouse : MonoBehaviour {
 			previousDepth += zScrollDelta;
 		}
 		return zScrollDelta;
+	}
+
+	private Vector3 GetMouseWorldPosition() {
+		//Setting spawn location
+		Vector3 newPosition = Vector3.zero;
+
+		//SETTING UP PLANE AT CORRECT/expected Z
+		Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
+		
+		//SETTING UP MOUSE RAY
+		Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+		float hitDistance = 0;
+		if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
+			newPosition += mouseRay.GetPoint(hitDistance);
+		}
+		return newPosition;
+	}
+
+	private void UpdatePhantomSelected() {
+		if ((GameController.Instance.selected != GameController.Instance.phantomSelected) || phantomItem == null) {
+			//Update those values to match
+			GameController.Instance.phantomSelected = GameController.Instance.selected;
+			//If not null, destroy previous phantomItem
+			if (phantomItem != null) Destroy(phantomItem);
+
+			//If phantomSelected not null, instantiate new phantomItem
+			if (GameController.Instance.phantomSelected != null) {
+				phantomItem = GameController.Instance.phantomSelected.GetComponent<ObjectButton>().InstantiateObject();
+			}
+			//remove colliders and obj script
+			//set position, but maybe do that outside of this if/at the end of this function
+			//will also need to figure in rotation
+		}
+	}
+
+	//Add rotation to this later
+	private void UpdatePhantomItem(Vector3 newPosition) {
+		if (phantomItem != null) {
+			phantomItem.transform.position = newPosition;
+		}
+	}
+
+	private void PlaceItem(Vector3 newPosition) {
+		if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
+			//Destroy phantomItem and hold an object
+			Destroy(phantomItem);
+			Transform newItem = GameController.Instance.SpawnSelected(newPosition);
+			newItem.GetComponent<Obj>().ObjectHover(true);
+			prevHitItem = newItem;
+			HoldObject(newItem);
+		}
+	}
+
+	private void HighlightHoverAndPickupItem() {
+		if (GameController.Instance.selected == null && holding == null) {
+			RaycastHit hit;
+			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+			Debug.DrawRay(ray.origin, ray.direction*50);
+
+			if (Physics.Raycast(ray, out hit)) {//hovering when not in item menu
+				if (hit.transform.GetComponent<Obj>() != null) {
+					hit.transform.GetComponent<Obj>().ObjectHover(true);
+					prevHitItem = hit.transform;
+				}
+				if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject()) {
+					HoldObject(hit.transform, hit.point);
+				}
+			}
+		}
 	}
 
 	public void IsInMenu() {

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4702546655484520}
   - component: {fileID: 64594965767875980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: d4Collider
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4649225370638940}
   - component: {fileID: 54771309313039728}
   - component: {fileID: 114286310598822376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: D4
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 33174450970887838}
   - component: {fileID: 23287442663348978}
   - component: {fileID: 95282936454007328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: d4
   m_TagString: Item
   m_Icon: {fileID: 0}

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33065391309202270}
   - component: {fileID: 23641399101540466}
   - component: {fileID: 95326080146870604}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: d6
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4345244157100482}
   - component: {fileID: 64927352519268464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: d6Collider
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4747302868367080}
   - component: {fileID: 54708341654920642}
   - component: {fileID: 114051753956207938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: D6
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888726567602836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.19, y: -21.16, z: -51.21}
+  m_LocalPosition: {x: -2.596, y: -21.16, z: -51.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4255552274462246}
