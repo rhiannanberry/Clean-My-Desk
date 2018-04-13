@@ -7,12 +7,16 @@ using UnityEditor.Audio;
 public class AudioManager : MonoBehaviour {
 
 	public Song[] songs;
+	public Sound[] sounds;
 
 	[HideInInspector]
 	public int currentSongIndex;
 
 	[HideInInspector]
 	public Song currentSong;
+
+	private AudioSource songSource;
+	private AudioSource[] soundsSources;
 
 	public void AudioSetup() {
 		DontDestroyOnLoad(this.gameObject);
@@ -31,9 +35,24 @@ public class AudioManager : MonoBehaviour {
 		if (songs.Length > 0) {
 			currentSong = songs[0];
 			songs[0].source = gameObject.AddComponent<AudioSource>();
+			songSource = songs[0].source;
 			songs[0].source.playOnAwake = false;
 			UpdateSongAudioSource();
 		}
+
+		soundsSources = new AudioSource[sounds.Length];
+		for (int i = 0; i < sounds.Length; i++) {
+			soundsSources[i] = gameObject.AddComponent<AudioSource>();
+			soundsSources[i].clip = sounds[i].clip;
+			soundsSources[i].volume = sounds[i].volume * GameController.Instance.sfxVolume;
+			soundsSources[i].pitch = sounds[i].pitch;
+		}		
+	}
+
+	public Sound PlaySound(string name) {
+		Sound s = Array.Find(sounds, sound => sound.clip.name == name);
+		s.source.Play();
+		return s;
 	}
 
 	public Song Play (string name) {
@@ -83,5 +102,12 @@ public class AudioManager : MonoBehaviour {
 		currentSong.source.clip = currentSong.clip;
 		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
 		currentSong.source.pitch = currentSong.pitch;
+	}
+
+	public void UpdateSoundAudioSource(GameObject src, Sound s) {
+		s.source = src.GetComponent<AudioSource>();
+		s.source.clip = s.clip;
+		s.source.volume = s.volume * GameController.Instance.masterVolume * GameController.Instance.sfxVolume;
+		s.source.pitch = s.pitch;
 	}
 }

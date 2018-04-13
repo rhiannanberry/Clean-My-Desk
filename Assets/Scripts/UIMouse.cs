@@ -24,13 +24,11 @@ public class UIMouse : MonoBehaviour {
 
 	private GameController gC;
 	public Transform ZPosCross, XPosCross;
-    public AudioManager audioManager;
 
     // Use this for initialization
     void Start () {
-        audioManager = GetComponent<AudioManager>();
-        audioManager.AudioSetup();
         gC = GameController.Instance;
+
         holder = new GameObject();
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
@@ -224,14 +222,16 @@ public class UIMouse : MonoBehaviour {
 			//Destroy phantomItem and hold an object
 			Transform newItem = gC.SpawnSelected(gC.phantomItem.transform.position);
 			if (newItem != null) {
-       string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
-       audioManager.Play(sfx).pitch = (Random.value * 0.2f) + 0.9f;
+				string sfx = (Random.value > 0.5) ? "gasp" : "scream" ;
+				gC.audioManager.PlaySound(sfx).pitch = (Random.value * 0.2f) + 0.9f;
        //audioManager.UpdateSongAudioSource();
 				newItem.rotation = gC.phantomItem.transform.rotation;
 				//Destroy(gC.phantomItem);
 				newItem.GetComponent<Obj>().ObjectHover(true);
 				prevHitItem = newItem;
 				HoldObject(newItem);
+			} else {
+				gC.audioManager.PlaySound("error");
 			}
 		}
 	}
