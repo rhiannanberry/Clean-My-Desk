@@ -62,6 +62,7 @@ MonoBehaviour:
   musicVolume: 1
   sfxVolume: 1
   paused: 0
+  canMove: 0
 --- !u!114 &114769258110456296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,12 +75,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
+  - clip: {fileID: 8300000, guid: afbdc0c98850e6b479d65185d8297a27, type: 3}
+    volume: 0.336
+    pitch: 1
+    source: {fileID: 0}
+    name: clean my desk
+    artist: Sean Flanagan
   - clip: {fileID: 8300000, guid: 9d6d462502d11514e8670e3f15aec82a, type: 3}
     volume: 0.336
     pitch: 1
     source: {fileID: 0}
     name: Turbo Giant
     artist: Wankers
+  - clip: {fileID: 8300000, guid: 130db59bb4d09674a8ba4c32c34472c5, type: 3}
+    volume: 0.315
+    pitch: 1
+    source: {fileID: 0}
+    name: 63 amp
+    artist: Lenno Liu
   - clip: {fileID: 8300000, guid: 343771d0ce5984a47bd363d6bcf90ce2, type: 3}
     volume: 0.336
     pitch: 1

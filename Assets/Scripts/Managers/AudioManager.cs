@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.Audio;
 
 public class AudioManager : MonoBehaviour {
 
@@ -93,10 +92,12 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public void PlaySong() {
+		GameController.Instance.musicPaused = false;
 		currentSong.source.Play();
 	}
 
 	public void PauseSong() {
+		GameController.Instance.musicPaused = true;
 		currentSong.source.Pause();
 	}
 
@@ -120,5 +121,11 @@ public class AudioManager : MonoBehaviour {
 		s.source.clip = s.clip;
 		s.source.volume = s.volume * GameController.Instance.masterVolume * GameController.Instance.sfxVolume;
 		s.source.pitch = s.pitch;
+	}
+
+	void Update() {
+		if (!GameController.Instance.musicPaused && !currentSong.source.isPlaying) {
+			NextSong();
+		}
 	}
 }

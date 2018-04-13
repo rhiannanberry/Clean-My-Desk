@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33595896170093208}
   - component: {fileID: 23082425301917098}
   - component: {fileID: 95533652570180148}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tablet
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 136112862418916284}
   m_Layer: 8
   m_Name: TabletColliders2
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 65975460480343462}
   m_Layer: 8
   m_Name: TabletColliders
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

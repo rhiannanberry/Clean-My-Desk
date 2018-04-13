@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour {
 
 	//software design is my passion
 	IEnumerator InitCountdown() {
+		GameController.Instance.canMove = false;
 		text.text = "3";
 		yield return new WaitUntil(IsNotPaused);
 		yield return new WaitForSeconds(1);
@@ -36,6 +37,7 @@ public class Timer : MonoBehaviour {
 		yield return new WaitUntil(IsNotPaused);
 		text.text = "GO!";
 		GetComponent<Animator>().SetBool("Start", true);
+		GameController.Instance.canMove = true;
 		yield return new WaitUntil(IsNotPaused);
 		yield return new WaitForSeconds(0.5f);
 		yield return new WaitUntil(IsNotPaused);
@@ -47,17 +49,23 @@ public class Timer : MonoBehaviour {
 		return !pauseMenu.GetComponent<MenuManager>().paused;
 	}	
 	// Update is called once per frame
-	void Update () {
+	void Update() {
+		
 		if (continueCount && start) {
+			if (Input.GetKeyDown(KeyCode.R)) {
+				endMenu.GetComponent<MenuManager>().InvokeScene(3);
+			}
 			if (itemsContainer.transform.childCount == 0) {
 				continueCount = false;
 				endMenu.transform.Find("TimeModeUI/Fail").gameObject.SetActive(false);
+				endMenu.transform.Find("TimeModeUI/Success").gameObject.SetActive(true);
 				SaveData.TimeModeLevel++;
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
 			} else if (time < 0) {
 				time = 0;
 				continueCount = false;
+				endMenu.transform.Find("TimeModeUI/Fail").gameObject.SetActive(true);
 				endMenu.transform.Find("TimeModeUI/Success").gameObject.SetActive(false);
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
@@ -74,6 +82,6 @@ public class Timer : MonoBehaviour {
 	}
 
 	private void SetTime() {
-		time -= (SaveData.TimeModeLevel * SaveData.TimeModeLevel);
+		time -= (SaveData.TimeModeLevel * 10f);
 	}
 }

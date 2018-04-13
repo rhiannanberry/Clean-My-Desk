@@ -20,8 +20,8 @@ public class MusicPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		rc.enabled = !GameController.Instance.itemMenuOpen;
+		if (manager.currentSong != null) UpdateSongDetails();
 		if (manager.currentSong.source.isPlaying) {
-			UpdateSongDetails();
 			if (playButton.activeSelf|| !pauseButton.activeSelf) {
 				playButton.SetActive(false);
 				pauseButton.SetActive(true);

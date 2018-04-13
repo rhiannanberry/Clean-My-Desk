@@ -24,6 +24,10 @@ public class GameController : Singleton<GameController> {
 
     public bool paused;
 
+    [HideInInspector]
+    public bool canMove = false;
+    public bool musicPaused = false;
+
 	void Start () {
         audioManager = GetComponent<AudioManager>();
         audioManager.AudioSetup();
