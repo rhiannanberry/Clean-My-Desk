@@ -64,6 +64,8 @@ MonoBehaviour:
   depthOrb: {fileID: 0}
   worldSpaceCursor: {fileID: 0}
   holding: {fileID: 0}
+  ZPosCross: {fileID: 0}
+  XPosCross: {fileID: 0}
 --- !u!114 &114921384285655902
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,9 @@ public class GameController : Singleton<GameController> {
     //reference to the object button
     public GameObject selected = null;
     public GameObject phantomSelected = null;
+    public GameObject phantomItem = null;
+    public bool setPhantom = false;
+    public bool itemMenuOpen = false;
     private MenuManager pauseMenu = null;
 
     public AudioManager audioManager;

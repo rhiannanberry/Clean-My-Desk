@@ -17,23 +17,27 @@ public class Obj: MonoBehaviour {
 	}
 
 	void Start() {
-		if ((GameController.Instance.phantomSelected != null) && GameController.Instance.phantomSelected == buttonReference) {
-			//remove obj script
-			//dont use rigid body gravity
-			//remove colliders
+		if (GameController.Instance.setPhantom && GameController.Instance.phantomSelected == buttonReference) {
 			Debug.Log(name);
 			GetComponent<Rigidbody>().useGravity = false;
 			foreach( Collider childCol in GetComponentsInChildren<Collider>()) {
 				childCol.enabled = false;
 			}
 			GetComponent<Obj>().enabled = false;
+			GetComponent<Rigidbody>().freezeRotation = true;
+			transform.rotation = Quaternion.identity;
+			GameController.Instance.setPhantom = false;
 		}
 	}
 
 	void Update () {
 		if (SceneManager.GetActiveScene().buildIndex != 0 && SceneManager.GetActiveScene().name != "TimeMode"){
 			if (!util && transform.position.y < -40) {
-				buttonReference.GetComponent<ObjectButton>().DespawnObject(gameObject);
+				if (buttonReference != null) {
+					buttonReference.GetComponent<ObjectButton>().DespawnObject(gameObject);
+				} else {
+					Destroy(gameObject);
+				}
 			}
 			if (util && transform.localPosition.x <= -10) {
 				Destroy(gameObject);
