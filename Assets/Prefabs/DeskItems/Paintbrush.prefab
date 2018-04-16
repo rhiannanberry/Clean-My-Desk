@@ -188,6 +188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Paintbrush
+  description: wroooooooooooow
+  itemCount: 4
   util: 0
 --- !u!136 &136343057446243928
 CapsuleCollider:

@@ -909,4 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Bottlecap
+  description: wroooooooooooow
+  itemCount: 3
   util: 0

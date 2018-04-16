@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class Obj: MonoBehaviour {
 	public GameObject buttonReference;
+	public string itemName;
+
+	public string description = "wroooooooooooow";
+	//add description later maybe!
+	public int itemCount;
 	public bool util = false;
 	private Renderer[] childMats;
 	private Color baseColor;

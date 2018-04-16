@@ -218,6 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Tablet Pen
+  description: wroooooooooooow
+  itemCount: 1
   util: 0
 --- !u!136 &136059152995556872
 CapsuleCollider:

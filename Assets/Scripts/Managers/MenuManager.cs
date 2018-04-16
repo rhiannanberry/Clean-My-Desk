@@ -65,17 +65,17 @@ public class MenuManager : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name == "StartMenu") {
 			yield return new WaitForSeconds(1f);
 		}
-		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
-		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
-		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().color = Color.black;
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
 		yield return new WaitForSeconds(.5f);
 		SceneManager.LoadScene(i);
 	}
 
 	private void FadeInScene() {
-		GameObject.Find("Canvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
-		GameObject.Find("Canvas/Black").GetComponent<Image>().color = Color.black;
-		GameObject.Find("Canvas/Black").GetComponent<Image>().CrossFadeAlpha(0.0f, 0.5f, false);
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().color = Color.black;
+		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().CrossFadeAlpha(0.0f, 0.5f, false);
 	
 	}
 

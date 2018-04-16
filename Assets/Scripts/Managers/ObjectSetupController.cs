@@ -27,11 +27,11 @@ public class ObjectSetupController : MonoBehaviour {
 		mt.mainTexture = rt;
 
 		GameObject b = Instantiate(buttonPrefab);
-		b.GetComponent<ObjectButton>().SetValues(ov.prefab, ov.itemCount);
+		b.GetComponent<ObjectButton>().SetValues(ov.prefab);
 
-		mt.SetTexture("_AlphaTex", b.transform.GetChild(0).GetComponent<Image>().material.GetTexture("_AlphaTex"));
+		mt.SetTexture("_AlphaTex", b.transform.GetChild(1).GetComponent<Image>().material.GetTexture("_AlphaTex"));
 
-		b.transform.GetChild(0).GetComponent<Image>().material = mt;
+		b.transform.GetChild(1).GetComponent<Image>().material = mt;
 		b.transform.SetParent(buttonContainer.transform, false);
 
 		foreach(Transform untagged in defaultSetup.GetComponentInChildren<Transform>()) {

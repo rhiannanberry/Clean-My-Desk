@@ -202,4 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Coin
+  description: wroooooooooooow
+  itemCount: 20
   util: 0

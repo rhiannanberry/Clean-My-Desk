@@ -200,4 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Cardboard Box
+  description: wroooooooooooow
+  itemCount: 2
   util: 0

@@ -815,6 +815,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Speaker
+  description: wroooooooooooow
+  itemCount: 2
   util: 0
 --- !u!114 &114748437789287308
 MonoBehaviour:

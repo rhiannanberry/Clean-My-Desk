@@ -200,4 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Breadclip
+  description: wroooooooooooow
+  itemCount: 6
   util: 0

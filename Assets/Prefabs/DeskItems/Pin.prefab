@@ -189,6 +189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Pin
+  description: wroooooooooooow
+  itemCount: 15
   util: 0
 --- !u!135 &135971332041396472
 SphereCollider:

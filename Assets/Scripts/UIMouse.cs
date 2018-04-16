@@ -14,7 +14,6 @@ public class UIMouse : MonoBehaviour {
     public float previousDepth = -2.0f;
 	public Transform worldSpaceCursor;
 	public Transform holding = null;
-	private RectTransform screenPos;
 	private GameObject holder, holdingLocalPositionProxy;
 	private bool timeMode = false;
     private Vector3 lastCursorPosition;
@@ -33,8 +32,8 @@ public class UIMouse : MonoBehaviour {
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
 		Cursor.visible = false;
-		screenPos = transform.GetComponent<RectTransform>();
-		screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
+		gC.screenPos = transform.GetComponent<RectTransform>();
+		gC.screenPos.anchoredPosition = new Vector2(Screen.width/2, (Screen.height/2));
 		if (SceneManager.GetActiveScene().name == "TimeMode") {
 			timeMode = true;
 			GetComponent<Image>().enabled = false;
@@ -45,9 +44,9 @@ public class UIMouse : MonoBehaviour {
 	void FixedUpdate () {
 //		Cursor.lockState = CursorLockMode.Locked;
 		Vector3 deltaMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * mouseSpeed;
-		screenPos.anchoredPosition3D += deltaMovement;
-		screenPos.anchoredPosition = Input.mousePosition;
-		screenPos.anchoredPosition = new Vector2(Mathf.Clamp(screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(screenPos.anchoredPosition.y, 0, Screen.height)); 
+		gC.screenPos.anchoredPosition3D += deltaMovement;
+		gC.screenPos.anchoredPosition = Input.mousePosition;
+		gC.screenPos.anchoredPosition = new Vector2(Mathf.Clamp(gC.screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(gC.screenPos.anchoredPosition.y, 0, Screen.height)); 
 		IsInMenu();
 		if (timeMode) {
 			if (gC.paused) {
@@ -99,7 +98,7 @@ public class UIMouse : MonoBehaviour {
 			Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, itemExpectedZ));
 			
 			//SETTING UP MOUSE RAY
-			Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+			Ray mouseRay = Camera.main.ScreenPointToRay(gC.screenPos.anchoredPosition);
 			float hitDistance = 0;
 			if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
 				newPosition += mouseRay.GetPoint(hitDistance);
@@ -179,7 +178,7 @@ public class UIMouse : MonoBehaviour {
 		Plane itemPosZPlane = new Plane(Vector3.back, new Vector3(0, 0, previousDepth));
 		
 		//SETTING UP MOUSE RAY
-		Ray mouseRay = Camera.main.ScreenPointToRay(screenPos.anchoredPosition);
+		Ray mouseRay = Camera.main.ScreenPointToRay(gC.screenPos.anchoredPosition);
 		float hitDistance = 0;
 
 		if (itemPosZPlane.Raycast(mouseRay, out hitDistance)) {
@@ -238,7 +237,7 @@ public class UIMouse : MonoBehaviour {
 	private void HighlightHoverAndPickupItem() {
 		if ((gC.selected == null && !gC.itemMenuOpen) && holding == null) {
 			RaycastHit hit;
-			Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+			Ray ray = Camera.main.ScreenPointToRay(gC.screenPos.anchoredPosition3D);
 			Debug.DrawRay(ray.origin, ray.direction*50);
 
 			if (Physics.Raycast(ray, out hit)) {//hovering when not in item menu
@@ -290,7 +289,7 @@ public class UIMouse : MonoBehaviour {
 	}
 
 	public void HitScreen() {
-		Ray ray = Camera.main.ScreenPointToRay(screenPos.anchoredPosition3D);
+		Ray ray = Camera.main.ScreenPointToRay(gC.screenPos.anchoredPosition3D);
 		Debug.DrawRay(ray.origin, ray.direction*50);
 		RaycastHit hit;
 		if (Physics.Raycast(ray, out hit)) {

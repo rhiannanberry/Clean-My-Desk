@@ -202,4 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: D4
+  description: wroooooooooooow
+  itemCount: 1
   util: 0

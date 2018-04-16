@@ -327,6 +327,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Fork
+  description: wroooooooooooow
+  itemCount: 1
   util: 0
 --- !u!136 &136846096603745182
 CapsuleCollider:

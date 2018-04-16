@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController> {
@@ -27,6 +28,8 @@ public class GameController : Singleton<GameController> {
     [HideInInspector]
     public bool canMove = false;
     public bool musicPaused = false;
+    [HideInInspector]
+    public RectTransform screenPos;
 
 	void Start () {
         audioManager = GetComponent<AudioManager>();

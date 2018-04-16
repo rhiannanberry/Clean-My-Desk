@@ -712,6 +712,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Other Monitor
+  description: wroooooooooooow
+  itemCount: 1
   util: 0
 --- !u!136 &136264327646486180
 CapsuleCollider:

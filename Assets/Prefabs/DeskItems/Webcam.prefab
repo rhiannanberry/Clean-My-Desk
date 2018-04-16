@@ -301,6 +301,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
+  itemName: Webcam
+  description: wroooooooooooow
+  itemCount: 1
   util: 0
 --- !u!136 &136298504968035598
 CapsuleCollider:
