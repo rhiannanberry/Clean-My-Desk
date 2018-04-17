@@ -70,7 +70,6 @@ public class AudioManager : MonoBehaviour {
         UpdateSongAudioSource();
         PlaySong();
         return currentSong;
-        //s.source.Play();
 	}
 
 	public Song NextSong() {
@@ -114,6 +113,7 @@ public class AudioManager : MonoBehaviour {
 		currentSong.source.clip = currentSong.clip;
 		currentSong.source.volume = currentSong.volume * GameController.Instance.masterVolume * GameController.Instance.musicVolume;
 		currentSong.source.pitch = currentSong.pitch;
+		songSource = currentSong.source;
 	}
 
 	public void UpdateSoundAudioSource(GameObject src, Sound s) {
@@ -124,7 +124,7 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!GameController.Instance.musicPaused && !currentSong.source.isPlaying) {
+		if (!GameController.Instance.musicPaused && songSource != null && !songSource.isPlaying) {
 			NextSong();
 		}
 	}

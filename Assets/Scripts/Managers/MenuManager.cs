@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour {
 
 	private Image pauseImage = null;
 	private GameObject optionsMenu = null;
-	public bool paused = false;
+	//public bool paused = false;
 
 	public bool animDisable = false;
 	public bool animDisabled = false;
@@ -34,9 +34,6 @@ public class MenuManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (exitingScene) {
-			Debug.Log("Alpha: " + GameObject.Find("Canvas/Black").GetComponent<Image>().color.a.ToString());
-		}
 		if (!startMenu) {
 			if (pausing) {
 				Debug.Log(pauseImage.canvasRenderer.GetAlpha());
@@ -65,17 +62,17 @@ public class MenuManager : MonoBehaviour {
 		if (SceneManager.GetActiveScene().name == "StartMenu") {
 			yield return new WaitForSeconds(1f);
 		}
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().color = Color.black;
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
+		GameObject.Find("Black").GetComponent<Image>().canvasRenderer.SetAlpha(0.0f);
+		GameObject.Find("Black").GetComponent<Image>().color = Color.black;
+		GameObject.Find("Black").GetComponent<Image>().CrossFadeAlpha(1.0f, 0.5f, false);
 		yield return new WaitForSeconds(.5f);
 		SceneManager.LoadScene(i);
 	}
 
 	private void FadeInScene() {
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().color = Color.black;
-		GameObject.Find("MenusCanvas/Black").GetComponent<Image>().CrossFadeAlpha(0.0f, 0.5f, false);
+		GameObject.Find("Black").GetComponent<Image>().canvasRenderer.SetAlpha(1.0f);
+		GameObject.Find("Black").GetComponent<Image>().color = Color.black;
+		GameObject.Find("Black").GetComponent<Image>().CrossFadeAlpha(0.0f, 0.5f, false);
 	
 	}
 
@@ -92,7 +89,7 @@ public class MenuManager : MonoBehaviour {
 			//pauseImage.CrossFadeAlpha(1.0f, 5f, false);
 
 			//pausing = true;
-			paused = true;
+			GameController.Instance.paused = true;
 		}
 	}
 
@@ -130,7 +127,7 @@ public class MenuManager : MonoBehaviour {
 			//Close both menus
 			pauseMenu.SetActive(false);
 			optionsMenu.SetActive(false);
-			paused = false;
+			GameController.Instance.paused = false;
 		}
 	}
 
@@ -144,7 +141,7 @@ public class MenuManager : MonoBehaviour {
 			#endif
 		} else {
 			//TODO: Confirmation sub menu
-			paused = false;
+			GameController.Instance.paused = false;
 			GotoSceneIndex("StartMenu");
 		}
 	}

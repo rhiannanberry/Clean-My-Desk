@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour {
 	}
 
 	private bool IsNotPaused() {
-		return !pauseMenu.GetComponent<MenuManager>().paused;
+		return !GameController.Instance.paused;
 	}	
 	// Update is called once per frame
 	void Update() {
