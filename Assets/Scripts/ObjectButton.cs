@@ -19,8 +19,8 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 		descriptionScroller = GameObject.Find("ItemDescription").GetComponent<TextMeshProUGUI>();
 		if (SceneManager.GetActiveScene().name == "GodMode") {
 			itemLimit = false;
-			transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-			transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
+			transform.Find("Counter/CountText").gameObject.SetActive(false);
+			transform.Find("Counter/NoCountText").gameObject.SetActive(true);
 		}
 	}
 
@@ -63,7 +63,6 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 		UpdateCounter();
 	}
 
-	//grey out button when none left
 
 	public Transform SpawnObject(Vector3 pos) {
 		if (itemCount >= 1) {
@@ -75,11 +74,7 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
 		}
-			GameController.Instance.audioManager.PlaySound("error");
-			//GetComponent<Animator>().SetTrigger("Disabled");
-			//animate counter
-			//play roblox death sound
-		
+		GameController.Instance.audioManager.PlaySound("error");
 		return null;
 	}
 
