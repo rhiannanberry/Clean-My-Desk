@@ -203,6 +203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Thread
-  description: wroooooooooooow
+  description: Just around
   itemCount: 3
   util: 0

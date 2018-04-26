@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Fork
-  description: wroooooooooooow
+  description: Must have a fork in arms reach at all times
   itemCount: 1
   util: 0
 --- !u!136 &136846096603745182

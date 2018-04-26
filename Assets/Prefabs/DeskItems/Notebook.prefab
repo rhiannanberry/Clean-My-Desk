@@ -201,6 +201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Sketchbook
-  description: wroooooooooooow
+  description: Contains all of my spooky doodles
   itemCount: 1
   util: 0

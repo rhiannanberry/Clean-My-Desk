@@ -652,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Lamp
-  description: wroooooooooooow
+  description: You will not be able to balance this
   itemCount: 2
   util: 0
 --- !u!135 &135589265500301492

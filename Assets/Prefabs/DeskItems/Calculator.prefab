@@ -203,6 +203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Calculator
-  description: wroooooooooooow
+  description: It's almost as old as I am, and nerds roast me for that
   itemCount: 1
   util: 0

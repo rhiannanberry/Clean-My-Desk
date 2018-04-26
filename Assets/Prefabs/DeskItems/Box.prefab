@@ -201,6 +201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Cardboard Box
-  description: wroooooooooooow
+  description: I bought noodles in this.
   itemCount: 2
   util: 0

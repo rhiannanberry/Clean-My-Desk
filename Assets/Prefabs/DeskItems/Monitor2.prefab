@@ -713,7 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Other Monitor
-  description: wroooooooooooow
+  description: Where did you come from?
   itemCount: 1
   util: 0
 --- !u!136 &136264327646486180

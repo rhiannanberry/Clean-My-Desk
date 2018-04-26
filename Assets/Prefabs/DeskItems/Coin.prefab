@@ -203,6 +203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Coin
-  description: wroooooooooooow
+  description: Who has real money in this day and age?
   itemCount: 20
   util: 0

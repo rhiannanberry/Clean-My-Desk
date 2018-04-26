@@ -1929,6 +1929,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Plate
-  description: wroooooooooooow
+  description: Similar to the fork
   itemCount: 3
   util: 0

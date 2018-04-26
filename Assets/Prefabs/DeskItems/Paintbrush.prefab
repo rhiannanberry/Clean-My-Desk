@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Paintbrush
-  description: wroooooooooooow
+  description: I don't paint anymore
   itemCount: 4
   util: 0
 --- !u!136 &136343057446243928

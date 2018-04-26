@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Webcam
-  description: wroooooooooooow
+  description: Hello FBI man
   itemCount: 1
   util: 0
 --- !u!136 &136298504968035598

@@ -761,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Monitor
-  description: wroooooooooooow
+  description: Bought on sale
   itemCount: 1
   util: 0
 --- !u!114 &114332378440399632

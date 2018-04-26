@@ -554,6 +554,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Mug
-  description: wroooooooooooow
+  description: DOES NOT ACTUALLY SAY PEE
   itemCount: 4
   util: 0

@@ -201,6 +201,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Breadclip
-  description: wroooooooooooow
+  description: I'm using all the bread ties for wire management
   itemCount: 6
   util: 0

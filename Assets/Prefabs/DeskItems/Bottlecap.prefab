@@ -910,6 +910,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Bottlecap
-  description: wroooooooooooow
+  description: Not bottlecaps from beer though! I'm underage and that is illegal!!
   itemCount: 3
   util: 0

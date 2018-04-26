@@ -230,6 +230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonReference: {fileID: 0}
   itemName: Broccoli
-  description: wroooooooooooow
+  description: Healthy
   itemCount: 2
   util: 0
