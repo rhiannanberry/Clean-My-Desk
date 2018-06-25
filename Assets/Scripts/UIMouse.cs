@@ -20,6 +20,7 @@ public class UIMouse : MonoBehaviour {
     private Vector3 cursorMovement;
     private const float RELEASE_FORCE = 0.2f;
 	private Transform prevHitItem;
+	private Animator anim;
 
 	private GameController gC;
 	public Transform ZPosCross, XPosCross;
@@ -27,7 +28,7 @@ public class UIMouse : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gC = GameController.Instance;
-
+		anim = transform.GetComponent<Animator>();
         holder = new GameObject();
 		holdingLocalPositionProxy = new GameObject();
 		holdingLocalPositionProxy.transform.SetParent(holder.transform);
@@ -43,6 +44,7 @@ public class UIMouse : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 //		Cursor.lockState = CursorLockMode.Locked;
+		ClickCheck();
 		Vector3 deltaMovement = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * mouseSpeed;
 		gC.screenPos.anchoredPosition3D += deltaMovement;
 		gC.screenPos.anchoredPosition = Input.mousePosition;
@@ -199,11 +201,26 @@ public class UIMouse : MonoBehaviour {
 			if (gC.phantomSelected != null) {
 				gC.setPhantom = true;
 				gC.phantomItem = gC.phantomSelected.GetComponent<ObjectButton>().InstantiateObject();
+				UpdateAllAlphaMaterials();
+				
 				gC.phantomItem.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
 			}
 			//remove colliders and obj script
 			//set position, but maybe do that outside of this if/at the end of this function
 			//will also need to figure in rotation
+		}
+	}
+
+	private void UpdateAllAlphaMaterials() {
+		Renderer[] rends = gC.phantomItem.GetComponentsInChildren<Renderer>();
+		foreach(Renderer rend in rends) {
+			foreach(Material mat in rend.materials) {
+				mat.SetFloat("_TintColor", 1);
+				Color col = mat.GetColor("_Color");
+				col.a = 0.5f;
+				mat.SetColor("_Color", col);
+
+			}
 		}
 	}
 
@@ -301,7 +318,11 @@ public class UIMouse : MonoBehaviour {
 	}
 
 	//two types of object selecting:
-
+	private void ClickCheck() {
+		if (Input.GetMouseButtonDown(0)) {
+			anim.SetTrigger("Click");
+		}
+	}
  public bool MouseScreenCheck(){
         #if UNITY_EDITOR
         if (Input.mousePosition.x == 0 || Input.mousePosition.y == 0 || Input.mousePosition.x >= Handles.GetMainGameViewSize().x - 1 || Input.mousePosition.y >= Handles.GetMainGameViewSize().y - 1){

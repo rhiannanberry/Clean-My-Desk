@@ -15,9 +15,10 @@ Shader "TSF/Base1"
    
     Subshader 
     {
-    	Tags { "RenderType"="Opaque" }
+    	Tags {"Queue"="Transparent" "RenderType"="Transparent" }
 		LOD 250
     	ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha
 	   	Cull Back
 		Lighting Off
 		Fog { Mode Off }
@@ -73,9 +74,9 @@ Shader "TSF/Base1"
               	sampler2D _ToonShade;
                 fixed _Brightness;
                 
-                #if _COLOR_ON
+                //#if _COLOR_ON
                 fixed4 _Color;
-                #endif
+                //#endif
                 
                 fixed4 frag (v2f i) : COLOR
                 {
@@ -87,6 +88,7 @@ Shader "TSF/Base1"
 					
 					#if _TEX_ON
 					fixed4 detail = tex2D ( _MainTex, i.uv );
+                    detail.a = _Color.a;
 					return  toonShade * detail*_Brightness;
 					#else
 					return  toonShade * _Brightness;

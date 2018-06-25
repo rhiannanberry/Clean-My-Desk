@@ -8,10 +8,6 @@ public class TimedDeath : MonoBehaviour {
 	private bool move = false;
 	public float time = 5f;
 	public float speed = 40f;
-	// Use this for initialization
-	void Start () {
-		StartCoroutine(KillTime());
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -20,8 +16,7 @@ public class TimedDeath : MonoBehaviour {
 		}
 	}
 
-	IEnumerator KillTime() {
-		yield return new WaitForSeconds(time);
+	public void Close() {
 		move = true;
 	}
 }

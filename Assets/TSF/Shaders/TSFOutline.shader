@@ -21,7 +21,8 @@ Shader "TSF/BaseOutline1"
  
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+		ZWrite Off
 		Blend SrcAlpha OneMinusSrcAlpha
 		LOD 250 
         Lighting Off

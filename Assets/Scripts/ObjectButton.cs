@@ -75,6 +75,7 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 			return Instantiate(prefab, pos, Random.rotation).transform;
 		}
 		GameController.Instance.audioManager.PlaySound("error");
+		transform.GetComponent<Animator>().SetTrigger("Error");
 		return null;
 	}
 

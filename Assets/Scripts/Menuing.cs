@@ -16,7 +16,11 @@ public class Menuing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (gameObject.name == "ObjMenScrollView") {
+            if (Input.GetKeyDown(KeyCode.I)) {
+                transform.GetChild(0).GetComponent<Button>().onClick.Invoke();
+            }
+        }
 	}
 
     public void ToggleMenu() {
