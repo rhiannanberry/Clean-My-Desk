@@ -9124,7 +9124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9681934701f2746be309fac307525b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 100
+  time: 5
   endMenu: {fileID: 2085495972}
   pauseMenu: {fileID: 1427706129}
   itemsContainer: {fileID: 411243536}

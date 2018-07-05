@@ -51,7 +51,7 @@ public class UIMouse : MonoBehaviour {
 		gC.screenPos.anchoredPosition = new Vector2(Mathf.Clamp(gC.screenPos.anchoredPosition.x, 0, Screen.width), Mathf.Clamp(gC.screenPos.anchoredPosition.y, 0, Screen.height)); 
 		IsInMenu();
 		if (timeMode) {
-			if (gC.paused) {
+			if (gC.paused || gC.timer <= 0) {
 				GetComponent<Image>().enabled = true;
 			} else {
 

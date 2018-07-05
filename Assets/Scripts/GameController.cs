@@ -14,7 +14,7 @@ public class GameController : Singleton<GameController> {
     public bool paused, canMove, musicPaused, setPhantom, itemMenuOpen = false;
     
     [HideInInspector]
-    public float masterVolume, musicVolume, sfxVolume = 1;
+    public float masterVolume, musicVolume, sfxVolume = 1, timer = 0;
     
 
     [HideInInspector]

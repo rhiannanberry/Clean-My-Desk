@@ -62,11 +62,13 @@ public class Timer : MonoBehaviour {
 				SaveData.TimeModeLevel++;
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
+				GameObject.Find("Mouse").GetComponent<Image>().enabled = true;
 			} else if (time < 0) {
 				time = 0;
 				continueCount = false;
 				endMenu.transform.Find("TimeModeUI/Fail").gameObject.SetActive(true);
 				endMenu.transform.Find("TimeModeUI/Success").gameObject.SetActive(false);
+				GameObject.Find("Mouse").GetComponent<Image>().enabled = true;
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
 			}
@@ -77,11 +79,13 @@ public class Timer : MonoBehaviour {
 			}
 			if (IsNotPaused()) {
 				time -= Time.deltaTime;
+				GameController.Instance.timer = time;
 			}
 		}
 	}
 
 	private void SetTime() {
 		time -= (SaveData.TimeModeLevel * 10f);
+		GameController.Instance.timer = time;
 	}
 }
