@@ -14,6 +14,6 @@ public class TimedModeUtil : MonoBehaviour {
 		}
 	}
 	public void SetText() {
-		txt.text = "#" + SaveData.TimeModeLevel.ToString();
+		txt.text = "#" + SaveData.sd.timeModeLevel.ToString();
 	}
 }

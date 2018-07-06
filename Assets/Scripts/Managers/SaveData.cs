@@ -1,88 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
-public static class SaveData {
-    private static int timeModeLevel = 0, despawnCount = 0, spawnCount = 0, despawnCountTotal = 0, spawnCountTotal = 0, maxVelocity = 0, medsTaken = 0, timesGotDistracted = 0;
+[System.Serializable]
+public class SaveData {
+    public int timeModeLevel = 0, despawnCount = 0, spawnCount = 0, despawnCountTotal = 0, spawnCountTotal = 0, maxVelocity = 0, medsTaken = 0, timesGotDistracted = 0;
+	public float master = 0.5f, music = 0.5f, sfx = 0.5f;
+	public static SaveData sd;
 
-	public static int TimeModeLevel {
-		get {
-			return timeModeLevel;
-		}
-		set {
-			timeModeLevel = value;
-		}
+	public SaveData() {
+		timeModeLevel = despawnCount = spawnCount = despawnCountTotal = spawnCountTotal = maxVelocity = medsTaken = timesGotDistracted = 0;
+		master = music = sfx = 0.5f;
 	}
-
-	public static int DespawnCount {
-		get {
-			return despawnCount;
-		}
-
-		set {
-			despawnCount = value;
-		}
-	}
-	public static int SpawnCount {
-		get {
-			return spawnCount;
-		}
-
-		set {
-			spawnCount = value;
-		}
-	}
-
-	public static int DespawnCountTotal {
-		get {
-			return despawnCountTotal;
-		}
-	}
-
-	public static int SpawnCountTotal {
-		get {
-			return spawnCountTotal;
-		}
-	}
-
-    public static int MaxVelocity {
-        get {
-            return maxVelocity;
-        }
-
-        set {
-            maxVelocity = value;
-        }
-    }
-
-    public static int MedsTaken {
-        get {
-            return medsTaken;
-        }
-
-        set {
-            medsTaken = value;
-        }
-    }
-
-    public static int TimesGotDistracted {
-        get {
-            return timesGotDistracted;
-        }
-
-        set {
-            timesGotDistracted = value;
-        }
-    }
 
     public static void UpdateTotals() {
-		despawnCountTotal += despawnCount;
-		spawnCountTotal += spawnCount;
+		sd.despawnCountTotal += sd.despawnCount;
+		sd.spawnCountTotal += sd.spawnCount;
 	}
 
 	public static void ResetRunCounts() {
-		spawnCount = 0;
-		despawnCount = 0;
+		sd.despawnCount = sd.spawnCount = sd.despawnCountTotal = sd.spawnCountTotal = sd.maxVelocity = sd.medsTaken = sd.timesGotDistracted = 0;
 	}
-	
+}
+
+public static class SaveLoad {
+	public static void Save() {
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream file = File.Create(Application.persistentDataPath + "/saveDat.gd");
+		bf.Serialize(file, SaveData.sd);
+		file.Close();
+	}
+
+	public static void Load() {
+		Debug.Log(SaveData.sd);
+		if(File.Exists(Application.persistentDataPath + "/saveDat.gd")) {
+			BinaryFormatter bf = new BinaryFormatter();
+			FileStream file = File.Open(Application.persistentDataPath + "/saveDat.gd", FileMode.Open);
+			SaveData.sd = (SaveData)bf.Deserialize(file);
+			file.Close();
+		} else {
+			SaveData.sd = new SaveData();
+		}
+	}
+
 }

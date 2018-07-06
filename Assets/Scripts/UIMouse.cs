@@ -155,7 +155,7 @@ public class UIMouse : MonoBehaviour {
 			holding.GetComponent<Rigidbody>().useGravity = false;
 			holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
             if (holding.gameObject.name.Equals("MedicineBottle"))
-                SaveData.MedsTaken++;//This is super fragile I know, i'm just not sure what a better approach would be? check against its model?
+                SaveData.sd.medsTaken++;//This is super fragile I know, i'm just not sure what a better approach would be? check against its model?
 		}
 	}
 

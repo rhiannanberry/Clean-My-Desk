@@ -61,15 +61,15 @@ public class GenerateScores : MonoBehaviour {
 		int tot = 0;
 		GameObject.Find("EndMenu").transform.Find("MainModeUI").gameObject.SetActive(true);
 		SaveData.UpdateTotals();
-		int spawnScore = SaveData.SpawnCount;
-		int despawnScore = SaveData.DespawnCount;
+		int spawnScore = SaveData.sd.spawnCount;
+		int despawnScore = SaveData.sd.despawnCount;
 		int diffScore = (int) (Mathf.Log(despawnScore - spawnScore, 2) * 10);
-		int percentSpawnTotalScore = (spawnScore == 0 || SaveData.SpawnCountTotal == 0) ? 0 : (int) (100.0f * (spawnScore*1.0f / SaveData.SpawnCountTotal));
-        int maxVelocityScore = SaveData.MaxVelocity;
+		int percentSpawnTotalScore = (spawnScore == 0 || SaveData.sd.spawnCountTotal == 0) ? 0 : (int) (100.0f * (spawnScore*1.0f / SaveData.sd.spawnCountTotal));
+        int maxVelocityScore = SaveData.sd.maxVelocity;
         int timeOfDay = System.DateTime.Now.Hour;
         int timeOfDayScore = (timeOfDay < 12) ? (23 - timeOfDay) * 2 : timeOfDay * 2;//The later you're up playing, the more you're rewarded :p
-        int rememberYourMedsScore = SaveData.MedsTaken * 2;
-        int timesGotDistracted = -SaveData.TimesGotDistracted;
+        int rememberYourMedsScore = SaveData.sd.medsTaken * 2;
+        int timesGotDistracted = -SaveData.sd.timesGotDistracted;
         int pureRandomScore = (int) (Random.value * 100);
 
 		int[] scorePatterns = {spawnScore, despawnScore, diffScore, percentSpawnTotalScore, maxVelocityScore, timeOfDayScore, pureRandomScore};
@@ -119,7 +119,7 @@ public class GenerateScores : MonoBehaviour {
 	}
     private void OnApplicationFocus(bool focus) {
         if (!focus) {
-            SaveData.TimesGotDistracted++;
+            SaveData.sd.timesGotDistracted++;
         }
     }
 }

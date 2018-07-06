@@ -14,7 +14,7 @@ public class GameController : Singleton<GameController> {
     public bool paused, canMove, musicPaused, setPhantom, itemMenuOpen = false;
     
     [HideInInspector]
-    public float masterVolume, musicVolume, sfxVolume = 1, timer = 0;
+    public float masterVolume, musicVolume, sfxVolume, timer = 0;
     
 
     [HideInInspector]
@@ -27,6 +27,11 @@ public class GameController : Singleton<GameController> {
     private MenuManager pauseMenu = null;
 	
     void Start () {
+        SaveLoad.Load();
+        masterVolume = SaveData.sd.master;
+        musicVolume = SaveData.sd.music;
+        sfxVolume = SaveData.sd.sfx;
+        Debug.Log(SaveData.sd.master + " " + SaveData.sd.music + " " + SaveData.sd.sfx);
         audioManager = GetComponent<AudioManager>();
         audioManager.AudioSetup();
         audioManager.PlaySong();
@@ -51,6 +56,7 @@ public class GameController : Singleton<GameController> {
     }
 
     void OnLevelWasLoaded() {
+        SaveLoad.Save();
         if (SceneManager.GetActiveScene().buildIndex != 0) {
             pauseMenu = GameObject.Find("PauseMenu").GetComponent<MenuManager>();
             paused = false;

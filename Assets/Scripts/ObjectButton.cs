@@ -70,7 +70,7 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 				itemCount--;
 				UpdateCounter();
 			}
-			SaveData.SpawnCount++;
+			SaveData.sd.spawnCount++;
 			prefab.GetComponent<Obj>().buttonReference = gameObject;
 			return Instantiate(prefab, pos, Random.rotation).transform;
 		}
@@ -81,7 +81,7 @@ public class ObjectButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
 	public void DespawnObject(GameObject obj) {
 		Destroy(obj); //continue move away from Spawn item and related stuff
-		SaveData.DespawnCount++;
+		SaveData.sd.despawnCount++;
 		if (itemLimit) {
 			itemCount++;
 			UpdateCounter();

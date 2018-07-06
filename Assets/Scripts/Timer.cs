@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour {
 				continueCount = false;
 				endMenu.transform.Find("TimeModeUI/Fail").gameObject.SetActive(false);
 				endMenu.transform.Find("TimeModeUI/Success").gameObject.SetActive(true);
-				SaveData.TimeModeLevel++;
+				SaveData.sd.timeModeLevel++;
 				//trigger menu
 				endMenu.GetComponent<Menuing>().ToggleMenu();
 				GameObject.Find("Mouse").GetComponent<Image>().enabled = true;
@@ -85,7 +85,7 @@ public class Timer : MonoBehaviour {
 	}
 
 	private void SetTime() {
-		time -= (SaveData.TimeModeLevel * 10f);
+		time -= (SaveData.sd.timeModeLevel * 10f);
 		GameController.Instance.timer = time;
 	}
 }
